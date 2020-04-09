@@ -1,0 +1,67 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-md-12'
+      padding: true
+      cards:
+        - entity: sensor.p2000_someren
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+              font-size: 10px;
+              font-weight: normal;
+            }
+            span#value {
+              font-size: 16px;
+              font-weight: normal;
+            }
+          # icon: 'mdi:ambulance'
+          name: Someren
+          type: sensor
+        - entity: sensor.p2000_brabant_zuid_oost
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+            span#value {
+              font-size: 16px;
+              font-weight: normal;
+            }
+          # icon: 'mdi:ambulance'
+          name: Brabant Zuid & Oost
+          type: sensor
+        - entity: sensor.p2000_limburg_noord
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+              font-size: 10px;
+              font-weight: normal;
+            }
+            span#value {
+              font-size: 16px;
+              font-weight: normal;
+            }
+          # icon: 'mdi:ambulance'
+          name: Limburg Noord
+          type: sensor
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-md-12'
+      padding: true
+      cards:
+        - type: map
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          default_zoom: 11
+          entities:
+            - entity: sensor.p2000_someren
+            - entity: zone.home
+            - entity: sensor.p2000_brabant_zuid_oost
+          # title: Someren & Brabant

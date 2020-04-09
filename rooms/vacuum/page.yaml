@@ -1,0 +1,135 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+  cards:
+    - type: custom:dwains-flexbox-card
+      padding: true
+      cards:
+        - !include
+          - ../../../../views/partials/heading.yaml
+          - title: Map
+        - type: vertical-stack
+          items_classes: 'col-sm-12'
+          cards:
+            - type: picture-entity
+              entity: camera.rockrobo_map
+              show_name: false
+              show_state: false
+              tap_action: none
+              hold_action: none
+
+
+    - type: custom:dwains-flexbox-card
+      padding: true
+      cards:
+        - !include
+          - ../../../../views/partials/heading.yaml
+          - title: Presets
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          #template: room_vacuum
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: Woonkamer
+          icon: fal:couch
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.rockrobo
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['Woonkamer']
+
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: Keuken
+          icon: fal:refrigerator
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.rockrobo
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['Keuken']
+
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: Eetkamer
+          icon: fal:coffee
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.rockrobo
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['Eetkamer']
+
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: Hal
+          icon: fal:key-skeleton
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.rockrobo
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['Hal']
+
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: Garage
+          icon: fal:warehouse
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.rockrobo
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['Garage']
+
+        - !include
+          - ../../../../views/partials/heading.yaml
+          - title: Informatie
+        - type: glance
+          item_classes: 'col-xs-12'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - entity: sensor.vacuum_main_brush_left
+              name: Hoofdborstel
+              icon: mdi:broom
+            - entity: sensor.vacuum_side_brush_left
+              name: Zijborstel
+              icon: mdi:broom
+            - entity: sensor.vacuum_filter_left
+              name: Filter
+              icon: mdi:broom
+            - entity: sensor.vacuum_sensor_dirty_left
+              name: Sensoren
+              icon: mdi:air-filter

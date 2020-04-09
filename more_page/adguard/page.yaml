@@ -1,0 +1,47 @@
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.adguard_dns_queries
+      name: DNS Queries
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: false
+      show:
+        points: false
+        graph: line
+      #   extrema: false
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.adguard_dns_queries_blocked
+      name: DNS Queries Blocked
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: false
+      show:
+        points: false
+        graph: line
+      #   extrema: false
+
+- type: entities
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
+  entities:
+    - entity: switch.adguard_protection
+    - entity: switch.adguard_filtering
+    - entity: sensor.adguard_dns_queries
+    - entity: sensor.adguard_dns_queries_blocked
+    - entity: sensor.adguard_dns_queries_blocked_ratio

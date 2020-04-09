@@ -1,0 +1,88 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+  #padding: true
+  cards:
+    - type: entities
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        #- entity: {{ (data | fromjson)['entity'] }}
+        - entity: media_player.sonos_livingroom
+          group: true
+          name: Sonos
+          info: scroll
+          type: 'custom:mini-media-player'
+          hide:
+            power: true
+            icon: true
+            source: true
+            icon_state: false
+            power_color: false
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.sonos_livingroom
+                name: 'Living Room'
+              - entity_id: media_player.sonos_kitchen
+                name: 'Kitchen'
+              - entity_id: media_player.sonos_diningroom
+                name: 'Diningroom'
+              - entity_id: media_player.sonos_garden
+                name: 'Garden'
+          shortcuts:
+            columns: 3
+            hide_when_off: true
+            label: Select Input
+            align_text: center
+            buttons:
+              - name: Radio 538
+                #icon: mdi:netflix
+                type: source
+                id: Radio 538
+              - name: 100% NL
+                #icon: mdi:kodi
+                type: source
+                id: 100% NL
+              - name: Qmusic
+                #icon: mdi:plex
+                type: source
+                id: Qmusic
+              - name: SLAM!
+                #icon: mdi:volume-source
+                type: source
+                id: SLAM!
+              - name: L1 Radio
+                #icon: mdi:volume-mute
+                type: source
+                id: L1 Radio
+              - name: Omroep Brabant
+                type: source
+                id: Omroep Brabant
+
+    - type: entities
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - type: 'custom:slider-entity-row'
+          entity: media_player.sonos_livingroom
+          icon: 'mdi:speaker'
+          name: 'Livingroom'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.sonos_kitchen
+          icon: 'mdi:speaker'
+          name: 'Kitchen'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.sonos_diningroom
+          icon: 'mdi:speaker'
+          name: 'Diningroom'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.sonos_garden
+          icon: 'mdi:speaker'
+          name: 'Garden'

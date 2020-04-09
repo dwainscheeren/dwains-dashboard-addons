@@ -1,0 +1,49 @@
+- type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: picture-entity
+          style: |
+            ha-card {
+              padding: 8px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entity: sensor.blink_vandaag
+          name: Vandaag
+          state_image:
+            'gft': /local/images/afval_gft_large.png
+            'papier': /local/images/afval_papier_large.png
+            'restafval': /local/images/afval_rest_large.png
+            'pmd': /local/images/afval_pmd_large.png
+            'papier, pmd': /local/images/afval_papier-pmd_large.png
+            'Geen': /local/images/afval_geen_large.png
+        - type: picture-entity
+          style: |
+            ha-card {
+              padding: 8px;
+            }
+          entity: sensor.blink_morgen
+          name: Morgen
+          state_image:
+            'gft': /local/images/afval_gft_large.png
+            'papier': /local/images/afval_papier_large.png
+            'restafval': /local/images/afval_rest_large.png
+            'pmd': /local/images/afval_pmd_large.png
+            'papier, pmd': /local/images/afval_papier-pmd_large.png
+            'Geen': /local/images/afval_geen_large.png
+
+    - type: glance
+      style: |
+        ha-card {
+          padding: 8px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - entity: sensor.blink_restafval
+          #name: Rest
+        - entity: sensor.blink_gft
+          #name: GFT
+        - entity: sensor.blink_pmd
+          #name: PMD
+        - entity: sensor.blink_papier
+          #name: Papier
