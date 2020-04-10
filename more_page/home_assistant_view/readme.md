@@ -1,5 +1,5 @@
 # Home Assistant Monitoring Addon for Dwains-Theme
-#### Version 0.1
+#### Version 0.2
 
 ![ha-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/ha-monitor/desktop_1.png)
 
@@ -20,13 +20,17 @@
     - Supervisor update notifications
     - Add-on update notifications
 
+## Version 0.2 - Code Cleanup
+
+ - Removed CSS heights and fixed them with Graph `height:`
+ - Added more documentation for card
  
 
 ### Home Assistant Core Addon Support
 
 Dwains-Theme Addon can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/ha_view/ha_monitoring.yaml)
      
-Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/tree/master/.github/wiki/guides/ha-core)
+Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md)
 
 ```yaml
     addons:
