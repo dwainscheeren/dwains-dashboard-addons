@@ -17,7 +17,7 @@
           border-radius: 10px;
           box-shadow: 10px;
           }
-      image: '/local/images/themes/dwains-theme/software/unraid_logo.png'
+      image: '/local/images/lovelace-themes/dwains-theme/software/unraid_logo.png'
       elements:
     # Docker Containers Running
       - type: state-label

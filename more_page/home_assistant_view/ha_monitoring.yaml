@@ -1,5 +1,5 @@
 # Home Assistant Montitoring for Dwains-Theme
-## Version 0.1 by noodlemctwoodle
+## Version 0.2 by noodlemctwoodle
 ### Please view the set up guide for this view on GitHub
 
 
@@ -294,9 +294,9 @@
       cards:
         - type: horizontal-stack
           cards:
-# Reload Lovelace
+
+          # Reload Lovelace
             - type: custom:button-card
-#                  item_classes: 'col-lg-3 col-md-3'
               style: |
                 ha-card {
                   background: var(--paper-card-background-color);
@@ -313,7 +313,6 @@
 
         # Take Home Assistant Snapshot
             - type: custom:button-card
-#                  item_classes: 'col-lg-3 col-md-3'
               style: |
                 ha-card {
                   background: var(--paper-card-background-color);
@@ -330,7 +329,6 @@
 
         # Restart Home Assistant
             - type: custom:button-card
-#                  item_classes: 'col-lg-3 col-md-3'
               style: |
                 ha-card {
                   background: var(--paper-card-background-color);
@@ -349,7 +347,6 @@
 
         # Reboot Home Assistant Host
             - type: custom:button-card
-#                  item_classes: 'col-lg-3 col-md-3'
               style: |
                 ha-card {
                   background: var(--paper-card-background-color);
@@ -369,7 +366,8 @@
 
         - type: horizontal-stack
           cards:
-# NVMe System Disk Free
+
+          # NVMe System Disk Free
             - type: custom:bar-card
               style: |
                 :host {
@@ -580,7 +578,6 @@
                               box-shadow: 10px;
                               font-weight: bold;
                               opacity: 0.8;
-                              height: 242px;                
                             }
                           entities:
                             - entity: sensor.glances_homeassistant_cpu_used
@@ -594,7 +591,7 @@
                           hours_to_show: 7
                           points_per_hour: 10
                           update_interval: 30
-                          height: 70
+                          height: 122
                           aggregate_func: max
                           line_width: 2
                           smoothing: false
@@ -614,7 +611,6 @@
                               box-shadow: 10px;
                               font-weight: bold;
                               opacity: 0.8;
-                              height: 242px;                
                             }
                           entities:
                             - entity: sensor.glances_homeassistant_ram_used
@@ -627,7 +623,7 @@
                           hours_to_show: 7
                           points_per_hour: 10
                           update_interval: 30
-                          height: 70
+                          height: 122
                           aggregate_func: max
                           line_width: 2
                           smoothing: false
@@ -653,7 +649,6 @@
                             box-shadow: 10px;
                             font-weight: bold;
                             opacity: 0.8;
-                            height: 242px;                  
                           }
                         entities:
                           - entity: sensor.home_assistant_db_size
@@ -662,7 +657,7 @@
                         hours_to_show: 24
                         update_interval: 30
                         aggregate_func: max
-                        height: 70
+                        height: 80
                         line_width: 2
                         smoothing: true
                         font_size: 65
