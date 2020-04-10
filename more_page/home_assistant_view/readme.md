@@ -1,5 +1,5 @@
 # Home Assistant Monitoring Addon for Dwains-Theme
-#### Version 0.2
+#### Version 0.3
 
 ![ha-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/ha-monitor/desktop_1.png)
 
@@ -24,7 +24,15 @@
 
  - Removed CSS heights and fixed them with Graph `height:`
  - Added more documentation for card
- 
+ - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) converted all the HKI container images to Dwians-Theme variants. 
+
+## Version 0.3
+ - Added update sensors
+    - package + audio, dns, cli and core
+ - Added configuration guide for Configuration [Checker](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#install-check-home-assistant-configuration)
+ - Added configuration guide for HTML5 [notifications](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#setting-up-the-html5-notify-platform)
+ - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) added template.dwains.psd for you to make your own container images
+
 
 ### Home Assistant Core Addon Support
 
@@ -32,7 +40,7 @@ Dwains-Theme Addon can be found [here](https://github.com/noodlemctwoodle/homeas
      
 Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md)
 
-```yaml
+```YAML
     addons:
       - name: Home Assistant
         icon: mdi:home-assistant

@@ -904,10 +904,11 @@
                                 }
                               show_header_toggle: false
                               entities:
-                              - sensor.supervisor_updates
-                              - binary_sensor.updater_addons
-                              - binary_sensor.updater_hacs
-                              - binary_sensor.updater_supervisor
+                              - sensor.updater_core
+                              - sensor.updater_cli
+                              - sensor.updater_audio
+                              - sensor.updater_dns
+
 
                     - type: vertical-stack
                       cards:
@@ -926,7 +927,7 @@
                                 }
                               show_header_toggle: false
                               entities:
-                              - alert.addon_update_available
-                              - alert.ha_update_available
-                              - alert.hacs_update_available
-                              - alert.supervisor_update_available
+                              - sensor.supervisor_updates
+                              - binary_sensor.updater_addons
+                              - binary_sensor.updater_hacs
+                              - binary_sensor.updater_supervisor
