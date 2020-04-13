@@ -1,3 +1,7 @@
+## Created by Jeroen Klompen
+## More-page add-on: AdGuard
+## Version: 1.0.0
+
 - type: horizontal-stack
   cards:
     - type: custom:mini-graph-card

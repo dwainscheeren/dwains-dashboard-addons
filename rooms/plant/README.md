@@ -1,4 +1,5 @@
 # Plant Add-on (rooms)
+##### Created by Jeroen Klompen
 
 
 ### Installation
@@ -44,3 +45,11 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 ### Changelog
 #### 1.0.0
 - First release
+
+---
+
+If you like my work please feel free to buy me a coffee
+
+<a href="https://www.buymeacoffee.com/klumpke" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee"></a>
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T6QQWUABDP65G&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal"></a>

@@ -1,3 +1,7 @@
+## Created by Jeroen Klompen
+## Room add-on: Plant
+## Version: 1.0.0
+
 - type: vertical-stack
   cards:
     - type: custom:flower-card
