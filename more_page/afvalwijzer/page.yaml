@@ -1,3 +1,7 @@
+## Created by Jeroen Klompen
+## More-page add-on: Afvalwijzer
+## Version: 1.0.1
+
 - type: vertical-stack
   cards:
     - type: horizontal-stack
@@ -17,6 +21,7 @@
             'pmd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
+            'unknown': /local/images/afval_geen_large.png
         - type: picture-entity
           style: |
             ha-card {
@@ -31,6 +36,7 @@
             'pmd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
+            'unknown': /local/images/afval_geen_large.png
 
     - type: glance
       style: |
