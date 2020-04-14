@@ -1,3 +1,7 @@
+## Created by Jeroen Klompen
+## More-page add-on: AdGuard
+## Version: 1.0.1
+
 - type: horizontal-stack
   cards:
     - type: custom:mini-graph-card
@@ -39,6 +43,7 @@
     ha-card {
       background-color: var(--dwains-theme-primary);
     }
+  show_header_toggle: false
   entities:
     - entity: switch.adguard_protection
     - entity: switch.adguard_filtering
