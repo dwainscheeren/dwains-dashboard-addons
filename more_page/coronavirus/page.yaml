@@ -1,6 +1,6 @@
 ## Created by Jeroen Klompen
 ## More-page add-on: Coronavirus
-## Version: 1.0.0
+## Version: 1.0.1
 
 - type: horizontal-stack
   cards:
@@ -12,6 +12,7 @@
       entities:
         - sensor.netherlands_coronavirus_confirmed
       name: Nederland Current
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 168
       hour24: true
       points_per_hour: 0.25
@@ -29,6 +30,7 @@
       entities:
         - sensor.worldwide_coronavirus_confirmed
       name: Wereldwijd Current
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 168
       hour24: true
       points_per_hour: 0.25

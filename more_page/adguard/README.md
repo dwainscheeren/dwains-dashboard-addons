@@ -31,6 +31,8 @@ more_page:
 
 
 ### Changelog
+#### 1.0.2
+- Add line_color to graphs (Thanks @mase)
 #### 1.0.1
 - Fix entity header toggle switch
 #### 1.0.0

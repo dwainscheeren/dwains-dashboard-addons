@@ -30,6 +30,8 @@ more_page:
 
 
 ### Changelog
+#### 1.0.1
+- Add line_color to graphs (Thanks @mase)
 #### 1.0.0
 - First release
 
