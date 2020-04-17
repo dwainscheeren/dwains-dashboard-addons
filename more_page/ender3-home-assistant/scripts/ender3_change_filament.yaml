@@ -1,0 +1,11 @@
+---
+# The script integration allows users to specify a sequence of actions to be executed by Home Assistant.
+#
+# https://www.home-assistant.io/integrations/script/
+#
+ender3_change_filament:
+  alias: Ender3 Filament Change
+  sequence:
+    - service: rest_command.ender3_printer_command
+      data:
+        cmd: "M600"

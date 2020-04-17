@@ -1,0 +1,18 @@
+---
+# The script integration allows users to specify a sequence of actions to be executed by Home Assistant.
+#
+# https://www.home-assistant.io/integrations/script/
+#
+ender3_safe_power_down:
+  alias: Ender3 Safe Power Down
+  sequence:
+    - condition: state
+      entity_id: binary_sensor.ender3_printing
+      state: 'off'
+    - service: rest_command.ender3_octoprint_shutdown
+      data: {}
+    - delay:
+        seconds: 20
+    - service: switch.turn_off
+      data:
+        entity_id: switch.smartplug_relay

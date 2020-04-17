@@ -1,0 +1,11 @@
+---
+# The script integration allows users to specify a sequence of actions to be executed by Home Assistant.
+#
+# https://www.home-assistant.io/integrations/script/
+#
+ender3_pause_print:
+  alias: Ender3 Pause
+  sequence:
+    - service: rest_command.ender3_job_command
+      data:
+        payload: '{"command": "pause", "action": "pause"}'

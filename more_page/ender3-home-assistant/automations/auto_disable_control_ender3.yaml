@@ -1,0 +1,13 @@
+---
+# https://www.home-assistant.io/integrations/automation/
+#
+# This automation switches off the control options in HA after 2 minutes.
+alias: ender3 disable controls
+trigger:
+  - platform: state
+    entity_id: switch.ender3_controls
+    to: 'on'
+action:
+  - delay: '00:02:00'
+  - service: switch.turn_off
+    entity_id: switch.ender3_controls

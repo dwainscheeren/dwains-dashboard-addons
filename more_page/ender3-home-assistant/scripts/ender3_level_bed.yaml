@@ -1,0 +1,14 @@
+---
+# The script integration allows users to specify a sequence of actions to be executed by Home Assistant.
+#
+# https://www.home-assistant.io/integrations/script/
+#
+ender3_level_bed:
+  alias: Ender3 Bed Levelling
+  sequence:
+    - condition: state
+      entity_id: sensor.ender3_current_state
+      state: 'Operational'
+    - service: rest_command.ender3_printer_command
+      data:
+        cmd: "G29"
