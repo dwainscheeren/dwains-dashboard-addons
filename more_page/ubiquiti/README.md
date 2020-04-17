@@ -24,12 +24,12 @@ more_page:
 
 ### Screenshots:
 **Light theme:**<br>
-![light](https://github.com/RubenDijk/ender3-home-assistant/blob/master/view%20control%20off.png "Light")
+![light](https://github.com/RubenDijk/dwains-theme-addons/blob/master/more_page/ubiquiti/Unifi%20light_mode.png "Light")
 
 ---
 
 **Dark theme:**<br>
-![dark](https://github.com/RubenDijk/ender3-home-assistant/blob/master/view%20control%20on.png "Dark")
+![dark](https://github.com/RubenDijk/dwains-theme-addons/blob/master/more_page/ubiquiti/Unifi%20dark_mode.png "Dark")
 
 ### Links:
 * https://github.com/dwainscheeren/lovelace-dwains-theme
