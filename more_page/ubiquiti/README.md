@@ -21,6 +21,7 @@ more_page:
         icon: 'mdi:router-network'
         path: 'dwains-theme/addons/more_page/ubiquiti/unifi.yaml'
 ````
+Add the following sensors to your config [Sensors](https://github.com/RubenDijk/dwains-theme-addons/blob/master/more_page/ubiquiti/sensors.md/)
 
 ### Screenshots:
 **Light theme:**<br>
