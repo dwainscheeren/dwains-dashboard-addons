@@ -3,6 +3,7 @@
 
 
 ### Installation
+- Configure your fan entity (you could use the `fan.yaml` as an example).
 - Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>/fan` directory.
 - Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
 - Restart Home Assistant.
@@ -98,10 +99,10 @@ fan:
 
 ### Screenshots
 **Light theme:**<br>
-![light](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/fan/.github/screenshots/light.png "Light")
+![light](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/fan-control/.github/screenshots/light.png "Light")
 
 **Dark theme:**<br>
-![dark](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/fan/.github/screenshots/dark.png "Dark")
+![dark](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/fan-control/.github/screenshots/dark.png "Dark")
 
 
 ### Changelog
