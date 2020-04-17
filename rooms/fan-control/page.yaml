@@ -1,0 +1,110 @@
+## Created by Cameron
+## Room add-on: FAN-control
+## Version: 1.0.0
+
+- type: vertical-stack
+  cards:
+    - type: custom:dwains-flexbox-card
+      padding: true
+      items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+      cards:
+        - type: horizontal-stack
+          cards:
+          - type: custom:button-card
+            style: |
+                ha-card {
+                  background: var(--dwains-theme-primary);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+            icon: mdi:fan
+            name: 'Off'
+            tap_action:
+              action: call-service
+              service: script.fan_master_bedroom_command
+              service_data:
+                  option: 'off'
+            styles:
+              icon:
+                - color: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'off') return '#299ec2'; return 'grey' ; ]]]
+
+          - type: custom:button-card
+            style: |
+                ha-card {
+                  background: var(--dwains-theme-primary);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+            icon: mdi:fan
+            name: 'Low'
+            tap_action:
+              action: call-service
+              service: script.fan_master_bedroom_command
+              service_data:
+                  option: 'low'
+            state:
+              - operator: template
+                value: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'low') return 'on' ; ]]]
+                spin: true
+            styles:
+              icon:
+                - color: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'low') return '#299ec2'; return 'grey' ; ]]]
+
+          - type: custom:button-card
+            style: |
+                ha-card {
+                  background: var(--dwains-theme-primary);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+            icon: mdi:fan
+            name: 'Med'
+            tap_action:
+              action: call-service
+              service: script.fan_master_bedroom_command
+              service_data:
+                  option: 'medium'
+            state:
+              - operator: template
+                value: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'medium') return 'on' ; ]]]
+                spin: true
+            styles:
+              icon:
+                - color: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'medium') return '#299ec2'; return 'grey' ; ]]]
+
+          - type: custom:button-card
+            style: |
+                ha-card {
+                  background: var(--dwains-theme-primary);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+            icon: mdi:fan
+            name: 'High'
+            tap_action:
+              action: call-service
+              service: script.fan_master_bedroom_command
+              service_data:
+                  option: 'high'
+            state:
+              - operator: template
+                value: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'high') return 'on' ; ]]]
+                spin: true
+            styles:
+              icon:
+                - color: >
+                    [[[ if (states['sensor.master_fan_speed'].state == 'high') return '#299ec2'; return 'grey' ; ]]]
