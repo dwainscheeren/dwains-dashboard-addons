@@ -1,0 +1,9 @@
+---
+# The mjpeg camera platform allows you to integrate IP cameras which are capable to stream their video with MJPEG into Home Assistant.
+#
+# https://www.home-assistant.io/integrations/mjpeg/
+#
+platform: mjpeg
+name: Ender3
+still_image_url: !secret ender3_cam_snapshot
+mjpeg_url: !secret ender3_cam_stream

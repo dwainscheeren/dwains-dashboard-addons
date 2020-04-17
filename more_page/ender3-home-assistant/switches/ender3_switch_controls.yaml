@@ -1,9 +1,0 @@
----
-# https://www.home-assistant.io/integrations/manual_mqtt/
-#
-# ender3 control switch
-# You don't need an mqtt for this, it's just a virtual switch to trigger an automation.
-platform: mqtt
-name: Ender3 Controls
-optimistic: true
-command_topic: "ender3_controls"
