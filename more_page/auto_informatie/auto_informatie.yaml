@@ -1,0 +1,99 @@
+# First car
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+  cards:
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: '/local/images/kadett.jpg'
+        elements:
+        - type: state-label
+          entity: input_text.first_car_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba(255,255,255,0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.opel_kadett_expdate
+          - entity: binary_sensor.opel_kadett_insured
+          - entity: sensor.opel_kadett_recall
+        title: Info
+        show_header_toggle: false
+
+# Second car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: '/local/images/no_car.png'
+        elements:
+        - type: state-label
+          entity: input_text.second_car_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba(0,0,0,0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.volkswagen_passat_expdate
+          - entity: binary_sensor.volkswagen_passat_insured
+          - entity: sensor.volkswagen_passat_recall
+        title: Info
+        show_header_toggle: false
+
+# Third car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: '/local/images/no_car.png'
+        elements:
+        - type: state-label
+          entity: input_text.third_car_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba(0,0,0,0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.seat_arosa_expdate
+          - entity: binary_sensor.seat_arosa_insured
+          - entity: sensor.seat_arosa_recall
+        title: Info
+        show_header_toggle: false
