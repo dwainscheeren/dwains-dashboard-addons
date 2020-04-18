@@ -33,6 +33,13 @@
  - Added configuration guide for HTML5 [notifications](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#setting-up-the-html5-notify-platform)
  - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) added template.dwains.psd for you to make your own container images
 
+## Version 0.4
+ - Removed picture entity card used for version and containers due to positioning issue on mobile devices
+   - Added Button-Card for `containers` and `version`
+ - Removed Swipe card for Home Assistant addons due issue with light theme
+   - replaced addons with Button-Card. (double tap to toggle addon on/off), icon fades to grayscale when off
+ - Fixed issue with bard-card shadows
+ - Added some new icons for addons, if you require more they can be downloaded from the addon git `repo`
 
 ### Home Assistant Core Addon Support
 
