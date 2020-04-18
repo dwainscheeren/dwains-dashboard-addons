@@ -24,20 +24,21 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
         data:
           entity: fan.attic_ventilation
 ````
+
 ### ESPHome
 I use a sonoff 4channel to controll my ventilation unit.
-Here my esphome.yaml [ventilation.yaml]()
+Here my esphome.yaml [ventilation.yaml](https://github.com/RubenDijk/dwains-theme-addons/blob/master/rooms/central-ventilation/ventilation.yaml)
 
 ---
 ### configuration.yaml
-Copy the content of [attic_ventilation.yaml]() to your configuration.yaml
+Copy the content of [attic_ventilation.yaml](https://github.com/RubenDijk/dwains-theme-addons/blob/master/rooms/central-ventilation/attic_ventilation.yaml) to your configuration.yaml
 
 ### Screenshots
 **Manual mode on:**<br>
-![central_ventilation_manual_mode_on]( "central_ventilation_manual_mode_on")
+![central_ventilation_manual_mode_on](https://github.com/RubenDijk/dwains-theme-addons/blob/master/rooms/central-ventilation/central_ventilation_manual_mode_on.png)
 
 **Manual mode off:**<br>
-![central_ventilation_manual_mode_off]("central_ventilation_manual_mode_off")
+![central_ventilation_manual_mode_off](https://github.com/RubenDijk/dwains-theme-addons/blob/master/rooms/central-ventilation/central_ventilation_manual_mode_off.png)
 
 #### 1.0.0
 - First release
