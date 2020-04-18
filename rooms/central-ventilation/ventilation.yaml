@@ -1,0 +1,212 @@
+esphome:
+  name: ventilation
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: "your wireless network"
+  password: "your wireless network password"
+  fast_connect: true #optional
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ventilation Fallback Hotspot"
+    password: "password for hotspot"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Sonoff 4CH Button 1"
+  - platform: gpio
+    pin:
+      number: GPIO9
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Sonoff 4CH Button 2"
+  - platform: gpio
+    pin:
+      number: GPIO10
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Sonoff 4CH Button 3"
+  - platform: gpio
+    id: binary_sensor_button
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: true
+    on_press:
+      - lambda: |-
+          if (id(switch_manual_mode).state) {
+            if (id(switch_speed_low).state) {
+              id(switch_speed_medium).turn_on();
+            } else if (id(switch_speed_medium).state) {
+              id(switch_speed_high).turn_on();
+            } else {
+              id(switch_manual_mode).turn_off();
+            }
+          } else {
+            id(switch_manual_mode).turn_on();
+            id(switch_speed_low).turn_on();
+          }
+  - platform: status
+    name: "Ventilation Status"
+
+switch:
+  - platform: gpio
+    id: switch_relay1
+    name: "Sonoff 4CH Relay 1"
+    pin: GPIO12
+    restore_mode: ALWAYS_OFF
+    interlock: &interlock_group [switch_relay1, switch_relay2]
+  - platform: gpio
+    id: switch_relay2
+    name: "Sonoff 4CH Relay 2"
+    pin: GPIO5
+    restore_mode: ALWAYS_OFF
+    interlock: *interlock_group
+  - platform: gpio
+    id: switch_relay3
+    name: "Sonoff 4CH Relay 3"
+    pin: GPIO4
+    restore_mode: ALWAYS_OFF
+  - platform: gpio
+    id: switch_relay4
+    name: "Sonoff 4CH Relay 4"
+    pin: GPIO15
+    restore_mode: ALWAYS_OFF
+    
+  - platform: restart
+    name: "Ventilation Restart"
+
+  - platform: template
+    name: attic_ventilation_manual_mode
+    id: switch_manual_mode
+    restore_state: false
+    turn_on_action:
+      - light.turn_on: light_led
+    turn_off_action:
+      - light.turn_off: light_led
+    lambda: |-
+      return id(light_led).get_current_values().is_on();
+  # Exposed switch, shows switch state for low speed
+  # Will ignore changes when ventilation is in manual mode
+  - platform: template
+    name: attic_ventilation_speed_low
+    restore_state: false
+    turn_on_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_low
+    turn_off_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_low
+    lambda: |-
+      return id(switch_speed_low).state;
+  # Exposed switch, shows switch state for medium speed
+  # Will ignore changes when ventilation is in manual mode
+  - platform: template
+    name: attic_ventilation_speed_medium
+    restore_state: false
+    turn_on_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_medium
+    turn_off_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_low
+    lambda: |-
+      return id(switch_speed_medium).state;
+  # Exposed switch, shows switch state for high speed
+  # Will ignore changes when ventilation is in manual mode
+  - platform: template
+    name: attic_ventilation_speed_high
+    restore_state: false
+    turn_on_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_high
+    turn_off_action:
+      if:
+        condition:
+          switch.is_off: switch_manual_mode
+        then:
+          - switch.turn_on: switch_speed_medium
+    lambda: |-
+      return id(switch_speed_high).state;
+  # Internal switch, for switching ventilation to low speed.
+  # Uses interlocking, to prevent relay 1 & 2 to be active at the same time.
+  - platform: template
+    id: switch_speed_low
+    restore_state: false
+    turn_on_action:
+      - switch.turn_off: switch_relay1
+      - switch.turn_off: switch_relay2
+    turn_off_action:
+      - switch.turn_off: switch_relay1
+      - switch.turn_off: switch_relay2
+    lambda: |-
+      return !id(switch_relay1).state && !id(switch_relay2).state;
+  # Internal switch, for switching ventilation to medium speed and back to
+  # low speed when turned off.
+  # Uses interlocking, to prevent relay 1 & 2 to be active at the same time.
+  - platform: template
+    id: switch_speed_medium
+    restore_state: false
+    turn_on_action:
+      - switch.turn_on: switch_relay1
+    turn_off_action:
+      - switch.turn_on: switch_speed_low
+    lambda: |-
+      return id(switch_relay1).state && !id(switch_relay2).state;
+  # Internal switch, for switching ventilation to high speed and back to
+  # medium speed when turned off.
+  # Uses interlocking, to prevent relay 1 & 2 to be active at the same time.
+  - platform: template
+    id: switch_speed_high
+    restore_state: false
+    turn_on_action:
+      - switch.turn_on: switch_relay2
+    turn_off_action:
+      - switch.turn_on: switch_speed_medium
+    lambda: |-
+      return !id(switch_relay1).state && id(switch_relay2).state;
+
+output:
+  # Register the blue LED as a dimmable output ....
+  - platform: esp8266_pwm
+    id: blue_led
+    pin: GPIO13
+    inverted: True
+
+light:
+  # ... and then make a light out of it.
+  - platform: monochromatic
+    name: "Sonoff 4CH Blue LED"
+    output: blue_led
+    id: light_led

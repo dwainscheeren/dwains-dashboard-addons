@@ -1,0 +1,99 @@
+---
+# Created by Ruben Dijk
+# Room add-on: attic_ventilation
+# Version: 1.0.0
+
+- type: horizontal-stack
+  cards:
+    - action: service
+      entity: switch.attic_ventilation_speed_low
+      icon: 'mdi:fan-off'
+      state:
+        - value: 'on'
+          color: var(--dwains-theme-accent)
+        - value: 'off'
+          color: grey
+      service:
+        action: turn_off
+        data:
+          entity_id: fan.attic_ventilation
+        domain: fan
+      show_name: false
+      type: 'custom:button-card'
+      style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+            opacity: 0.8;
+          }      
+    - action: service
+      entity: switch.attic_ventilation_speed_medium
+      icon: 'mdi:fan'
+      service:
+        action: set_speed
+        data:
+          entity_id: fan.attic_ventilation
+          speed: medium
+        domain: fan
+      show_name: false
+      spin: false
+      state:
+        - value: 'on'
+          color: var(--dwains-theme-accent)
+          spin: true
+        - value: 'off'
+          color: grey
+      type: 'custom:button-card'
+      style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+            opacity: 0.8;
+          }   
+    - action: service
+      entity: switch.attic_ventilation_speed_high
+      icon: 'mdi:weather-windy'
+      state:
+        - value: 'on'
+          color: var(--dwains-theme-accent)
+        - value: 'off'
+          color: grey
+      service:
+        action: set_speed
+        data:
+          entity_id: fan.attic_ventilation
+          speed: high
+        domain: fan
+      show_name: false
+      type: 'custom:button-card'
+      style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+            opacity: 0.8;
+          }   
+    - entity: switch.attic_ventilation_manual_mode
+      icon: 'mdi:lock-open'
+      show_name: false
+      state:
+        - value: 'on'
+          color: grey
+          icon: 'mdi:lock-alert'
+        - value: 'off'
+          color: var(--dwains-theme-accent)
+          icon: 'mdi:lock-open'
+      type: 'custom:button-card'
+      style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+            opacity: 0.8;
+          }   
