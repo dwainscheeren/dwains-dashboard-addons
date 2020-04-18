@@ -1,289 +1,353 @@
 # Home Assistant Montitoring for Dwains-Theme
-## Version 0.2 by noodlemctwoodle
+## Version 0.4 by noodlemctwoodle
 ### Please view the set up guide for this view on GitHub
-
 
 - type: custom:dwains-flexbox-card
   padding: true
   items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
   cards:
-
-# UnRAID Picture Card
-    - type: picture-elements
-      item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
-      style: |
-        ha-card {
-          border-radius: 10px;
-          box-shadow: 10px;
-          }
-      image: '/local/images/lovelace-themes/dwains-theme/software/home_assistant_logo.png'
-      elements:
-    # Docker Containers Running
-      - type: state-label
-        entity: input_text.card_containers
-        style:
-          top: 15%
-          left: 1%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-      - type: icon
-        icon: mdi:docker
-        style:
-          top: 35%
-          left: 8%
-          pointer-events: none
-          transform: scale(1.0)
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 7px 7px
-          font-size: 15px
-      - type: state-label
-        entity: sensor.glances_homeassistant_containers_active
-        style:
-          top: 60%
-          left: 4%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-
-    # Home Assistant Version Available
-      - type: state-label
-        entity: input_text.software_version
-        style:
-          top: 15%
-          left: 75%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-      - type: icon
-        icon: mdi:server
-        style:
-          top: 35%
-          left: 80%
-          pointer-events: none
-          transform: scale(0.8)
-          line-height: 32px
-          padding: 7px 7px
-          font-size: 15px
-      - type: state-label
-        entity: sensor.current_version
-        style:
-          top: 60%
-          left: 75%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-
-# Containers
-
     - type: horizontal-stack
       cards:
-        - type: custom:swipe-card
-          parameters:
-            spaceBetween: 8
-            touchEventsTarget: 'container'
-            pagination:
-              type: 'bullets'
-              dynamicBullets: false
 
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              border-radius: 10px;
+              box-shadow: 10px;
+              background-position: center;
+          entity: sensor.glances_homeassistant_containers_active
+          name: Containers
+          show_state: true
+          show_name: true
+          show_label: true
+          show_icon: true
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            icon:
+              - width: 27%
+              - margin-top: 1%
+
+
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: sensor.current_version
+          show_state: true
+          show_name: true
+          show_label: true
+          show_icon: true
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            icon:
+              - width: 27%
+              - margin-top: 1%
+
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
           cards:
 
-        # ADB Addon
-            - type: picture-entity
+# ADB
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/adb.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.adb_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/adb_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.adb_addon
 
-        # Deconz Addon
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.deconz_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/deconz_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.deconz_addon
 
-        # ESPHome Addon
-            - type: picture-entity
+# ESPHome
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/esphome.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.esphome_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/esphome_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.esphome_addon
 
-        # Glances Addon
-            - type: picture-entity
+# Glances
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/glances.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.glances_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/glances_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.glances_addon
 
-        # MariaDB Addon
-            - type: picture-entity
+# Deconz
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/deconz.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.mariadb_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/mariadb_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
+              entity: switch.deconz_addon
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
-                  entity_id: switch.mariadb_addon
+                  entity_id: switch.deconz_addon
 
-        # Mosquitto Addon
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.mosquitto_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/mosquitto_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.mosquitto_addon
+        - type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
 
-        # PHPMyAdmin Addon
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.phpmyadmin_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/phpmyadmin_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.phpmyadmin_addon
+# Maria Db
+                - type: "custom:button-card"
+                  style: |
+                    ha-card {
+                      background: url('/local/images/lovelace-themes/dwains-theme/icons/mariadb.png');
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                  entity: switch.mariadb_addon
+                  show_state: false
+                  show_name: false
+                  show_label: false
+                  show_icon: false
+                  styles:
+                    card:
+                      - background-size: contain
+                      - background-repeat: no-repeat
+                      - background-position: center
+                    state:
+                      - justify-self: right
+                  state:
+                    - value: 'off'
+                      styles:
+                        card:
+                          - filter: grayscale(100%)
+                  custom_fields:
+                    switch: >
+                      [[[
+                        return `<ha-icon
+                          style="width: 36px; height: 68px;">
+                          </ha-icon>`
+                      ]]]
+                  double_tap_action:
+                    action: call-service
+                    service: switch.toggle
+                    service_data:
+                      entity_id: switch.mariadb_addon
 
-        # VSCode Addon
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px; 
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.vscode_addon
-              image: /local/images/lovelace-themes/dwains-theme/containers/vscode_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.vscode_addon
+# MQTT
+                - type: "custom:button-card"
+                  style: |
+                    ha-card {
+                      background: url('/local/images/lovelace-themes/dwains-theme/icons/mqtt.png');
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                  entity: switch.mosquitto_addon
+                  show_state: false
+                  show_name: false
+                  show_label: false
+                  show_icon: false
+                  styles:
+                    card:
+                      - background-size: contain
+                      - background-repeat: no-repeat
+                      - background-position: center
+                    state:
+                      - justify-self: left
+                  state:
+                    - value: 'off'
+                      styles:
+                        card:
+                          - filter: grayscale(100%)
+                  custom_fields:
+                    switch: >
+                      [[[
+                        return `<ha-icon
+                          style="width: 36px; height: 68px;">
+                          </ha-icon>`
+                      ]]]
+                  double_tap_action:
+                    action: call-service
+                    service: switch.toggle
+                    service_data:
+                      entity_id: switch.mosquitto_addon
+
+# PHPMyAdmin
+                - type: "custom:button-card"
+                  style: |
+                    ha-card {
+                      background: url('/local/images/lovelace-themes/dwains-theme/icons/phpmyadmin.png');
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                  entity: switch.phpmyadmin_addon
+                  show_state: false
+                  show_name: false
+                  show_label: false
+                  show_icon: false
+                  styles:
+                    card:
+                      - background-size: contain
+                      - background-repeat: no-repeat
+                      - background-position: center
+                    state:
+                      - justify-self: left
+                  state:
+                    - value: 'off'
+                      styles:
+                        card:
+                          - filter: grayscale(100%)
+                  custom_fields:
+                    switch: >
+                      [[[
+                        return `<ha-icon
+                          style="width: 36px; height: 68px;">
+                          </ha-icon>`
+                      ]]]
+                  double_tap_action:
+                    action: call-service
+                    service: switch.toggle
+                    service_data:
+                      entity_id: switch.phpmyadmin_addon
+
+# VSCode
+                - type: "custom:button-card"
+                  style: |
+                    ha-card {
+                      background: url('/local/images/lovelace-themes/dwains-theme/icons/vscode.png');
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                  entity: switch.vscode_addon
+                  show_state: false
+                  show_name: false
+                  show_label: false
+                  show_icon: false
+                  styles:
+                    card:
+                      - background-size: contain
+                      - background-repeat: no-repeat
+                      - background-position: center
+                    state:
+                      - justify-self: left
+                  state:
+                    - value: 'off'
+                      styles:
+                        card:
+                          - filter: grayscale(100%)
+                  custom_fields:
+                    switch: >
+                      [[[
+                        return `<ha-icon
+                          style="width: 36px; height: 68px;">
+                          </ha-icon>`
+                      ]]]
+                  double_tap_action:
+                    action: call-service
+                    service: switch.toggle
+                    service_data:
+                      entity_id: switch.vscode_addon
 
 
 - type: vertical-stack
@@ -373,12 +437,12 @@
                 :host {
                   --ha-card-background: var(--paper-card-background-color);
                   --ha-card-border-radius: 10px;
-                  --ha-card-box-shadow: 10px;
                   --ha-card-font-weight: bold;
                   --ha-card-opacity: 0.8;
                 }
                 ha-card {
-                  font-size: 10px;                 
+                  font-size: 10px;
+                  box-shadow: 10px;
                 }
                 bar-card-value {
                   font-size: 8px;
@@ -421,12 +485,12 @@
                 :host {
                   --ha-card-background: var(--paper-card-background-color);
                   --ha-card-border-radius: 10px;
-                  --ha-card-box-shadow: 10px;
                   --ha-card-font-weight: bold;
                   --ha-card-opacity: 0.8;
                 }
                 ha-card {
-                  font-size: 10px;                 
+                  font-size: 10px;
+                  box-shadow: 10px;
                 }
                 bar-card-value {
                   font-size: 8px;
@@ -555,6 +619,10 @@
         - type: horizontal-stack
           cards:
             - type: custom:swipe-card
+              style: |
+                :host {
+                  --ha-card-box-shadow: 10px;
+                }
               parameters:
                 spaceBetween: 8
                 touchEventsTarget: 'container'
