@@ -1,55 +1,58 @@
-## Created by Jeroen Klompen
+# dwains_theme
 ## More-page add-on: Afvalwijzer
-## Version: 1.0.1
+## Created by Jeroen Klompen
+## Version: 1.1.0
 
-- type: vertical-stack
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+  padding: true
   cards:
     - type: horizontal-stack
       cards:
         - type: picture-entity
           style: |
             ha-card {
-              padding: 8px;
+              padding: 5px;
+              border-radius: 5px;
               background-color: var(--dwains-theme-primary);
             }
-          entity: sensor.blink_vandaag
+          entity: {{ (data | fromjson)['afval_vandaag'] }}
           name: Vandaag
           state_image:
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
             'pmd': /local/images/afval_pmd_large.png
+            'pbd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
             'unknown': /local/images/afval_geen_large.png
         - type: picture-entity
           style: |
             ha-card {
-              padding: 8px;
+              padding: 5px;
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
             }
-          entity: sensor.blink_morgen
+          entity: {{ (data | fromjson)['afval_morgen'] }}
           name: Morgen
           state_image:
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
             'pmd': /local/images/afval_pmd_large.png
+            'pbd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
             'unknown': /local/images/afval_geen_large.png
-
     - type: glance
       style: |
         ha-card {
-          padding: 8px;
+          border-radius: 5px;
           background-color: var(--dwains-theme-primary);
         }
       entities:
-        - entity: sensor.blink_restafval
-          #name: Rest
-        - entity: sensor.blink_gft
-          #name: GFT
-        - entity: sensor.blink_pmd
-          #name: PMD
-        - entity: sensor.blink_papier
-          #name: Papier
+        - entity: {{ (data | fromjson)['afval_rest'] }}
+        - entity: {{ (data | fromjson)['afval_gft'] }}
+        - entity: {{ (data | fromjson)['afval_pmd'] }}
+        - entity: {{ (data | fromjson)['afval_papier'] }}

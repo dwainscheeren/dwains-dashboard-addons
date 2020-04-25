@@ -1,5 +1,5 @@
 # Afvalwijzer Add-on (more_page)
-##### Created by Jeroen Klompen
+##### Created by [Jeroen Klompen](https://github.com/klumpke/)
 
 
 ### Installation
@@ -20,6 +20,13 @@ more_page:
       - name: Afvalwijzer
         icon: fas:recycle
         path: 'dwains-theme/addons/more_page/afvalwijzer/page.yaml'
+        data:
+          afval_vandaag: sensor.blink_vandaag
+          afval_morgen: sensor.blink_morgen
+          afval_rest: sensor.blink_restafval
+          afval_gft: sensor.blink_gft
+          afval_pmd: sensor.blink_pmd
+          afval_papier: sensor.blink_papier
 ```
 
 ### Screenshots
@@ -31,6 +38,10 @@ more_page:
 
 
 ### Changelog
+#### 1.1.0
+- **BREAKING CHANGE**: It's now possible to define your sensors in the `more_page.yaml` file so you don't have to edit the `page.yaml` file
+- Tablet view
+- Added pdb in the state_image to support Afvalinfo
 #### 1.0.1
 - Added unknown image state
 #### 1.0.0
@@ -41,5 +52,3 @@ more_page:
 If you like my work please feel free to buy me a coffee
 
 <a href="https://www.buymeacoffee.com/klumpke" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee"></a>
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T6QQWUABDP65G&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal"></a>
