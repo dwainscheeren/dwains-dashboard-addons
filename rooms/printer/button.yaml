@@ -1,7 +1,7 @@
 # dwains_theme
 ## Custom button for room add-on: Printer
 ## Created by Jeroen Klompen
-## Version: 1.0.1
+## Version: 1.0.2
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
