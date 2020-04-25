@@ -1,5 +1,5 @@
 # Home Assistant Montitoring for Dwains-Theme
-## Version 0.4 by noodlemctwoodle
+## Version 0.5 by noodlemctwoodle
 ### Please view the set up guide for this view on GitHub
 
 - type: custom:dwains-flexbox-card
@@ -454,7 +454,7 @@
               height: 57px
               stack: horizontal
               positions:
-                title: inside
+                name: inside
                 value: inside
                 icon: inside
               severity:
@@ -502,7 +502,7 @@
               height: 57px
               stack: horizontal
               positions:
-                title: inside
+                name: inside
                 value: inside
                 icon: inside
               severity:
