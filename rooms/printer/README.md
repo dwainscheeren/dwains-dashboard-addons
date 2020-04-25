@@ -39,6 +39,8 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.2
+- Fix for icon position
 #### 1.0.1
 - Changed resource type to `module` (to make it compatible with newest bar-card)
 - Renamed `title` to `name` in positions config (to make it compatible with newest bar-card)
