@@ -1,6 +1,6 @@
 ## Created by Jeroen Klompen
 ## Room add-on: Printer
-## Version: 1.0.0
+## Version: 1.0.1
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
@@ -30,13 +30,13 @@
         }
         bar-card-value {
           color: white;
-          margin-bottom: 45%;
+          margin-bottom: 75px;
         }
         bar-card-iconbar {
           color: white;
-          margin-top: 55%;
+          margin-top: 80px;
         }
-        bar-card-title {
+        bar-card-name {
           color: var(--name-color-on);
           text-transform: capitalize;
         }
@@ -44,7 +44,7 @@
       stack: horizontal
       positions:
         icon: inside
-        title: outside
+        name: outside
         value: inside
       height: 200px
       target: 10
