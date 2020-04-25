@@ -1,5 +1,5 @@
 # Home Assistant Monitoring Addon for Dwains-Theme
-#### Version 0.3
+#### Version 0.5
 
 ![ha-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/ha-monitor/desktop_1.png)
 
@@ -40,6 +40,9 @@
    - replaced addons with Button-Card. (double tap to toggle addon on/off), icon fades to grayscale when off
  - Fixed issue with bard-card shadows
  - Added some new icons for addons, if you require more they can be downloaded from the addon git `repo`
+
+## Version 0.5
+ - Updated `title` to `name` for bar-card thanks @papy_329700
 
 ### Home Assistant Core Addon Support
 
