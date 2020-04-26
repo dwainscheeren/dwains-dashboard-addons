@@ -55,4 +55,18 @@ sensors:
     friendly_name: 'WAN Download'
     unit_of_measurement: Kbps
     value_template: "{{ (states.sensor.unifi_gateway_wan.attributes['rx_bytes-r'] / 1024) | int }}"
+
+# New update 1.0.1
+# change 'Wi-Fi' in to your own wifi ssid
+# Change 'NoT' in to your own secondary ssid
+
+  unifi_ssid_wifi_users:
+    friendly_name: "Wi-Fi ssid"
+    value_template: "{{ states.sensor.unifi.attributes['Wi-Fi'] }}"
+  unifi_ssid_not_users:
+    friendly_name: "NoT ssid"
+    value_template: "{{ states.sensor.unifi.attributes['NoT'] }}"
+  unifi_wired_users:
+    friendly_name: "wired devices"
+    value_template: "{{ states.sensor.unifi.attributes['wired'] }}"
 ````
