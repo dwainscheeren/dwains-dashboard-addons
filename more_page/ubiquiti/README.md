@@ -5,6 +5,8 @@
 
 ### Installation (dwains-theme)
 - Install [Unifigateway](https://github.com/custom-components/sensor.unifigateway) from [HACS](https://hacs.xyz).
+- Manually install the next custom component from https://github.com/RubenDijk/homeassistant
+- Copy the my_unifi to your custom component folder.
 - Copy the file `unifi.yaml`  to your `<config dir>/dwains-theme/addons/more_page/ubiquiti` directory.
 - Configure your `more_page.yaml` file in `<config dir>/dwains-theme/configs` with config below.
 - Add unifi controller (Home-Assistant integration)
@@ -36,9 +38,16 @@ Add the following sensors to your config [Sensors](https://github.com/RubenDijk/
 * https://github.com/dwainscheeren/lovelace-dwains-theme
 * https://www.home-assistant.io/integrations/unifi/
 * https://hacs.xyz/
+* https://github.com/RubenDijk/homeassistant
 
 #### 1.0.0
 - First release
+#### 1.0.1
+- Add new sensors for the Wan card and Wlan card
+- Add custom slider card
+- Add icons for sensors
+- Add buttons to your webpage of the controller, Alerts gateway and Firmware update
+- Change positions sensor Wan and WWW
 
 ---
 
