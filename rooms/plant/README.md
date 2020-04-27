@@ -1,5 +1,5 @@
 # Plant Add-on (rooms)
-##### Created by Jeroen Klompen
+##### Created by [Jeroen Klompen](https://github.com/klumpke/)
 
 
 ### Installation
@@ -31,7 +31,10 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
         path: 'dwains-theme/addons/rooms/livingroom/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/livingroom/plant/button.yaml'
         data:
-          entity: plant.olive_tree
+          plant: plant.olive_tree
+          plant_species: olea europaea
+          plant2: plant.olive_tree2
+          plant2_species: olea europaea
 ```
 
 ### Screenshots
@@ -43,6 +46,10 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.1.0
+- **BREAKING CHANGE**: It's now possible to define your sensors in the `rooms.yaml` file so you don't have to edit the `page.yaml` file
+- Tablet view
+- Added history graphs
 #### 1.0.0
 - First release
 
@@ -51,5 +58,3 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 If you like my work please feel free to buy me a coffee
 
 <a href="https://www.buymeacoffee.com/klumpke" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee"></a>
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T6QQWUABDP65G&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal"></a>

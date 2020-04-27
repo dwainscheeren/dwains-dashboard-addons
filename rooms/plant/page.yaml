@@ -1,32 +1,222 @@
+# dwains_theme
+## Roome add-on: Plant
 ## Created by Jeroen Klompen
-## Room add-on: Plant
-## Version: 1.0.0
+## Version: 1.1.0
 
-- type: vertical-stack
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-6'
   cards:
-    - type: custom:flower-card
-      style: |
-        ha-card {
-          padding: 8px;
-          background-color: var(--dwains-theme-primary);
-        }
-      entity: plant.olijfboom_links
-      species: "olea europaea"
-    - type: glance
-      style: |
-        ha-card {
-          padding: 8px;
-          background-color: var(--dwains-theme-primary);
-        }
-      show_name: false
-      entities:
-      - entity: sensor.olijfboom_links_temperature
-        icon: mdi:thermometer
-      - entity: sensor.olijfboom_links_moisture
-        icon: mdi:water-percent
-      - entity: sensor.olijfboom_links_illuminance
-        icon: mdi:white-balance-sunny
-      - entity: sensor.olijfboom_links_soil_conductivity
-        icon: mdi:leaf
-      # - entity: sensor.olijfboom_links_battery_level
-      #   icon: mdi:battery-high
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: custom:flower-card
+          style: |
+            ha-card {
+              padding: 8px;
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entity: {{ (data | fromjson)['plant'] }}
+          species: {{ (data | fromjson)['plant_species'] }}
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant']|replace("plant.", "sensor.") }}_temperature
+          icon: mdi:thermometer
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant']|replace("plant.", "sensor.") }}_moisture
+          icon: mdi:water-percent
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant']|replace("plant.", "sensor.") }}_illuminance
+          icon: mdi:white-balance-sunny
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant']|replace("plant.", "sensor.") }}_soil_conductivity
+          icon: mdi:leaf
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+
+    {% if (data | fromjson)['plant2']  %}
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: custom:flower-card
+          style: |
+            ha-card {
+              padding: 8px;
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entity: {{ (data | fromjson)['plant2'] }}
+          species: {{ (data | fromjson)['plant2_species'] }}
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant2']|replace("plant.", "sensor.") }}_temperature
+          icon: mdi:thermometer
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant2']|replace("plant.", "sensor.") }}_moisture
+          icon: mdi:water-percent
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant2']|replace("plant.", "sensor.") }}_illuminance
+          icon: mdi:white-balance-sunny
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-3'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - {{ (data | fromjson)['plant2']|replace("plant.", "sensor.") }}_soil_conductivity
+          icon: mdi:leaf
+          align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            name: false
+            points: hover
+            graph: line
+            extrema: true
+      {% endif %}
