@@ -52,7 +52,15 @@
           background-color: var(--dwains-theme-primary);
         }
       entities:
+        {% if (data | fromjson)['afval_rest'] %}
         - entity: {{ (data | fromjson)['afval_rest'] }}
+        {% endif %}
+        {% if (data | fromjson)['afval_gft'] %}
         - entity: {{ (data | fromjson)['afval_gft'] }}
+        {% endif %}
+        {% if (data | fromjson)['afval_pmd'] %}
         - entity: {{ (data | fromjson)['afval_pmd'] }}
+        {% endif %}
+        {% if (data | fromjson)['afval_papier'] %}
         - entity: {{ (data | fromjson)['afval_papier'] }}
+        {% endif %}
