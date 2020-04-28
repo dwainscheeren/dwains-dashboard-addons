@@ -1,5 +1,5 @@
 # UnRAID Monitoring Addon for Dwains-Theme
-#### Version 0.1
+#### Version 0.2
 
 ![unraid-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/unraid/desktop_1.png)
 
@@ -12,7 +12,7 @@
 | Total arrayDiskSpace  | Disk Space      | View CPU usage                 |
 | Start/Stop Containers | CPU Load        | View RAM usage                 |
 
-Version 0.1
+## Version 0.1
  - Initial view works for both Mobile and Desktop (Responsive)
  - Glances container support
  - Glances Home Assistant Integration
@@ -21,8 +21,17 @@ Version 0.1
  - UnRAID-API added
  - Added SNMP [config](https://github.com/noodlemctwoodle/homeassistant/blob/44ac457117f173fa1bf1e47ce832566b36ba5ddb/packages/ha-core/areas/cabinet/devices/unraid/unraid_monitoring.yaml#L34)
 
+## Version 0.2
+ - Updated `title` to `name` for bar-card thanks @papy_329700
+ - fixed `custom:dwains-flexbox-card` line spacing issue
+ - Removed picture entity card used for version and containers due to positioning issue on mobile devices
+   - Added Button-Card for `containers` and `version`
+ - Removed Swipe card for Home Assistant addons due issue with light theme
+ - Change layout of `CPU` and `RAM` usage
+ - Fixed spacing issues
+ - Adjusted font sizes
 
- Dwains-Theme UnRAID add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/unraid_addon/unraid_monitoring.yaml)
+ Dwains-Theme UnRAID add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/unraid_addon/unraid_monitoring.yaml)
 
 
  ```yaml

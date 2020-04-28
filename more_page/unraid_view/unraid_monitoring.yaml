@@ -1,356 +1,569 @@
 # UnRAID Server Montitoring for Dwains-Theme
-## Version 0.1 by noodlemctwoodle
+## Version 0.2 by noodlemctwoodle
 
 # Please view the set up guide for this view on GitHub
 ## https://github.com/noodlemctwoodle/homeassistant/tree/master/user_content
+
+# image: '/local/images/lovelace-themes/dwains-theme/software/unraid_logo.png'
+
 
 - type: custom:dwains-flexbox-card
   padding: true
   items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
   cards:
+    - type: horizontal-stack
+      cards:
 
-# UnRAID Picture Card
-    - type: picture-elements
-      item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
-      style: |
-        ha-card {
-          border-radius: 10px;
-          box-shadow: 10px;
-          }
-      image: '/local/images/lovelace-themes/dwains-theme/software/unraid_logo.png'
-      elements:
-    # Docker Containers Running
-      - type: state-label
-        entity: input_text.card_containers
-        style:
-          top: 15%
-          left: 1%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-      - type: icon
-        icon: mdi:docker
-        style:
-          top: 35%
-          left: 8%
-          pointer-events: none
-          transform: scale(1.0)
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 7px 7px
-          font-size: 15px
-      - type: state-label
-        entity: sensor.glances_unraid_containers_active
-        style:
-          top: 60%
-          left: 5%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              border-radius: 10px;
+              box-shadow: 10px;
+              background-position: center;
+          entity: sensor.glances_unraid_containers_active
+          name: Containers
+          show_state: true
+          show_name: true
+          show_label: true
+          show_icon: true
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            icon:
+              - width: 27%
+              - margin-top: 1%
 
-    # UnRAID Version Available
-      - type: state-label
-        entity: input_text.software_version
-        style:
-          top: 15%
-          left: 75%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
-      - type: icon
-        icon: mdi:server
-        style:
-          top: 35%
-          left: 80%
-          pointer-events: none
-          transform: scale(0.8)
-          line-height: 32px
-          padding: 7px 7px
-          font-size: 15px
-      - type: state-label
-        entity: sensor.unraid_version_next
-        style:
-          top: 60%
-          left: 73%
-          pointer-events: none
-          transform: initial
-          font-size: 12px
-          color: rgba(255,255,255,0.8)
-          line-height: 32px
-          padding: 0px 28px
+
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: sensor.unraid_version_next
+          icon: mdi:package-up
+          show_state: true
+          show_name: true
+          show_label: true
+          show_icon: true
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            icon:
+              - width: 27%
+              - margin-top: 1%
+
 
 # Containers
 
     - type: horizontal-stack
       cards:
-        - type: custom:swipe-card
-          parameters:
-            spaceBetween: 8
-            touchEventsTarget: 'container'
-            pagination:
-              type: 'bullets'
-              dynamicBullets: false
 
+    # USB Boot Device
+        - type: custom:bar-card
+          style: |
+            :host {
+              --ha-card-background: var(--paper-card-background-color);
+              --ha-card-border-radius: 10px;
+              --ha-card-box-shadow: 10px;
+              --ha-card-font-weight: bold;
+              --ha-card-opacity: 0.8;
+            }
+            ha-card {
+              font-size: 10px;                 
+            }
+            bar-card-value {
+              font-size: 10px;
+            }
+          entities: 
+            - entity: sensor.glances_unraid_etc_resolv_conf_used_percent
+              name: USB Boot Drive
+            - entity: sensor.glances_unraid_mnt_cache_used_percent
+              name: Backups SSD
+            - entity: sensor.glances_unraid_mnt_cache_used_percent
+              name: SSD Cache (Free)
+          show_icon: true
+          height: 124px
+          stack: horizontal
+          positions:
+            name: inside
+            value: inside
+            icon: inside
+          severity:
+            - color: '#3cff00'
+              from: 0
+              to: 30
+            - color: '#ccff00'
+              from: 31
+              to: 40
+            - color: '#d9d21c'
+              from: 41
+              to: 50
+            - color: '#f7da00'
+              from: 51
+              to: 60
+            - color: '#edac09'
+              from: 61
+              to: 70
+            - color: '#ffa408'
+              from: 71
+              to: 80
+            - color: '#ff5e08'
+              from: 81
+              to: 90
+            - color: '#ed0909'
+              from: 91
+              to: 100
+          direction: right
+          tap_action: none
+
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+  cards:
+    - type: horizontal-stack
+      cards:
+
+    # Plex Container
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/plex.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_binhex_plexpass
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_binhex_plexpass
+
+    # NZBGet Container
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/nzbget.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_nzbget
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            state:
+              - justify-self: left
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_nzbget
+
+    # Sonarr Container
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/sonarr.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_sonarr
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_sonarr
+
+    # Radar Container
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/radarr.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_radarr
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_radarr
+
+    # Lidarr Container
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/lidarr.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_lidarr
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_lidarr
+
+        - type: "custom:button-card"
+          style: |
+            ha-card {
+              background: url('/local/images/lovelace-themes/dwains-theme/icons/bazarr.png');
+              border-radius: 10px;
+              box-shadow: 10px;
+          entity: switch.chsunr01_docker_bazarr
+          show_state: false
+          show_name: false
+          show_label: false
+          show_icon: false
+          styles:
+            card:
+              - background-size: contain
+              - background-repeat: no-repeat
+              - background-position: center
+            state:
+              - justify-self: left
+          state:
+            - value: 'off'
+              styles:
+                card:
+                  - filter: grayscale(100%)
+          custom_fields:
+            switch: >
+              [[[
+                return `<ha-icon
+                  style="width: 36px; height: 68px;">
+                  </ha-icon>`
+              ]]]
+          double_tap_action:
+            action: call-service
+            service: switch.toggle
+            service_data:
+              entity_id: switch.chsunr01_docker_bazarr
+
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
           cards:
 
-        # Plex Container
-            - type: picture-entity
+    # UnRAID-API Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/unraid-api.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.chsunr01_docker_binhex_plexpass
-              image: /local/images/lovelace-themes/dwains-theme/containers/plex_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.chsunr01_docker_binhex_plexpass
-
-        # Sonarr Container
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.chsunr01_docker_sonarr
-              image: /local/images/lovelace-themes/dwains-theme/containers/sonarr_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.chsunr01_docker_sonarr
-
-        # Radar Container
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.chsunr01_docker_radarr
-              image: /local/images/lovelace-themes/dwains-theme/containers/radarr_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.chsunr01_docker_radarr
-
-        # Lidarr Container
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.chsunr01_docker_lidarr
-              image: /local/images/lovelace-themes/dwains-theme/containers/lidarr_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.chsunr01_docker_lidarr
-
-        # UnRAID-API Container
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_unraid_api
-              image: /local/images/lovelace-themes/dwains-theme/containers/unraid-api_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: right
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_unraid_api
 
-        # NZBGet Container
-            - type: picture-entity
+    # NZBHydra Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/nzbhydra2.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
-              entity: switch.chsunr01_docker_nzbget
-              image: /local/images/lovelace-themes/dwains-theme/containers/nzbget_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
-              show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
-                service: switch.toggle
-                service_data:
-                  entity_id: switch.chsunr01_docker_nzbget
-
-        # NZBHydra Container
-            - type: picture-entity
-              style: |
-                ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px;
-                  box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_binhex_nzbhydra2
-              image: /local/images/lovelace-themes/dwains-theme/containers/nzbhydra_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: left
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_binhex_nzbhydra2
 
-        # Tautulli Container
-            - type: picture-entity
+    # Tautulli Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/tautulli.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_tautulli
-              image: /local/images/lovelace-themes/dwains-theme/containers/tautulli_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: left
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_tautulli
 
-        # DiskSpeed Container
-            - type: picture-entity
+
+    # DiskSpeed Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px; 
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/diskspeed.png');
+                  border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_diskspeed
-              image: /local/images/lovelace-themes/dwains-theme/containers/diskspeed_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: left
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_diskspeed
 
-        # Glances Container
-            - type: picture-entity
+    # Glances Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
-                  border-radius: 10px; 
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/glances.png');
+                  border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_glances
-              image: /local/images/lovelace-themes/dwains-theme/containers/glances_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: left
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_glances
 
-        # Netdata Container
-            - type: picture-entity
+    # Netdata Container
+            - type: "custom:button-card"
               style: |
                 ha-card {
-                  background: var(--paper-card-background-color);
+                  background: url('/local/images/lovelace-themes/dwains-theme/icons/netdata.png');
                   border-radius: 10px;
                   box-shadow: 10px;
-                  font-weight: bold;
-                  opacity: 0.8;
-                }
               entity: switch.chsunr01_docker_netdata
-              image: /local/images/lovelace-themes/dwains-theme/containers/netdata_dwains.png
-              aspect_ratio: 4:9
-              show_name: false
               show_state: false
-              tap_action:
-                action: none
-              hold_action:
-                action: toggle
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                card:
+                  - background-size: contain
+                  - background-repeat: no-repeat
+                  - background-position: center
+                state:
+                  - justify-self: left
+              state:
+                - value: 'off'
+                  styles:
+                    card:
+                      - filter: grayscale(100%)
+              custom_fields:
+                switch: >
+                  [[[
+                    return `<ha-icon
+                      style="width: 36px; height: 68px;">
+                      </ha-icon>`
+                  ]]]
+              double_tap_action:
+                action: call-service
                 service: switch.toggle
                 service_data:
                   entity_id: switch.chsunr01_docker_netdata
@@ -401,7 +614,7 @@
                       icon: mdi:harddisk-plus
                   show_icon: true
                   positions:
-                    title: inside
+                    name: inside
                     value: 'off'
                     icon: inside
                   severity:
@@ -418,377 +631,297 @@
                   min: 0
                   tap_action: none
 
-            - type: vertical-stack
-              cards:
+        - type: horizontal-stack
+          cards:
 
-            # UnRAID Array Total Space
-                - type: custom:bar-card
-                  item_classes: 'col-lg-3 col-md-3'
-                  style: |
-                    :host {
-                      --ha-card-background: var(--dwains-theme-primary);
-                      --ha-card-border-radius: 10px;
-                      --ha-card-box-shadow: 10px;
-                      --ha-card-font-weight: bold;
-                      --ha-card-opacity: 0.8;
-                    }
-                    ha-card {
-                      font-size: 10px;                 
-                    }
-                    bar-card-value {
-                      font-size: 10px;
-                    }
-                  entity: sensor.unraid_array_space
-                  icon: mdi:database-settings
-                  show_icon: true
-                  positions:
-                    title: inside
-                    value: inside
-                    icon: inside
-                  severity:
-                    - color: '#3cff00'
-                      from: 0
-                      to: 30
-                    - color: '#ccff00'
-                      from: 31
-                      to: 40
-                    - color: '#d9d21c'
-                      from: 41
-                      to: 50
-                    - color: '#f7da00'
-                      from: 51
-                      to: 60
-                    - color: '#edac09'
-                      from: 61
-                      to: 70
-                    - color: '#ffa408'
-                      from: 71
-                      to: 80
-                    - color: '#ff5e08'
-                      from: 81
-                      to: 90
-                    - color: '#ed0909'
-                      from: 91
-                      to: 100
-                  direction: right
-                  columns: 1
-                  max: 100
-                  min: 0
-                  tap_action: none
-
-
-            - type: vertical-stack
-              cards:
+        # UnRAID Array Total Space
+            - type: custom:bar-card
+              item_classes: 'col-lg-3 col-md-3'
+              style: |
+                :host {
+                  --ha-card-background: var(--dwains-theme-primary);
+                  --ha-card-border-radius: 10px;
+                  --ha-card-box-shadow: 10px;
+                  --ha-card-font-weight: bold;
+                  --ha-card-opacity: 0.8;
+                }
+                ha-card {
+                  font-size: 10px;                 
+                }
+                bar-card-value {
+                  font-size: 10px;
+                }
+              entity: sensor.unraid_array_space
+              icon: mdi:database-settings
+              show_icon: true
+              positions:
+                name: inside
+                value: inside
+                icon: inside
+              severity:
+                - color: '#3cff00'
+                  from: 0
+                  to: 30
+                - color: '#ccff00'
+                  from: 31
+                  to: 40
+                - color: '#d9d21c'
+                  from: 41
+                  to: 50
+                - color: '#f7da00'
+                  from: 51
+                  to: 60
+                - color: '#edac09'
+                  from: 61
+                  to: 70
+                - color: '#ffa408'
+                  from: 71
+                  to: 80
+                - color: '#ff5e08'
+                  from: 81
+                  to: 90
+                - color: '#ed0909'
+                  from: 91
+                  to: 100
+              direction: right
+              columns: 1
+              max: 100
+              min: 0
+              tap_action: none
 
         # Disk Space Used Card
 
-                - type: horizontal-stack
+        - type: horizontal-stack
+          cards:
+            - type: custom:swipe-card
+              parameters:
+                spaceBetween: 8
+                touchEventsTarget: 'container'
+                pagination:
+                  type: 'bullets'
+                  dynamicBullets: true
+
+              cards:
+
+                - type: vertical-stack
                   cards:
-                    - type: custom:swipe-card
-                      parameters:
-                        spaceBetween: 8
-                        touchEventsTarget: 'container'
-                        pagination:
-                          type: 'bullets'
-                          dynamicBullets: true
+                    - type: horizontal-stack
+                      cards: 
 
-                      cards:
+                    # Disk 1 Used %
+                        - type: custom:bar-card
+                          style: |
+                            :host {
+                              --ha-card-background: var(--paper-card-background-color);
+                              --ha-card-border-radius: 10px;
+                              --ha-card-box-shadow: 10px;
+                              --ha-card-font-weight: bold;
+                              --ha-card-opacity: 0.8;
+                            }
+                            ha-card {
+                              font-size: 10px;                 
+                            }
+                            bar-card-value {
+                              font-size: 10px;
+                            }
+                          entities: 
+                            - entity: sensor.glances_unraid_mnt_disk1_used_percent
+                              name: Disk 1 Usage
+                            - entity: sensor.glances_unraid_mnt_disk2_used_percent
+                              name: Disk 2 Usage
+                            - entity: sensor.glances_unraid_mnt_disk3_used_percent
+                              name: Disk 3 Usage
+                            - entity: sensor.glances_unraid_mnt_disk4_used_percent
+                              name: Disk 4 Usage
+                            - entity: sensor.glances_unraid_mnt_disk5_used_percent
+                              name: Disk 5 Usage
+                            - entity: sensor.glances_unraid_mnt_disk6_used_percent
+                              name: Disk 6 Usage
+                          show_icon: true
+                          height: 180px
+                          stack: horizontal
+                          positions:
+                            name: inside
+                            value: inside
+                            icon: inside
+                          severity:
+                            - color: '#3cff00'
+                              from: 0
+                              to: 30
+                            - color: '#ccff00'
+                              from: 30
+                              to: 40
+                            - color: '#f1f505'
+                              from: 40
+                              to: 50
+                            - color: '#f7da00'
+                              from: 50
+                              to: 60
+                            - color: '#edac09'
+                              from: 60
+                              to: 70
+                            - color: '#ffa408'
+                              from: 70
+                              to: 80
+                            - color: '#ff5e08'
+                              from: 80
+                              to: 90
+                            - color: '#ed0909'
+                              from: 90
+                              to: 100
+                          direction: up
+                          columns: 1
+                          max: 100
+                          min: 0
+                          tap_action: none
 
-                        - type: vertical-stack
-                          cards:
-                            - type: horizontal-stack
-                              cards: 
+                - type: vertical-stack
+                  cards:
+                    - type: horizontal-stack
+                      cards: 
 
-                            # Disk 1 Used %
-                                - type: custom:bar-card
-                                  style: |
-                                    :host {
-                                      --ha-card-background: var(--paper-card-background-color);
-                                      --ha-card-border-radius: 10px;
-                                      --ha-card-box-shadow: 10px;
-                                      --ha-card-font-weight: bold;
-                                      --ha-card-opacity: 0.8;
-                                    }
-                                    ha-card {
-                                      font-size: 10px;                 
-                                    }
-                                    bar-card-value {
-                                      font-size: 8px;
-                                    }
-                                  entities: 
-                                    - entity: sensor.glances_unraid_mnt_disk1_used_percent
-                                      name: Disk 1 Usage
-                                    - entity: sensor.glances_unraid_mnt_disk2_used_percent
-                                      name: Disk 2 Usage
-                                    - entity: sensor.glances_unraid_mnt_disk3_used_percent
-                                      name: Disk 3 Usage
-                                    - entity: sensor.glances_unraid_mnt_disk4_used_percent
-                                      name: Disk 4 Usage
-                                    - entity: sensor.glances_unraid_mnt_disk5_used_percent
-                                      name: Disk 5 Usage
-                                    - entity: sensor.glances_unraid_mnt_disk6_used_percent
-                                      name: Disk 6 Usage
-                                  show_icon: true
-                                  height: 200px
-                                  stack: horizontal
-                                  positions:
-                                    title: inside
-                                    value: inside
-                                    icon: inside
-                                  severity:
-                                    - color: '#3cff00'
-                                      from: 0
-                                      to: 30
-                                    - color: '#ccff00'
-                                      from: 30
-                                      to: 40
-                                    - color: '#f1f505'
-                                      from: 40
-                                      to: 50
-                                    - color: '#f7da00'
-                                      from: 50
-                                      to: 60
-                                    - color: '#edac09'
-                                      from: 60
-                                      to: 70
-                                    - color: '#ffa408'
-                                      from: 70
-                                      to: 80
-                                    - color: '#ff5e08'
-                                      from: 80
-                                      to: 90
-                                    - color: '#ed0909'
-                                      from: 90
-                                      to: 100
-                                  direction: up
-                                  columns: 1
-                                  max: 100
-                                  min: 0
-                                  tap_action: none
-
-                        - type: vertical-stack
-                          cards:
-                            - type: horizontal-stack
-                              cards: 
-
-                            # 6 TB Disks Free Space
-                                - type: custom:bar-card
-                                  style: |
-                                    :host {
-                                      --ha-card-background: var(--paper-card-background-color);
-                                      --ha-card-border-radius: 10px;
-                                      --ha-card-box-shadow: 10px;
-                                      --ha-card-font-weight: bold;
-                                      --ha-card-opacity: 0.8;
-                                    }
-                                    ha-card {
-                                      font-size: 10px;                 
-                                    }
-                                    bar-card-value {
-                                      font-size: 8px;
-                                    }
-                                  entities: 
-                                    - entity: sensor.glances_unraid_mnt_disk1_free
-                                      name: Disk 1 Free
-                                      min: 0
-                                      max: 5460
-                                    - entity: sensor.glances_unraid_mnt_disk2_free
-                                      name: Disk 2 Free
-                                      min: 0
-                                      max: 5460
-                                    - entity: sensor.glances_unraid_mnt_disk3_free
-                                      name: Disk 3 Free
-                                      min: 0
-                                      max: 5460
-                                    - entity: sensor.glances_unraid_mnt_disk4_free # 3 TB Disk max: 2730mb 
-                                      name: Disk 4 Free
-                                      min: 0
-                                      max: 2730
-                                    - entity: sensor.glances_unraid_mnt_disk5_free
-                                      name: Disk 5 Free
-                                      min: 0
-                                      max: 5460
-                                    - entity: sensor.glances_unraid_mnt_disk6_free
-                                      name: Disk 6 Free
-                                      min: 0
-                                      max: 5460
-                                  show_icon: true
-                                  height: 200px
-                                  stack: horizontal
-                                  positions:
-                                    title: inside
-                                    value: inside
-                                    icon: inside
-                                  severity:
-                                    - color: '#fa0505'
-                                      from: 0
-                                      to: 700
-                                    - color: '#de4314'
-                                      from: 700
-                                      to: 800
-                                    - color: '#d1861d'
-                                      from: 800
-                                      to: 900
-                                    - color: '#d4c11c'
-                                      from: 900
-                                      to: 1000
-                                    - color: '#64c91c'
-                                      from: 1001
-                                      to: 5560
-                                  direction: up
-                                  tap_action: none
+                    # 6 TB Disks Free Space
+                        - type: custom:bar-card
+                          style: |
+                            :host {
+                              --ha-card-background: var(--paper-card-background-color);
+                              --ha-card-border-radius: 10px;
+                              --ha-card-box-shadow: 10px;
+                              --ha-card-font-weight: bold;
+                              --ha-card-opacity: 0.8;
+                            }
+                            ha-card {
+                              font-size: 10px;                 
+                            }
+                            bar-card-value {
+                              font-size: 10px;
+                            }
+                          entities: 
+                            - entity: sensor.glances_unraid_mnt_disk1_free
+                              name: Disk 1 Free
+                              min: 0
+                              max: 5460
+                            - entity: sensor.glances_unraid_mnt_disk2_free
+                              name: Disk 2 Free
+                              min: 0
+                              max: 5460
+                            - entity: sensor.glances_unraid_mnt_disk3_free
+                              name: Disk 3 Free
+                              min: 0
+                              max: 5460
+                            - entity: sensor.glances_unraid_mnt_disk4_free # 3 TB Disk max: 2730mb 
+                              name: Disk 4 Free
+                              min: 0
+                              max: 2730
+                            - entity: sensor.glances_unraid_mnt_disk5_free
+                              name: Disk 5 Free
+                              min: 0
+                              max: 5460
+                            - entity: sensor.glances_unraid_mnt_disk6_free
+                              name: Disk 6 Free
+                              min: 0
+                              max: 5460
+                          show_icon: true
+                          height: 180px
+                          stack: horizontal
+                          positions:
+                            name: inside
+                            value: inside
+                            icon: inside
+                          severity:
+                            - color: '#fa0505'
+                              from: 0
+                              to: 700
+                            - color: '#de4314'
+                              from: 700
+                              to: 800
+                            - color: '#d1861d'
+                              from: 800
+                              to: 900
+                            - color: '#d4c11c'
+                              from: 900
+                              to: 1000
+                            - color: '#64c91c'
+                              from: 1001
+                              to: 5560
+                          direction: up
+                          tap_action: none
 
 
         - type: vertical-stack
           cards:
-
             - type: horizontal-stack
-              cards:
-                - type: custom:swipe-card
-                  parameters:
-                    spaceBetween: 8
-                    touchEventsTarget: 'container'
-                    pagination:
-                      type: 'bullets'
-                      dynamicBullets: true
+              cards: 
 
-                  cards:
+          # CPU Useage
+                - type: custom:mini-graph-card
+                  style: |
+                    ha-card {
+                      background: var(--paper-card-background-color);
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                      font-weight: bold;
+                      opacity: 0.8;
+                    }
+                  entities:
+                    - entity: sensor.glances_unraid_cpu_used
+                      name: System
+                      color: '#14ff8d' # Light Green
+                    - entity: sensor.glances_unraid_containers_cpu_used
+                      name: Containers
+                      color: '#0293fa' # Sky Blue
+                  name: CPU Usage
+                  icon: mdi:cpu-64-bit
+                  hours_to_show: 7
+                  points_per_hour: 10
+                  update_interval: 30
+                  aggregate_func: max
+                  line_width: 2
+                  smoothing: false
+                  font_size: 65
+                  font_size_header: 9
+                  show:
+                    average: true
+                    extrema: true
+                  tap_action: none
 
-                    - type: vertical-stack
-                      cards:
-                        - type: horizontal-stack
-                          cards: 
+          # Ram Usage
+                - type: custom:mini-graph-card
+                  style: |
+                    ha-card {
+                      background: var(--paper-card-background-color);
+                      border-radius: 10px;
+                      box-shadow: 10px;
+                      font-weight: bold;
+                      opacity: 0.8;
+                    }
+                  entities:
+                    - entity: sensor.glances_unraid_ram_used
+                      name: System
+                      color: '#14ff8d' # Light Green
+                    - entity: sensor.glances_unraid_containers_ram_used
+                      name: Containers
+                      color: '#0293fa' # Sky Blue
+                  name: RAM Usage
+                  hours_to_show: 7
+                  points_per_hour: 10
+                  update_interval: 30
+                  aggregate_func: max
+                  line_width: 2
+                  smoothing: false
+                  font_size: 65
+                  font_size_header: 9
+                  show:
+                    average: true
+                    extrema: true
+                  tap_action: none
 
-                      # CPU Useage
-                            - type: custom:mini-graph-card
-                              style: |
-                                ha-card {
-                                  background: var(--paper-card-background-color);
-                                  border-radius: 10px;
-                                  box-shadow: 10px;
-                                  font-weight: bold;
-                                  opacity: 0.8;
-                                }
-                              entities:
-                                - entity: sensor.glances_unraid_cpu_used
-                                  name: System
-                                  color: '#14ff8d' # Light Green
-                                - entity: sensor.glances_unraid_containers_cpu_used
-                                  name: Containers
-                                  color: '#0293fa' # Sky Blue
-                              name: CPU Usage
-                              icon: mdi:cpu-64-bit
-                              hours_to_show: 7
-                              points_per_hour: 10
-                              update_interval: 30
-                              aggregate_func: max
-                              line_width: 2
-                              smoothing: false
-                              font_size: 65
-                              font_size_header: 9
-                              show:
-                                average: true
-                                extrema: true
-                              tap_action: none
-
-                    - type: vertical-stack
-                      cards:
-                        - type: horizontal-stack
-                          cards: 
-
-                    # Ram Usage
-                            - type: custom:mini-graph-card
-                              style: |
-                                ha-card {
-                                  background: var(--paper-card-background-color);
-                                  border-radius: 10px;
-                                  box-shadow: 10px;
-                                  font-weight: bold;
-                                  opacity: 0.8;
-                                }
-                              entities:
-                                - entity: sensor.glances_unraid_ram_used
-                                  name: System
-                                  color: '#14ff8d' # Light Green
-                                - entity: sensor.glances_unraid_containers_ram_used
-                                  name: Containers
-                                  color: '#0293fa' # Sky Blue
-                              name: RAM Usage
-                              hours_to_show: 7
-                              points_per_hour: 10
-                              update_interval: 30
-                              aggregate_func: max
-                              line_width: 2
-                              smoothing: false
-                              font_size: 65
-                              font_size_header: 9
-                              show:
-                                average: true
-                                extrema: true
-                              tap_action: none
-
-            - type: vertical-stack
-              cards:
-
-                  # USB Boot Device
-                      - type: custom:bar-card
-                        style: |
-                          :host {
-                            --ha-card-background: var(--paper-card-background-color);
-                            --ha-card-border-radius: 10px;
-                            --ha-card-box-shadow: 10px;
-                            --ha-card-font-weight: bold;
-                            --ha-card-opacity: 0.8;
-                          }
-                          ha-card {
-                            font-size: 10px;                 
-                          }
-                          bar-card-value {
-                            font-size: 10px;
-                          }
-                        entities: 
-                          - entity: sensor.glances_unraid_etc_resolv_conf_used_percent
-                            name: USB Boot Drive
-                          - entity: sensor.glances_unraid_mnt_cache_used_percent
-                            name: Backups SSD
-                          - entity: sensor.glances_unraid_mnt_cache_used_percent
-                            name: SSD Cache (Free)
-                        show_icon: true
-                        height: 86px
-                        stack: horizontal
-                        positions:
-                          title: inside
-                          value: inside
-                          icon: inside
-                        severity:
-                          - color: '#3cff00'
-                            from: 0
-                            to: 30
-                          - color: '#ccff00'
-                            from: 31
-                            to: 40
-                          - color: '#d9d21c'
-                            from: 41
-                            to: 50
-                          - color: '#f7da00'
-                            from: 51
-                            to: 60
-                          - color: '#edac09'
-                            from: 61
-                            to: 70
-                          - color: '#ffa408'
-                            from: 71
-                            to: 80
-                          - color: '#ff5e08'
-                            from: 81
-                            to: 90
-                          - color: '#ed0909'
-                            from: 91
-                            to: 100
-                        direction: right
-                        tap_action: none
-
-
+- type: vertical-stack
+  cards:
+    - type: custom:dwains-flexbox-card
+      padding: true
+      items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+      cards:
         - type: horizontal-stack
           cards:
             - type: custom:swipe-card
