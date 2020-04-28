@@ -1,3 +1,4 @@
+# dwains_theme
 ## Created by Cameron
 ## Room add-on: FAN-control
 ## Version: 1.0.0
@@ -21,15 +22,17 @@
                 }
             icon: mdi:fan
             name: 'Off'
+            entity: {{ (data | fromjson)['entity'] }}
             tap_action:
               action: call-service
-              service: script.fan_master_bedroom_command
+              service: fan.set_speed
               service_data:
-                  option: 'off'
+                entity_id: {{ (data | fromjson)['entity'] }}
+                speed: 'off'
             styles:
               icon:
                 - color: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'off') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].state === 'off') return '#299ec2'; return 'grey' ; ]]]
 
           - type: custom:button-card
             style: |
@@ -40,22 +43,24 @@
                   font-weight: bold;
                   opacity: 0.8;
                 }
+            entity: {{ (data | fromjson)['entity'] }}
             icon: mdi:fan
             name: 'Low'
             tap_action:
               action: call-service
-              service: script.fan_master_bedroom_command
+              service: fan.set_speed
               service_data:
-                  option: 'low'
+                entity_id: {{ (data | fromjson)['entity'] }}
+                speed: 'low'
             state:
               - operator: template
                 value: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'low') return 'on' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'low') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') return '#299ec2'; return 'grey' ; ]]]
 
           - type: custom:button-card
             style: |
@@ -66,22 +71,25 @@
                   font-weight: bold;
                   opacity: 0.8;
                 }
+            entity: {{ (data | fromjson)['entity'] }}
             icon: mdi:fan
             name: 'Med'
             tap_action:
               action: call-service
-              service: script.fan_master_bedroom_command
+              entity: {{ (data | fromjson)['entity'] }}
+              service: fan.set_speed
               service_data:
-                  option: 'medium'
+                entity_id: {{ (data | fromjson)['entity'] }}
+                speed: 'medium'
             state:
               - operator: template
                 value: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'medium') return 'on' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'medium') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') return '#299ec2'; return 'grey' ; ]]]
 
           - type: custom:button-card
             style: |
@@ -92,19 +100,22 @@
                   font-weight: bold;
                   opacity: 0.8;
                 }
+            entity: {{ (data | fromjson)['entity'] }}
             icon: mdi:fan
             name: 'High'
             tap_action:
               action: call-service
-              service: script.fan_master_bedroom_command
+              entity: {{ (data | fromjson)['entity'] }}
+              service: fan.set_speed
               service_data:
-                  option: 'high'
+                entity_id: {{ (data | fromjson)['entity'] }}
+                speed: 'high'
             state:
               - operator: template
                 value: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'high') return 'on' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['sensor.master_fan_speed'].state == 'high') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') return '#299ec2'; return 'grey' ; ]]]
