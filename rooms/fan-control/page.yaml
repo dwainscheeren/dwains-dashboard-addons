@@ -25,10 +25,14 @@
             entity: {{ (data | fromjson)['entity'] }}
             tap_action:
               action: call-service
-              service: fan.set_speed
+              service: fan.turn_off
               service_data:
                 entity_id: {{ (data | fromjson)['entity'] }}
-                speed: 'off'
+                #speed: 'off'
+            state:
+              - operator: template
+                value: >
+                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].state === 'off' ) return 'on'; ]]]
             styles:
               icon:
                 - color: >
@@ -55,12 +59,12 @@
             state:
               - operator: template
                 value: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') return 'on'; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'low') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return '#299ec2'; return 'grey' ; ]]]
 
           - type: custom:button-card
             style: |
@@ -84,12 +88,12 @@
             state:
               - operator: template
                 value: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') return 'on'; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'medium') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return '#299ec2'; return 'grey' ; ]]]
 
           - type: custom:button-card
             style: |
@@ -113,9 +117,9 @@
             state:
               - operator: template
                 value: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') return 'on'; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return 'on'; ]]]
                 spin: true
             styles:
               icon:
                 - color: >
-                    [[[ if (states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') return '#299ec2'; return 'grey' ; ]]]
+                    [[[ if ((states['{{ (data | fromjson)['entity'] }}'].attributes.speed === 'high') && (states['{{ (data | fromjson)['entity'] }}'].state === 'on' )) return '#299ec2'; return 'grey' ; ]]]
