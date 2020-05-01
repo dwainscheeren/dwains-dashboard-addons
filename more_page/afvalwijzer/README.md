@@ -21,12 +21,8 @@ more_page:
         icon: fas:recycle
         path: 'dwains-theme/addons/more_page/afvalwijzer/page.yaml'
         data:
-          afval_vandaag: sensor.blink_vandaag
-          afval_morgen: sensor.blink_morgen
-          afval_rest: sensor.blink_restafval
-          afval_gft: sensor.blink_gft
-          afval_pmd: sensor.blink_pmd
-          afval_papier: sensor.blink_papier
+          wastecollector: blink
+          sort_attribute: Sort-date
 ```
 
 ### Screenshots
@@ -38,6 +34,11 @@ more_page:
 
 
 ### Changelog
+#### 1.1.1
+- Adjusted the behavior for state_image so that it also provides an image even when it does not recognize the status
+- Sort wastecollector by date
+- Made compatible for multiple wastecollectors
+- Added KCA icon to images ZIP file
 #### 1.1.0
 - **BREAKING CHANGE**: It's now possible to define your sensors in the `more_page.yaml` file so you don't have to edit the `page.yaml` file
 - Tablet view
