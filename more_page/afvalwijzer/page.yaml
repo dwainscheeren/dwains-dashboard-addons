@@ -1,7 +1,7 @@
 # dwains_theme
 ## More-page add-on: Afvalwijzer
 ## Created by Jeroen Klompen
-## Version: 1.1.0
+## Version: 1.1.1
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
@@ -16,8 +16,9 @@
               border-radius: 5px;
               background-color: var(--dwains-theme-primary);
             }
-          entity: {{ (data | fromjson)['afval_vandaag'] }}
+          entity: sensor.{{ (data | fromjson)['wastecollector'] }}_vandaag
           name: Vandaag
+          image: /local/images/afval_geen_large.png
           state_image:
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
@@ -25,8 +26,7 @@
             'pmd': /local/images/afval_pmd_large.png
             'pbd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
-            'Geen': /local/images/afval_geen_large.png
-            'unknown': /local/images/afval_geen_large.png
+            'kca': /local/images/afval_kca_large.png
         - type: picture-entity
           style: |
             ha-card {
@@ -34,8 +34,9 @@
               border-radius: 5px;
               background-color: var(--dwains-theme-primary);
             }
-          entity: {{ (data | fromjson)['afval_morgen'] }}
+          entity: sensor.{{ (data | fromjson)['wastecollector'] }}_morgen
           name: Morgen
+          image: /local/images/afval_geen_large.png
           state_image:
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
@@ -43,24 +44,23 @@
             'pmd': /local/images/afval_pmd_large.png
             'pbd': /local/images/afval_pmd_large.png
             'papier, pmd': /local/images/afval_papier-pmd_large.png
-            'Geen': /local/images/afval_geen_large.png
-            'unknown': /local/images/afval_geen_large.png
-    - type: glance
-      style: |
-        ha-card {
-          border-radius: 5px;
-          background-color: var(--dwains-theme-primary);
-        }
-      entities:
-        {% if (data | fromjson)['afval_rest'] %}
-        - entity: {{ (data | fromjson)['afval_rest'] }}
-        {% endif %}
-        {% if (data | fromjson)['afval_gft'] %}
-        - entity: {{ (data | fromjson)['afval_gft'] }}
-        {% endif %}
-        {% if (data | fromjson)['afval_pmd'] %}
-        - entity: {{ (data | fromjson)['afval_pmd'] }}
-        {% endif %}
-        {% if (data | fromjson)['afval_papier'] %}
-        - entity: {{ (data | fromjson)['afval_papier'] }}
-        {% endif %}
+            'kca': /local/images/afval_kca_large.png
+    - type: 'custom:auto-entities'
+      card:
+        type: glance
+        style: |
+          ha-card {
+            border-radius: 5px;
+            background-color: var(--dwains-theme-primary);
+          }
+      filter:
+        exclude:
+          - entity_id: sensor.{{ (data | fromjson)['wastecollector'] }}_vandaag
+          - entity_id: sensor.{{ (data | fromjson)['wastecollector'] }}_morgen
+        include:
+          - entity_id: sensor.{{ (data | fromjson)['wastecollector'] }}*
+      show_header_toggle: false
+      sort:
+        attribute: {{ (data | fromjson)['sort_attribute']|default('Sort-date') }}
+        method: attribute
+        numeric: true
