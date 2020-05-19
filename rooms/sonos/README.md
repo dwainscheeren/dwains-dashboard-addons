@@ -43,6 +43,8 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.2
+- Add double tap on button to play/pause the music
 #### 1.0.1
 - Fix volume slider color issue in dark theme
 #### 1.0.0
