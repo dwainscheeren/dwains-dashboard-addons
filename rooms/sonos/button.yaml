@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on custom button: Sonos
 ## Created by Jeroen Klompen
-## Version: 1.0.1
+## Version: 1.0.2
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
@@ -11,6 +11,11 @@ icon: {{ icon|default('fas:puzzle-piece') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
+double_tap_action:
+  action: call-service
+  service: media_player.media_play_pause
+  service_data:
+    entity_id: {{ (data | fromjson)['entity'] }}
 label: >
   [[[
     if(entity){
