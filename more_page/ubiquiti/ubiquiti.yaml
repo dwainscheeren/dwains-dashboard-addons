@@ -1,0 +1,158 @@
+---
+# SNMP sensors
+# if you have more ap/switches you can copy paste the code.
+# change name and ip and you are ready to go
+#
+sensor:
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi Switch Uptime
+    baseoid: 1.3.6.1.2.1.1.3.0
+    value_template: >
+      {%- set time = value | int // 100 %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set minutes = '{}min'.format(minutes) if minutes > 0 else '' %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set hours = '{}hr '.format(hours) if hours > 0 else '' %}
+      {%- set days = (time // 86400) %}
+      {%- set days = '{}d '.format(days) if days > 0 else '' %}
+      {{ 'Less than 1 min' if time < 60 else days + hours + minutes }}
+
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi Switch Firmware Version
+    baseoid: 1.3.6.1.4.1.4413.1.1.1.1.1.13.0
+
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi Switch Model
+    baseoid: 1.3.6.1.4.1.4413.1.1.1.1.1.2.0
+
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi AP Uptime
+    baseoid: 1.3.6.1.2.1.1.3.0
+    value_template: >
+      {%- set time = value | int // 100 %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set minutes = '{}min'.format(minutes) if minutes > 0 else '' %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set hours = '{}hr '.format(hours) if hours > 0 else '' %}
+      {%- set days = (time // 86400) %}
+      {%- set days = '{}d '.format(days) if days > 0 else '' %}
+      {{ 'Less than 1 min' if time < 60 else days + hours + minutes }}
+
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi AP Model
+    baseoid: 1.3.6.1.4.1.41112.1.6.3.3.0
+
+  - platform: snmp
+    host: xxx.xxx.xxx.xxx
+    name: Unifi AP Firmware Version
+    baseoid: 1.3.6.1.4.1.41112.1.6.3.6.0
+
+## Template sensors
+
+  - platform: template
+    sensors:
+      unifi_gateway_wan_cpu:
+        friendly_name: "CPU"
+        unit_of_measurement: "%"
+        value_template: "{{ states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['cpu'] }}"
+      unifi_gateway_wan_mem:
+        friendly_name: "Memory"
+        unit_of_measurement: "%"
+        value_template: "{{ states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['mem'] }}"
+      unifi_gateway_wan_ip:
+        friendly_name: 'WAN IP'
+        value_template: '{{ states.sensor.unifi_gateway_wan.attributes.wan_ip }}'
+        entity_id: sensor.unifi_gateway_wan
+      unifi_gateway_wan_download:
+        friendly_name: 'WAN Download'
+        unit_of_measurement: Kbps
+        icon_template: "mdi:progress-download"
+        value_template: "{{ (states.sensor.unifi_gateway_wan.attributes['rx_bytes-r'] / 1024) | int }}"
+      unifi_gateway_wan_uptime:
+        friendly_name: "USG Uptime"
+        value_template: >
+          {%- set time = states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['uptime'] | int %}
+          {%- set minutes = ((time % 3600) // 60) %}
+          {%- set minutes = '{}min'.format(minutes) if minutes > 0 else '' %}
+          {%- set hours = ((time % 86400) // 3600) %}
+          {%- set hours = '{}hr '.format(hours) if hours > 0 else '' %}
+          {%- set days = (time // 86400) %}
+          {%- set days = '{}d '.format(days) if days > 0 else '' %}
+          {{ 'Less than 1 min' if time < 60 else days + hours + minutes }}
+      unifi_gateway_firmware_version:
+        friendly_name: "USG Firmware Version"
+        icon_template: "mdi:database-plus"
+        value_template: "{{ states.sensor.unifi_gateway_wan.attributes.gw_version }}"
+      unifi_gateway_www_xput_down:
+        friendly_name: "USG Speedtest Download"
+        unit_of_measurement: Mbps
+        icon_template: "mdi:progress-download"
+        value_template: "{{ states.sensor.unifi_gateway_www.attributes.xput_down }}"
+      unifi_gateway_www_xput_up:
+        friendly_name: "USG Speedtest Upload"
+        unit_of_measurement: Mbps
+        icon_template: "mdi:progress-upload"
+        value_template: "{{ states.sensor.unifi_gateway_www.attributes.xput_up }}"
+      unifi_gateway_www_speedtest_ping:
+        friendly_name: "USG Speedtest Ping"
+        unit_of_measurement: ms
+        icon_template: "mdi:progress-clock"
+        value_template: "{{ states.sensor.unifi_gateway_www.attributes.speedtest_ping }}"
+      unifi_gateway_www_uptime:
+        friendly_name: 'Internet Uptime'
+        value_template: >
+          {%- set time = states.sensor.unifi_gateway_www.attributes.uptime | int %}
+          {%- set minutes = ((time % 3600) // 60) %}
+          {%- set minutes = '{}min'.format(minutes) if minutes > 0 else '' %}
+          {%- set hours = ((time % 86400) // 3600) %}
+          {%- set hours = '{}hr '.format(hours) if hours > 0 else '' %}
+          {%- set days = (time // 86400) %}
+          {%- set days = '{}d '.format(days) if days > 0 else '' %}
+          {{ 'Less than 1 min' if time < 60 else days + hours + minutes }}
+      unifi_gateway_wlan_num_user:
+        friendly_name: 'Users'
+        icon_template: "mdi:account-multiple"
+        value_template: '{{ states.sensor.unifi_gateway_wlan.attributes.num_user }}'
+      unifi_gateway_lan_num_user:
+        friendly_name: 'Users Lan'
+        icon_template: "mdi:account-multiple"
+        value_template: '{{ states.sensor.unifi_gateway_lan.attributes.num_user }}'
+      unifi_ssid_wifi_users:
+        friendly_name: "Wi-Fi ssid"
+        value_template: "{{ states.sensor.unifi.attributes['Wi-Fi'] }}"
+      unifi_ssid_not_users:
+        friendly_name: "NoT ssid"
+        value_template: "{{ states.sensor.unifi.attributes['NoT'] }}"
+      unifi_wired_users:
+        friendly_name: "wired devices"
+        value_template: "{{ states.sensor.unifi.attributes['wired'] }}"
+
+## Unifi Gateway sensors // https://github.com/custom-components/sensor.unifigateway
+
+  - platform: unifigateway
+    host: localhost or ipadres
+    #site_id  (Optional) For multisite installations, you can specify site_id to specify which is used Default value: default
+    username: USERNAME
+    password: !secret or password
+    monitored_conditions:
+      - vpn
+      - lan
+      - wan
+      - www
+      - wlan
+      - alerts
+      - firmware
+
+## UniFi Sensor ESSID device count (count ap ssid's) https://github.com/RubenDijk/homeassistant/blob/master/README.md
+
+  - platform: my_unifi
+    # name: <whatever you want> (optional, default: "unifi")
+    # region: <site name> (optional, default: "default")
+    username: USERNAME
+    password: !secret or password
+    url: https://xxx.xxx.xxx.xxx:8443
