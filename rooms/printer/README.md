@@ -39,6 +39,8 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.3
+- Add border-radius to bar-cards + CSS style cleanup
 #### 1.0.2
 - Fix for icon position
 #### 1.0.1
