@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on custom button: Sonos
 ## Created by Jeroen Klompen
-## Version: 1.0.3
+## Version: 1.0.4
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
@@ -20,9 +20,9 @@ label: >
   [[[
     if(entity.state == 'playing') {
       if ('media_artist' in entity.attributes) {
-        return (entity.state + ' <br /> ' + entity.attributes.media_artist + ' - ' + entity.attributes.media_title);
+        return (entity.state + ' <br /> ' + entity.attributes.media_artist + ' - ' + entity.attributes.media_title).toLowerCase();
       } else {
-        return (entity.state + ' <br /> ' + entity.attributes.media_title);
+        return (entity.state + ' <br /> ' + entity.attributes.media_title).toLowerCase();
       }
     } else if(entity){
       return (entity.state);

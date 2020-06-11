@@ -43,6 +43,8 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.4
+- Fix: show media and source in lowercase letters
 #### 1.0.3
 - Show artist and title or source on button
 #### 1.0.2
