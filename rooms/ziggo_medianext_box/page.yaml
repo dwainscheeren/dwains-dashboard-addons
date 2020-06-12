@@ -1,0 +1,102 @@
+# dwains_theme
+## Room add-on: Ziggo Medianext box
+## Created by Stephan
+## Version: 1.0.0
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+  #padding: true
+  cards:
+    - type: entities
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+      entities:
+        - entity: {{ (data | fromjson)['entity'] }}
+          group: true
+          name: Medianext Box
+          info: scroll
+          type: 'custom:mini-media-player'
+          hide:
+            volume: false
+            power: true
+            icon: true
+            source: true
+            icon_state: false
+            power_color: false
+          shortcuts:
+            columns: 3
+            align_text: center
+            buttons:
+              - icon: mdi:power
+                name: Medianext Box
+                type: service
+                id: media_player.toggle
+                data:
+                  entity_id: media_player.stb_arris_uhd
+              - icon: mdi:volume-medium
+                type: service
+                id: media_player.volume_down
+                data:
+                  entity_id: media_player.woonkamer
+              - icon: mdi:volume-high
+                type: service
+                id: media_player.volume_up
+                data:
+                  entity_id: media_player.woonkamer
+              - name: NPO1
+                type: source
+                id: NPO 1 HD
+              - name: NPO2
+                type: source
+                id: NPO 2 HD
+              - name: NPO3
+                type: source
+                id: NPO 3 HD
+              - name: RTL 4
+                type: source
+                id: RTL 4 HD
+              - name: RTL 5
+                type: source
+                id: RTL 5 HD
+              - name: SBS 6
+                type: source
+                id: SBS6 HD
+              - name: RTL 7
+                type: source
+                id: RTL 7 HD
+              - name: Veronica
+                type: source
+                id: Veronica HD / Disney XD
+              - name: Net 5
+                type: source
+                id: Net5 HD
+              - name: RTL 8
+                type: source
+                id: RTL 8 HD
+              - name: Fox
+                type: source
+                id: FOX HD
+              - name: RTL Z
+                type: source
+                id: RTL Z HD
+              - name: TLC
+                type: source
+                id: TLC HD
+              - name: Ziggo Sport Select
+                type: source
+                id: Ziggo Sport Select
+              - name: Ziggo Sport Racing
+                type: source
+                id: Ziggo Sport Racing
+
+### TV-GIDS ###
+    - type: iframe
+      url: https://www.tvgids24.nl/gadget
+      aspect_ratio: 60%
