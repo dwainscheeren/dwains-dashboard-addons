@@ -1,6 +1,6 @@
 # dwains_theme
-## Room add-on custom button: Medianext box
-## Version: 1.0.2
+## Room add-on custom button: Ziggo Medianext box
+## Version: 1.0.0
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
