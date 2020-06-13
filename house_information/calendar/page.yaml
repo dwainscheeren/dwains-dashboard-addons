@@ -1,12 +1,12 @@
 # dwains_theme
-#House calendar
+## Created by Jeroen Klompen
+## House-information add-on: Calendar
+## Version: 1.0.0
+
 {% if _d_t_config.house_information["calendar"] %}
-  #heading
 - !include
   - ../../../views/partials/heading.yaml
   - title: {{ _d_t_trans.house_information.house_calendar }}
-#Outside dwains flexbox card because of a bug
-#Calendar card
 - type: custom:atomic-calendar-revive
   style: |
     ha-card {
