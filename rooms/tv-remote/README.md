@@ -23,7 +23,7 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
         path: 'dwains-theme/addons/rooms/<your room>/tv-remote/page.yaml'
         button_path: 'dwains-theme/addons/<your room>/tv-remote/button.yaml'
         data:
-          entity: <your_tv_or_medibox_entity>
+          entity: <your_tv_or_mediabox_entity>
   ```
 ### Setup mini mediaplayer
 In page.yaml you can change the names/icons/entities to everything you want, like a tv or mediabox. For the volume options i have used my sonos device to control the volume.
