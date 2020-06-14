@@ -1,0 +1,20 @@
+# Vacuum Template Sensors
+sensor:
+  - platform: template
+    sensors:
+      vacuum_main_brush_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.main_brush_left }}'
+        friendly_name: 'Roborock Main Brush Left'
+        unit_of_measurement: 'hrs'
+      vacuum_side_brush_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.side_brush_left }}'
+        friendly_name: 'Roborock Side Brush Left'
+        unit_of_measurement: 'hrs'
+      vacuum_filter_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.filter_left }}'
+        friendly_name: 'Roborock Filter Left'
+        unit_of_measurement: 'hrs'
+      vacuum_sensor_dirty_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.sensor_dirty_left }}'
+        friendly_name: 'Roborock Sensor Dirty Left'
+        unit_of_measurement: 'hrs'
