@@ -1,4 +1,4 @@
-# TV-remote include Dutch tv-Guide Add-on (rooms)
+# TV-remote including Dutch tv-Guide Add-on (rooms)
 ##### Created by Stephan
 
 ### Installation
