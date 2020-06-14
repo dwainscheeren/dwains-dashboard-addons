@@ -1,12 +1,11 @@
 # dwains_theme
 ## Created by Jeroen Klompen
 ## House-information add-on: Calendar
-## Version: 1.0.0
+## Version: 1.0.1
 
-{% if _d_t_config.house_information["calendar"] %}
 - !include
   - ../../../views/partials/heading.yaml
-  - title: {{ _d_t_trans.house_information.house_calendar }}
+  - title: {{ name }}
 - type: custom:atomic-calendar-revive
   style: |
     ha-card {
@@ -21,7 +20,4 @@
   dayWrapperLineColor: 'var(--dwains-theme-grey)'
   timeColor: 'var(--dwains-theme-grey)'
   entities:
-    {% for calendar in _d_t_config.house_information["calendar"] %}
-    - {{ calendar }}
-    {% endfor %}
-{% endif %}
+    {{ (data | fromjson)['calendars'] }}

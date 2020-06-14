@@ -20,11 +20,14 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 ```yaml
 # Example house_information.yaml entry
-  calendar:
-    - calendar.jeroen
-    - calendar.commonly
   addons:
-    - path: 'dwains-theme/addons/house_information/calendar/page.yaml'
+    - name: Calendar
+      icon: mdi:calendar
+      path: 'dwains-theme/addons/house_information/calendar/page.yaml'
+      data:
+        calendars:
+          - calendar.birthdays
+          - calendar.trash_bin
 ```
 
 ### Screenshots
@@ -36,6 +39,9 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.1
+- Some changes regarding the addon data and the usage instructions (By @dwainscheeren).
+
 #### 1.0.0
 - First release
 
