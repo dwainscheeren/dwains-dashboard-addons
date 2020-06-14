@@ -1,11 +1,13 @@
 # dwains_theme
-# Custom button for room addon: printer
+## Room add-on custom button: Vacuum
+## Created by Jeroen Klompen
+## Version: 1.0.1
 
 type: custom:button-card
-entity: {{ (data | fromjson)['entity'] }}
+entity: {{ (data | fromjson)['vacuum'] }}
 template: rooms_child
 name: {{ name }}
-icon: {{ icon|default('fas:puzzle-piece') }}
+icon: {{ icon|default('mdi:puzzle') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
