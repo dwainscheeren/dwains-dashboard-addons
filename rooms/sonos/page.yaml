@@ -1,11 +1,10 @@
 # dwains_theme
 ## Room add-on: Sonos
 ## Created by Jeroen Klompen
-## Version: 1.0.4
+## Version: 1.0.5
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
-  #padding: true
   cards:
     - type: entities
       style: |
@@ -18,9 +17,9 @@
           --paper-slider-container-color: var(--dwains-theme-grey);
         }
       entities:
-        - entity: {{ (data | fromjson)['entity'] }}
+        - entity: {{ (data | fromjson)['speakers'][0].entity }}
           group: true
-          name: Sonos
+          name: {{ name }}
           info: scroll
           type: 'custom:mini-media-player'
           hide:
@@ -30,42 +29,29 @@
             icon_state: false
             power_color: false
           speaker_group:
-            platform: sonos
+            platform: {{ (data | fromjson)['platform']|default('sonos') }}
             show_group_count: true
             entities:
-              - entity_id: media_player.sonos_livingroom
-                name: 'Living Room'
-              - entity_id: media_player.sonos_kitchen
-                name: 'Kitchen'
-              - entity_id: media_player.sonos_diningroom
-                name: 'Diningroom'
-              - entity_id: media_player.sonos_garden
-                name: 'Garden'
+            {% for speakers in (data | fromjson)['speakers'] %}
+              - entity_id: {{ speakers.entity }}
+              {% if speakers.name %}
+                name: {{ speakers.name }}
+              {% endif %}
+            {% endfor %}
           shortcuts:
             columns: 3
             hide_when_off: true
             label: Select Input
             align_text: center
             buttons:
-              - name: Radio 538
-                type: source
-                id: Radio 538
-              - name: 100% NL
-                type: source
-                id: 100% NL
-              - name: Qmusic
-                type: source
-                id: Qmusic
-              - name: SLAM!
-                type: source
-                id: SLAM!
-              - name: L1 Radio
-                type: source
-                id: L1 Radio
-              - name: Omroep Brabant
-                type: source
-                id: Omroep Brabant
-
+            {% for buttons in (data | fromjson)['buttons'] %}
+              - name: {{ buttons.name }}
+              {% if buttons.icon %}
+                icon: {{ buttons.icon }}
+              {% endif %}
+                type: {{ buttons.type }}
+                id: {{ buttons.id }}
+            {% endfor %}
     - type: entities
       style: |
         ha-card {
@@ -77,19 +63,11 @@
           --paper-slider-container-color: var(--dwains-theme-grey);
         }
       entities:
+      {% for speakers in (data | fromjson)['speakers'] %}
         - type: 'custom:slider-entity-row'
-          entity: media_player.sonos_livingroom
+          entity: {{ speakers.entity }}
           icon: 'mdi:speaker'
-          name: 'Livingroom'
-        - type: 'custom:slider-entity-row'
-          entity: media_player.sonos_kitchen
-          icon: 'mdi:speaker'
-          name: 'Kitchen'
-        - type: 'custom:slider-entity-row'
-          entity: media_player.sonos_diningroom
-          icon: 'mdi:speaker'
-          name: 'Diningroom'
-        - type: 'custom:slider-entity-row'
-          entity: media_player.sonos_garden
-          icon: 'mdi:speaker'
-          name: 'Garden'
+        {% if speakers.name %}
+          name: {{ speakers.name }}
+        {% endif %}
+      {% endfor %}
