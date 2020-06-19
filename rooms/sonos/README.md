@@ -31,7 +31,30 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
         path: 'dwains-theme/addons/rooms/livingroom/sonos/page.yaml'
         button_path: 'dwains-theme/addons/rooms/livingroom/sonos/button.yaml'
         data:
-          entity: media_player.sonos_livingroom
+          platform: sonos
+          speakers:
+            - entity: media_player.sonos_livingroom
+              name: Living Room
+            - entity: media_player.sonos_kitchen
+              name: Kitchen
+            - entity: media_player.sonos_diningroom
+              name: Diningroom
+            - entity: media_player.sonos_garden
+              name: Garden
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: TV
+              icon: mdi:television
+              type: source
+              id: TV
 ```
 
 ### Screenshots
@@ -43,6 +66,9 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.5
+- **BREAKING CHANGE**: ***The addon is now more dynamic than ever!*** You can add all speakers and buttons via the `rooms.yaml` file. *Make sure you overwrite both the button.yaml and the page.yaml file when you update to the newest version of the addon*
+- Add native HA translations to the button
 #### 1.0.4
 - Fix: show media and source in lowercase letters
 #### 1.0.3
