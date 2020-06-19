@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on custom button: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.0.1
+## Version: 1.0.2
 
 type: custom:button-card
 entity: {{ (data | fromjson)['vacuum'] }}
@@ -13,8 +13,22 @@ tap_action:
   navigation_path: {{ navigation_path }}
 label: >
   [[[
-    if(entity){
-      return entity.state;
+    if(entity.state == 'cleaning') {
+      return hass.localize('component.vacuum.state._.cleaning');
+    } else if (entity.state == 'docked') {
+      return hass.localize('component.vacuum.state._.docked');
+    } else if (entity.state == 'error') {
+      return hass.localize('component.vacuum.state._.error');
+    } else if (entity.state == 'idle') {
+      return hass.localize('component.vacuum.state._.idle');
+    } else if (entity.state == 'off') {
+      return hass.localize('component.vacuum.state._.off');
+    } else if (entity.state == 'on') {
+      return hass.localize('component.vacuum.state._.on');
+    } else if (entity.state == 'paused') {
+      return hass.localize('component.vacuum.state._.paused');
+    } else if (entity.state == 'returning') {
+      return hass.localize('component.vacuum.state._.returning');
     } else {
       return 'Entity error!';
     }

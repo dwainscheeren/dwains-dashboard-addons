@@ -58,6 +58,8 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
 
 
 ### Changelog
+#### 1.0.2
+- Add native HA translations to the button
 #### 1.0.1
 - You can now define your map, rooms and sensors in the `rooms.yaml` file
 #### 1.0.0
