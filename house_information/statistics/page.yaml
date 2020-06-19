@@ -6,7 +6,6 @@
 - !include
   - ../../../views/partials/heading.yaml
   - title: {{ name }}
-
 - type: custom:bar-card
   style: |
     ha-card {
