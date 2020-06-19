@@ -11,7 +11,7 @@
 
 
 ### Usage
-To use this add-on in your Dwains Theme, add the following to your `custom_resources.yaml` and `rooms.yaml` file:
+To use this add-on in your Dwains Theme, add the following to your `custom_resources.yaml` and `house_information.yaml` file:
 ```yaml
 # Example custom_resources.yaml entry
 - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
