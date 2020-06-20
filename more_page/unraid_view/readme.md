@@ -33,6 +33,21 @@
 
  Dwains-Theme UnRAID add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/unraid_addon/unraid_monitoring.yaml)
 
+## Version 0.3
+ - Added new UnRAID API Beta content
+   - Power Off Server
+   - Reboot Server
+   - Move Data (Mover)
+   - Parity Check
+ - fixed `custom:dwains-flexbox-card` line spacing issue
+ - Moved disks location
+ - Added Unassigned Drives disk storage
+ - Reshuffled layout
+ - Updated all the plugs and fixed issues
+ - Works with both light and dark theme
+ - Works on Mobile
+ 
+Known bug with version. Will look at this in due course. 
 
  ```yaml
     addons:
