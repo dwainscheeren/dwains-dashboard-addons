@@ -31,10 +31,11 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
         path: 'dwains-theme/addons/rooms/livingroom/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/livingroom/plant/button.yaml'
         data:
-          plant: plant.olive_tree
-          plant_species: olea europaea
-          plant2: plant.olive_tree2
-          plant2_species: olea europaea
+          plants:
+            - entity: plant.olijfboom
+              species: olea europaea
+            - entity: plant.drakenbloed
+              species: dracaena marginata
 ```
 
 ### Screenshots
@@ -46,6 +47,9 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.1.1
+- **BREAKING CHANGE**: ***The addon is now more dynamic than ever!*** You can add all plants via the `rooms.yaml` file. *Make sure you overwrite both the button.yaml and the page.yaml file when you update to the newest version of the addon*
+- Add native HA translations to the button
 #### 1.1.0
 - **BREAKING CHANGE**: It's now possible to define your sensors in the `rooms.yaml` file so you don't have to edit the `page.yaml` file
 - Tablet view

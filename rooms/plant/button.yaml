@@ -1,20 +1,22 @@
 # dwains_theme
 ## Room add-on custom button: Plant
 ## Created by Jeroen Klompen
-## Version: 1.1.0
+## Version: 1.1.1
 
 type: custom:button-card
-entity: {{ (data | fromjson)['plant'] }}
+entity: {{ (data | fromjson)['plants'][0].entity }}
 template: rooms_child
 name: {{ name }}
-icon: {{ icon|default('fas:puzzle-piece') }}
+icon: {{ icon|default('mdi:leaf') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
 label: >
   [[[
-    if(entity){
-      return entity.state;
+    if (entity.state == 'ok') {
+      return hass.localize('component.plant.state._.ok');
+    } else if (entity.state == 'problem') {
+      return hass.localize('component.plant.state._.problem');
     } else {
       return 'Entity error!';
     }
