@@ -1,13 +1,13 @@
 # dwains_theme
 ## Custom button for room add-on: Printer
 ## Created by Jeroen Klompen
-## Version: 1.0.3
+## Version: 1.0.4
 
 type: custom:button-card
-entity: {{ (data | fromjson)['entity'] }}
+entity: {{ (data | fromjson)['printer'][0].entity }}
 template: rooms_child
 name: {{ name }}
-icon: {{ icon|default('fas:puzzle-piece') }}
+icon: {{ icon|default('mdi:printer') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
