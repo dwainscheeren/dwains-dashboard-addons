@@ -4,13 +4,11 @@
 
 ![pihole-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/pi_hole/desktop_1.png)
 
-## Version 0.1
- - Initial view works for both Mobile and Desktop (Responsive)
- - Works with both light and dark themes
- - Uses Home Assistant Pi-Hole Integration
+## Dwains Theme Addon:
 
+Dwains Theme `Pi-Hole` add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/adblocker.yaml)
 
-### Installation:
+### Dwains Theme Configuration:
 
  ```yaml
     addons:
@@ -18,6 +16,13 @@
         icon: mdi:pi-hole
         path: 'dwains-theme/addons/more_page/adblocker.yaml'
 ```
+
+## Release Notes:
+
+### Version 0.1
+ - Initial view works for both Mobile and Desktop (Responsive)
+ - Works with both light and dark themes
+ - Uses Home Assistant Pi-Hole Integration
 
 
 ### Donations
