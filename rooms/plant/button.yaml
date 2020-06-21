@@ -13,6 +13,20 @@ tap_action:
   navigation_path: {{ navigation_path }}
 label: >
   [[[
+  {% if (data | fromjson)['plants']|length > 1 %}
+    var problemPlants = 0;
+
+    {% for plants in (data | fromjson)['plants'] %}
+      var state = states['{{plants.entity}}'].state
+      if (state == 'problem')
+        problemPlants++;
+    {% endfor %}
+    if(problemPlants > 0){
+      return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
+    } else {
+      return '&nbsp;';
+    }
+  {% else %}
     if (entity.state == 'ok') {
       return hass.localize('component.plant.state._.ok');
     } else if (entity.state == 'problem') {
@@ -20,4 +34,5 @@ label: >
     } else {
       return 'Entity error!';
     }
+  {% endif %}
   ]]]
