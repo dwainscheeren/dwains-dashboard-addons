@@ -3,7 +3,29 @@
 
 ![ha-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/ha-monitor/desktop_1.png)
 
-## Version 0.1 - Initial release
+## Dwains Theme Addon:
+
+Dwains-Theme `Home Assistant Monitoring` Addon can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/ha_monitoring.yaml)
+     
+Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md)
+
+### Dwains Theme Configuration:
+
+```YAML
+    addons:
+      - name: Home Assistant
+        icon: mdi:home-assistant
+        path: 'dwains-theme/addons/more_page/ha_monitoring.yaml'
+```
+
+### Credits
+ - [SilvrrGIT](https://github.com/SilvrrGIT/HomeAssistant) Excellent post on the community [forum](https://community.home-assistant.io/t/get-notified-of-available-hassio-addon-updates/176626) outlining how to create rest senosr to start/restart Home Assistant Core Addons, Create the switches used in my HKI System view and the post also describes how write automations for addon update available notifications.
+ - [Avi](https://github.com/abeksis/My-HomeAssistant-Config) Thanks for creating the awesome graphics used in v0.1 containers swipe-card and also providing code snips. 
+ - [CentralCommand](https://community.home-assistant.io/t/update-notifications-core-hacs-supervisor-and-addons/182295)
+
+## Release Notes:
+
+### Version 0.1 - Initial release
 
  - Reload, snapshot, restart, reboot buttons
  - System temperatures
@@ -20,20 +42,20 @@
     - Supervisor update notifications
     - Add-on update notifications
 
-## Version 0.2 - Code Cleanup
+### Version 0.2 - Code Cleanup
 
  - Removed CSS heights and fixed them with Graph `height:`
  - Added more documentation for card
  - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) converted all the HKI container images to Dwians-Theme variants. 
 
-## Version 0.3
+### Version 0.3
  - Added update sensors
     - package + audio, dns, cli and core
  - Added configuration guide for Configuration [Checker](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#install-check-home-assistant-configuration)
  - Added configuration guide for HTML5 [notifications](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#setting-up-the-html5-notify-platform)
  - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) added template.dwains.psd for you to make your own container images
 
-## Version 0.4
+### Version 0.4
  - Removed picture entity card used for version and containers due to positioning issue on mobile devices
    - Added Button-Card for `containers` and `version`
  - Removed Swipe card for Home Assistant addons due issue with light theme
@@ -44,25 +66,8 @@
 ## Version 0.5
  - Updated `title` to `name` for bar-card thanks @papy_329700
 
-### Home Assistant Core Addon Support
 
-Dwains-Theme Addon can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/ha_view/ha_monitoring.yaml)
-     
-Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md)
-
-```YAML
-    addons:
-      - name: Home Assistant
-        icon: mdi:home-assistant
-        path: 'dwains-theme/addons/more_page/ha_view/ha_monitoring.yaml'
-```
-
- #### Credits
- - [SilvrrGIT](https://github.com/SilvrrGIT/HomeAssistant) Excellent post on the community [forum](https://community.home-assistant.io/t/get-notified-of-available-hassio-addon-updates/176626) outlining how to create rest senosr to start/restart Home Assistant Core Addons, Create the switches used in my HKI System view and the post also describes how write automations for addon update available notifications.
- - [Avi](https://github.com/abeksis/My-HomeAssistant-Config) Thanks for creating the awesome graphics used in v0.1 containers swipe-card and also providing code snips. 
- - [CentralCommand](https://community.home-assistant.io/t/update-notifications-core-hacs-supervisor-and-addons/182295)
- 
- ### Donations
+### Donations
 
 If you like my work please feel free to buy me a coffee
 

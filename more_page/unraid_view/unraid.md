@@ -1,7 +1,20 @@
 # UnRAID Monitoring Addon for Dwains-Theme
-#### Version 0.3
+#### Version 0.4
 
 ![unraid-monitor](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/images/dwains-theme/addons/unraid/desktop_1.png)
+
+## Dwains Theme Addon:
+
+Dwains-Theme `UnRAID` add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/unraid_monitoring.yaml)
+
+### Dwains Theme Configuration:
+
+ ```yaml
+    addons:
+    - name: Unraid Monitoring
+        icon: mdi:server-network
+        path: 'dwains-theme/addons/more_page/unraid_monitoring.yaml'
+```
 
 ### UnRAID Data Monitoring Feeds
 
@@ -12,7 +25,18 @@
 | Total arrayDiskSpace  | Disk Space      | View CPU usage                 |
 | Start/Stop Containers | CPU Load        | View RAM usage                 |
 
-## Version 0.1
+
+ ### Credits
+ - [Dwain](https://github.com/dwainscheeren/lovelace-dwains-theme) Thanks for your assistance and ideas on this :)
+ - [Stephan](https://github.com/Stephan296) Thanks for creating the version sensor curl request and exploring the correct configuration for the UnRAID-API.
+ - [ElectricBrainUK](https://github.com/ElectricBrainUK/UnraidAPI) Thanks for creating this API for us to use and making this dashboard possible
+ - [123](https://community.home-assistant.io/u/123/summary) Thanks for solving the problem with parenthesis
+ - [Avi](https://github.com/abeksis/My-HomeAssistant-Config) Thanks for creating the awesome graphics used in v0.1 containers swipe-card and also providing code snips. 
+
+
+## Release Notes:
+
+### Version 0.1
  - Initial view works for both Mobile and Desktop (Responsive)
  - Glances container support
  - Glances Home Assistant Integration
@@ -21,7 +45,7 @@
  - UnRAID-API added
  - Added SNMP [config](https://github.com/noodlemctwoodle/homeassistant/blob/44ac457117f173fa1bf1e47ce832566b36ba5ddb/packages/ha-core/areas/cabinet/devices/unraid/unraid_monitoring.yaml#L34)
 
-## Version 0.2
+### Version 0.2
  - Updated `title` to `name` for bar-card thanks @papy_329700
  - fixed `custom:dwains-flexbox-card` line spacing issue
  - Removed picture entity card used for version and containers due to positioning issue on mobile devices
@@ -31,9 +55,7 @@
  - Fixed spacing issues
  - Adjusted font sizes
 
- Dwains-Theme UnRAID add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/unraid_addon/unraid_monitoring.yaml)
-
-## Version 0.3
+### Version 0.3
  - Added new UnRAID API Beta content
    - Power Off Server
    - Reboot Server
@@ -47,21 +69,10 @@
  - Works with both light and dark theme
  - Works on Mobile
  
-Known bug with version. Will look at this in due course. 
-
- ```yaml
-    addons:
-    - name: Unraid Monitoring
-        icon: mdi:server-network
-        path: 'dwains-theme/addons/more_page/unraid_addon/unraid_monitoring.yaml'
-```
-
- #### Credits
- - [Dwain](https://github.com/dwainscheeren/lovelace-dwains-theme) Thanks for your assistance and ideas on this :)
- - [Stephan](https://github.com/Stephan296) Thanks for creating the version sensor curl request and exploring the correct configuration for the UnRAID-API.
- - [ElectricBrainUK](https://github.com/ElectricBrainUK/UnraidAPI) Thanks for creating this API for us to use and making this dashboard possible
- - [123](https://community.home-assistant.io/u/123/summary) Thanks for solving the problem with parenthesis
- - [Avi](https://github.com/abeksis/My-HomeAssistant-Config) Thanks for creating the awesome graphics used in v0.1 containers swipe-card and also providing code snips. 
+### Version 0.4
+  - Added disk temperatures (SNMP)
+  - Removed Download/Upload LAN Traffic (coming soon in new Network View)
+  - Removed Swipe card
 
 
 ### Donations

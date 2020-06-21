@@ -793,107 +793,54 @@
 
         - type: horizontal-stack
           cards:
-            - type: custom:swipe-card
-              parameters:
-                spaceBetween: 8
-                touchEventsTarget: 'container'
-                pagination:
-                  type: 'bullets'
-                  dynamicBullets: true
 
-              cards:
-                - type: horizontal-stack
-                  cards: 
-
-                    # LAN Download
-                    - type: custom:mini-graph-card
-                      item_classes: 'col-lg-6 col-md-6'
-                      style: |
-                        ha-card {
-                          background: var(--paper-card-background-color);
-                          border-radius: 10px;
-                          box-shadow: 10px;
-                          font-weight: bold;
-                          opacity: 0.8;
-                        }
-                      entities:
-                        - entity: sensor.unraid_lan0_download_vlan10
-                          name: LAN 0
-                          color: '#f205b3' # Pink
-                        - entity: sensor.unraid_lan1_download_lagg0
-                          name: LAN 1
-                          color: '#f20505' # Red
-                        - entity: sensor.unraid_lan2_download_lagg0
-                          name: LAN 2
-                          color: '#05f248' # Green
-                        - entity: sensor.unraid_lan3_download_lagg0
-                          name: LAN 3
-                          color: '#e9fa02' # Yellow
-                        - entity: sensor.unraid_lan4_download_lagg0
-                          name: LAN 4
-                          color: '#0293fa' # Sky Blue
-                      name: UnRAID LAN Traffic (Download)
-                      icon: mdi:download-network
-                      hours_to_show: 1
-                      points_per_hour: 60
-                      update_interval: 10
-                      aggregate_func: avg
-                      line_width: 1
-                      smoothing: false
-                      font_size: 65
-                      font_size_header: 9
-                      show:
-                        graph: line
-                        average: true
-                        extrema: true
-                      tap_action: none
-
-                - type: vertical-stack
-                  cards:
-
-                    # LAN Upload
-                    - type: custom:mini-graph-card
-                      item_classes: 'col-lg-6 col-md-6'
-                      style: |
-                        ha-card {
-                          background: var(--paper-card-background-color);
-                          border-radius: 10px;
-                          box-shadow: 10px;
-                          font-weight: bold;
-                          opacity: 0.8;
-                        }
-                      entities:
-                        - entity: sensor.unraid_lan0_upload_vlan10
-                          name: LAN 0
-                          color: '#f205b3' # Pink
-                        - entity: sensor.unraid_lan1_upload_lagg0
-                          name: LAN 1
-                          color: '#f20505' # Red
-                        - entity: sensor.unraid_lan2_upload_lagg0
-                          name: LAN 2
-                          color: '#05f248' # Green
-                        - entity: sensor.unraid_lan3_upload_lagg0
-                          name: LAN 3
-                          color: '#e9fa02' # Yellow
-                        - entity: sensor.unraid_lan4_upload_lagg0
-                          name: LAN 4
-                          color: '#0293fa' # Sky Blue
-                      name: UnRAID LAN Traffic (Upload)
-                      icon: mdi:upload-network
-                      hours_to_show: 1
-                      points_per_hour: 60
-                      update_interval: 10
-                      aggregate_func: avg
-                      line_width: 1
-                      smoothing: false
-                      font_size: 65
-                      font_size_header: 9
-                      show:
-                        graph: line
-                        average: true
-                        extrema: true
-                      tap_action: none
-
+            # Disk Temps
+            - type: custom:mini-graph-card
+              item_classes: 'col-lg-6 col-md-6'
+              style: |
+                ha-card {
+                  background: var(--paper-card-background-color);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+              entities:
+                - entity: sensor.unraid_parity_temperature
+                  name: Parity
+                  color: '#f205b3' # Pink
+                - entity: sensor.unraid_disk1_temperature
+                  name: Disk 1
+                  color: '#f20505' # Red
+                - entity: sensor.unraid_disk2_temperature
+                  name: Disk 2
+                  color: '#05f248' # Green
+                - entity: sensor.unraid_disk3_temperature
+                  name: Disk 3
+                  color: '#e9fa02' # Yellow
+                - entity: sensor.unraid_disk4_temperature
+                  name: Disk 4
+                  color: '#0293fa' # Sky Blue
+                - entity: sensor.unraid_disk5_temperature
+                  name: Disk 5
+                  color: '#e3830e' # Orange
+                - entity: sensor.unraid_disk6_temperature
+                  name: Disk 6
+                  color: '#750ee3' # Purple
+              name: UnRAID Disk Temps
+              icon: mdi:thermometer-lines
+              hours_to_show: 7
+              points_per_hour: 60
+              update_interval: 10
+              line_width: 1
+              smoothing: true
+              font_size: 65
+              font_size_header: 9
+              show:
+                graph: line
+                average: true
+                extrema: true
+              tap_action: none
 
 - type: vertical-stack
   cards:
