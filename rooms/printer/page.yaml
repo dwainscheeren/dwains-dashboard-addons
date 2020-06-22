@@ -13,12 +13,7 @@
           background-color: var(--dwains-theme-primary);
         }
       entities:
-      {% for printer in (data | fromjson)['printer'] %}
-        - entity: {{ printer.entity }}
-        {% if printer.name %}
-          name: {{ printer.name }}
-        {% endif %}
-      {% endfor %}
+        {{ (data | fromjson)['printer'] }}
 
     - type: 'custom:bar-card'
       style: |
