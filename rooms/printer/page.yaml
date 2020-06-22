@@ -1,10 +1,10 @@
+# dwains_theme
 ## Created by Jeroen Klompen
 ## Room add-on: Printer
-## Version: 1.0.3
+## Version: 1.0.4
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
-  #padding: true
   cards:
     - type: entities
       style: |
@@ -13,14 +13,7 @@
           background-color: var(--dwains-theme-primary);
         }
       entities:
-        - entity: sensor.hp_m281fdw_status
-          name: Status
-        - entity: sensor.hp_m281fdw_printer
-          icon: mdi:printer
-          name: "Totaal aantal pagina's afgedrukt"
-        - entity: sensor.hp_m281fdw_scanner
-          icon: mdi:printer
-          name: "Totaal aantal pagina's gescand"
+        {{ (data | fromjson)['printer'] }}
 
     - type: 'custom:bar-card'
       style: |
@@ -56,19 +49,11 @@
       unit_of_measurement: '%'
       width: 100%
       entities:
-        - entity: sensor.hp_m281fdw_toner_black
-          name: Zwart
-          color: Black
+      {% for cardridges in (data | fromjson)['cardridges'] %}
+        - entity: {{ cardridges.entity }}
+        {% if cardridges.name %}
+          name: {{ cardridges.name }}
+        {% endif %}
+          color: {{ cardridges.color }}
           icon: mdi:water
-        - entity: sensor.hp_m281fdw_toner_cyan
-          name: Cyaan
-          color: MediumTurquoise
-          icon: mdi:water
-        - entity: sensor.hp_m281fdw_toner_magenta
-          name: Magenta
-          color: MediumOrchid
-          icon: mdi:water
-        - entity: sensor.hp_m281fdw_toner_yellow
-          name: Geel
-          color: Gold
-          icon: mdi:water
+      {% endfor %}

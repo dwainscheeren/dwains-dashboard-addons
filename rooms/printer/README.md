@@ -23,11 +23,30 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
   - name: Office
     addons:
       - name: Printer
-        icon: fas:print
+        icon: mdi:printer
         path: 'dwains-theme/addons/rooms/office/printer/page.yaml'
         button_path: 'dwains-theme/addons/rooms/office/printer/button.yaml'
         data:
-          entity: sensor.hp_printer_status
+          printer:
+            - entity: sensor.hp_m281fdw_status
+              name: State
+            - entity: sensor.hp_m281fdw_printer
+              name: Total printed pages
+            - entity: sensor.hp_m281fdw_scanner
+              name: Total scanned pages
+          cardridges:
+            - entity: sensor.hp_m281fdw_toner_black
+              name: Zwart
+              color: Black
+            - entity: sensor.hp_m281fdw_toner_cyan
+              name: Cyaan
+              color: MediumTurquoise
+            - entity: sensor.hp_m281fdw_toner_magenta
+              name: Magenta
+              color: MediumOrchid
+            - entity: sensor.hp_m281fdw_toner_yellow
+              name: Geel
+              color: Gold
 ```
 
 ### Screenshots
@@ -39,6 +58,8 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 
 ### Changelog
+#### 1.0.4
+- **BREAKING CHANGE**: ***The addon is now more dynamic than ever!*** You can add all your printer entites and cardridges via the `rooms.yaml` file. *Make sure you overwrite both the button.yaml and the page.yaml file when you update to the newest version of the addon*
 #### 1.0.3
 - Add border-radius to bar-cards + CSS style cleanup
 #### 1.0.2
