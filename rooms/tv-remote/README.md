@@ -21,7 +21,7 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
     addons:
       - name: Ziggo Medianext box
         path: 'dwains-theme/addons/rooms/<your room>/tv-remote/page.yaml'
-        button_path: 'dwains-theme/addons/<your room>/tv-remote/button.yaml'
+        button_path: 'dwains-theme/addons/rooms/<your room>/tv-remote/button.yaml'
         data:
           entity: <your_tv_or_mediabox_entity>
   ```
@@ -30,7 +30,7 @@ In page.yaml you can change the names/icons/entities to everything you want, lik
 
 ### Setup Dutch Tv-Guide:
 When you scroll down to the bottom of the guide page you can click at "instellingen". At the next screen you can select the channels which you want to see in the tv-guide.
-  
+
 ### Changelog
 #### 1.0.1
 - Changed to tv-remote
