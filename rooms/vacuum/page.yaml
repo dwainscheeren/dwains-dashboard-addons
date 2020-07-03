@@ -30,7 +30,7 @@
       cards:
         - !include
           - ../../../../views/partials/heading.yaml
-          - title: Presets
+          - title: Clean Room...
 
       {% for rooms in (data | fromjson)['rooms'] %}
         - type: custom:button-card
@@ -74,5 +74,26 @@
             - entity: {{ sensors.sensor }}
               name: {{ sensors.name }}
               icon: {{ sensors.icon }}
+          {% endfor %}
+  {% endif %}
+  
+  {% if (data | fromjson)['control'] %}
+        - !include
+          - ../../../../views/partials/heading.yaml
+          - title: Control
+        - type: glance
+          item_classes: 'col-xs-12'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+          {% for control in (data | fromjson)['control'] %}
+            - entity: {{ control.function }}
+              name: {{ control.name }}
+              icon: {{ control.icon }}
+              tap_action: 
+                action: toggle
           {% endfor %}
   {% endif %}
