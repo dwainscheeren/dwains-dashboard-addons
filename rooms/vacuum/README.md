@@ -36,7 +36,7 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
               icon: fal:warehouse
           sensors:
             - name: Main brush
-              sensor: sensor.vacuum_main_brush_left
+              sensor: sensor.vacuum_main_brush_left 
               icon: mdi:broom
             - name: Side brush
               sensor: sensor.vacuum_side_brush_left
@@ -47,6 +47,45 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
             - name: Sensor
               sensor: sensor.vacuum_sensor_dirty_left
               icon: mdi:air-filter
+          control:
+            - name: Start
+              function: script.vacuum_start # This is the script you call, which has to be created in scripts.yaml
+              icon: mdi:play
+            - name: Pause
+              icon: mdi:pause
+              function: script.vacuum_pause # This is the script you call, which has to be created in scripts.yaml
+            - name: Return
+              icon: mdi:ev-station
+              function: script.vacuum_return_to_base # This is the script you call, which has to be created in scripts.yaml
+            - name: Locate
+              icon: mdi:map-marker-circle
+              function: script.vacuum_locate # This is the script you call, which has to be created in scripts.yaml
+```
+Create scripts, which will execute the control commands:
+Add this in your scripts.yaml:
+
+```
+vacuum_start:
+  sequence:
+    service: vacuum.start
+    data:
+      entity_id: vacuum.rockrobo
+vacuum_pause:
+  sequence:
+    service: vacuum.pause
+    data:
+      entity_id: vacuum.rockrobo
+vacuum_return_to_base:
+  sequence:
+    service: vacuum.return_to_base
+    data:
+      entity_id: vacuum.rockrobo
+vacuum_locate:
+  sequence:
+  - data:
+      entity_id: vacuum.rockrobo
+    service: vacuum.locate
+  alias: Vacuum Location
 ```
 
 ### Screenshots
