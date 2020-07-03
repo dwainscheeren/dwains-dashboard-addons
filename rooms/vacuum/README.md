@@ -25,28 +25,43 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
           map: camera.rockrobo_map
           rooms:
             - room: Living Room
-              icon: fal:couch
+              icon: mdi:television-classic
             - room: Kitchen
-              icon: fal:refrigerator
+              icon: mdi:stove
             - room: Dining Room
-              icon: fal:coffee
+              icon: mdi:silverware-fork-knife
             - room: Halway
-              icon: fal:key-skeleton
-            - room: Garage
-              icon: fal:warehouse
+              icon: mdi:door
+            - room: Bathroom Downstairs
+              icon: mdi:shower-head
+            - room: Chill Out Area
+              icon: mdi:sofa
           sensors:
             - name: Main brush
-              sensor: sensor.vacuum_main_brush_left
+              sensor: sensor.xiaomi_vacuum_main_brush_left
               icon: mdi:broom
             - name: Side brush
-              sensor: sensor.vacuum_side_brush_left
+              sensor: sensor.xiaomi_vacuum_side_brush_left
               icon: mdi:broom
             - name: Filter
-              sensor: sensor.vacuum_filter_left
+              sensor: sensor.xiaomi_vacuum_filter_left
               icon: mdi:broom
             - name: Sensor
-              sensor: sensor.vacuum_sensor_dirty_left
+              sensor: sensor.xiaomi_vacuum_sensor_dirty_left
               icon: mdi:air-filter
+          control:
+            - name: Start
+              function: script.vacuum_start
+              icon: mdi:play
+            - name: Pause
+              icon: mdi:pause
+              function: script.vacuum_pause
+            - name: Return
+              icon: mdi:ev-station
+              function: script.vacuum_return_to_base
+            - name: Locate
+              icon: mdi:map-marker-circle
+              function: script.vacuum_locate
 ```
 
 ### Screenshots
