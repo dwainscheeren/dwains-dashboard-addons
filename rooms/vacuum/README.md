@@ -34,6 +34,19 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
               icon: fal:key-skeleton
             - room: Garage
               icon: fal:warehouse
+          controls:
+            - name: Start
+              service: vacuum.start
+              icon: mdi:play
+            - name: Pause
+              service: vacuum.pause
+              icon: mdi:pause
+            - name: Return
+              service: vacuum.return_to_base
+              icon: mdi:ev-station
+            - name: Locate
+              service: vacuum.locate
+              icon: mdi:map-marker-circle
           sensors:
             - name: Main brush
               sensor: sensor.vacuum_main_brush_left
@@ -58,6 +71,8 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
 
 
 ### Changelog
+#### 1.0.3
+- Add control buttons (By @thundergreen)
 #### 1.0.2
 - Add native HA translations to the button
 #### 1.0.1

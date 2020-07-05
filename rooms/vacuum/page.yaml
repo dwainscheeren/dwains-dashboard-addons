@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.0.2
+## Version: 1.0.3
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
@@ -45,7 +45,7 @@
             action: call-service
             service: vacuum.send_command
             service_data:
-              entity_id: vacuum.rockrobo
+              entity_id: {{ (data | fromjson)['vacuum'] }}
               command: zoned_cleanup
               params:
                 'zone_ids': ['{{ rooms.room }}']
@@ -56,6 +56,31 @@
               - width: 25px
               - height: 25px
       {% endfor %}
+  {% endif %}
+
+  {% if (data | fromjson)['controls'] %}
+        - !include
+          - ../../../../views/partials/heading.yaml
+          - title: Beheer
+        - type: glance
+          item_classes: 'col-xs-12'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          show_state: false
+          entities:
+          {% for controls in (data | fromjson)['controls'] %}
+            - entity: input_boolean.dummy1
+              name: {{ controls.name }}
+              icon: {{ controls.icon }}
+              tap_action:
+                action: call-service
+                service: {{ controls.service }}
+                service_data:
+                  entity_id: {{ (data | fromjson)['vacuum'] }}
+          {% endfor %}
   {% endif %}
 
   {% if (data | fromjson)['sensors'] %}
