@@ -5,6 +5,7 @@
 ### Installation
 - Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>/vacuum` directory.
 - Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
+- Create input_boolean.dummy1
 - Reload theme configuration at Theme settings.
 
 *NOTE: You can find an example of the used vacuum sensors [here](https://github.com/dwainscheeren/dwains-theme-addons/blob/master/rooms/vacuum/.github/examples/sensors.yaml).*
