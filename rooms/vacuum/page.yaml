@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.0.3
+## Version: 1.0.4
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
@@ -44,11 +44,18 @@
           tap_action:
             action: call-service
             service: vacuum.send_command
+          {% if (data | fromjson)['platform'] == "valetudo" %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: zoned_cleanup
               params:
-                'zone_ids': ['{{ rooms.room }}']
+                'zone_ids': ['{{ rooms.zone }}']
+          {% else %}
+            service_data:
+              entity_id: {{ (data | fromjson)['vacuum'] }}
+              command: app_zoned_clean
+              params: ['{{ rooms.zone }}']
+          {% endif %}
           styles:
             grid:
               - grid-template-areas: '"i n"'
