@@ -5,7 +5,7 @@
 ### Installation
 - Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>/vacuum` directory.
 - Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
-- Create input_boolean.dummy1
+- Create an input_boolean with the name `dummy1`. *You can find an example of the input_boolean [here](https://github.com/dwainscheeren/dwains-theme-addons/blob/master/rooms/vacuum/.github/examples/input_boolean.yaml).*
 - Reload theme configuration at Theme settings.
 
 *NOTE: You can find an example of the used vacuum sensors [here](https://github.com/dwainscheeren/dwains-theme-addons/blob/master/rooms/vacuum/.github/examples/sensors.yaml).*
@@ -23,17 +23,23 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
         button_path: 'dwains-theme/addons/rooms/livingroom/vacuum/button.yaml'
         data:
           vacuum: vacuum.rockrobo
+          platform: valetudo
           map: camera.rockrobo_map
           rooms:
             - room: Living Room
+              zone: living_room
               icon: fal:couch
             - room: Kitchen
+              zone: kitchen
               icon: fal:refrigerator
             - room: Dining Room
+              zone: dining_room
               icon: fal:coffee
             - room: Halway
+              zone: halway
               icon: fal:key-skeleton
             - room: Garage
+              zone: garage
               icon: fal:warehouse
           controls:
             - name: Start
@@ -72,6 +78,8 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
 
 
 ### Changelog
+#### 1.0.4
+- Improved zone support for the original and the valetudo software
 #### 1.0.3
 - Add control buttons (By @thundergreen)
 #### 1.0.2
