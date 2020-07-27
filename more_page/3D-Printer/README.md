@@ -32,12 +32,12 @@ Add the following to your more_page.yaml file:
 ### Screenshots:
 
 **Control Off:**<br>
-![Control Off](https://github.com/RubenDijk/ender3-home-assistant/blob/master/view%20control%20off.png "Control Off")
+![Control Off](https://github.com/RubenDijk/dwains-theme-addons/blob/master/more_page/3D-Printer/view%20control%20off.png "Control Off")
 
 ---
 
 **Control On:**<br>
-![light](https://github.com/RubenDijk/ender3-home-assistant/blob/master/view%20control%20on.png "Control On")
+![light](https://github.com/RubenDijk/dwains-theme-addons/blob/master/more_page/3D-Printer/view%20control%20on.png "Control On")
 
 ### Links:
 * https://github.com/dwainscheeren/lovelace-dwains-theme
