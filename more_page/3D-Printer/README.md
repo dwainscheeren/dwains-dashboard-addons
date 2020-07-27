@@ -1,4 +1,4 @@
-## Creality Ender 3 Home-Assistant View 
+## 3D-Printer Home-Assistant View 
 ## More_page for dwains-theme
 ##### Created by Ruben Dijk
 ---
@@ -15,10 +15,10 @@ Add the following to your more_page.yaml file:
 ````
       - name: Creality Ender 3
         icon: 'mdi:printer-3d'
-        path: 'dwains-theme/addons/more_page/creality_ender/ender3.yaml'
+        path: 'dwains-theme/addons/more_page/3D-Printer/page.yaml'
 ````
 
-### Installation (split config): 
+### Installation: 
   
 1.  Copy the files and place them in the correct location.
 2.  If necessary, customize the following files with ip-address, API, smartplug name. printer properties
@@ -26,8 +26,8 @@ Add the following to your more_page.yaml file:
 4.  Copy the content from the folders to the correct folders
 5.  Reboot HA and you are ready to go.
 
-### configuration.yaml (no split config)
-* [Check readme non split](https://github.com/RubenDijk/ender3-home-assistant/blob/master/readme_non_split.md/)
+### 3d_printer.yaml
+* [Check 3d_pinter.yaml (packages)](https://github.com/RubenDijk/ender3-home-assistant/blob/master/3d_printer.yaml/)
 
 ### Screenshots:
 
@@ -45,6 +45,12 @@ Add the following to your more_page.yaml file:
 * https://octoprint.org/.
 
 ---
+
+### Changelog
+#### 1.0.0
+- First release
+#### 1.0.1
+- update ui and move everything in a packages file
 
 If you like my work please feel free to buy me a coffee
 

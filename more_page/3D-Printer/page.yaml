@@ -1,0 +1,330 @@
+---
+# dwains-theme-addons
+# 3D Printer (more_page) addon
+# Made by Ruben Dijk.
+# version : 1.0.1
+
+- type: custom:stack-in-card
+  style: |
+    ha-card {
+      color: teal;
+      background-color: var(--dwains-theme-primary);
+      border-radius: 10px;
+    }
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-md-12 col-lg-6 col-xl-6'
+      cards:
+        # - type: horizontal-stack
+        #   cards:
+        - type: vertical-stack
+          cards:
+            - type: markdown
+              style: |
+                ha-card { 
+                  box-shadow: none;
+                  background-color: var(--dwains-theme-primary);
+                }
+                ha-markdown { padding-bottom: 1px !important; }
+              content: >
+                <img width="125" src="https://octoprint.org/assets/img/logo.png"/><br/>
+            - type: custom:button-card
+              show_state: false
+              styles:
+                grid:
+                  - grid-template-areas: '"i n" "i n" "i n"'
+                  - grid-template-columns: 25% 75%
+                  - grid-template-rows: min-content min-content
+                card:
+                  - background-color: var(--dwains-theme-primary)
+                  - border-radius: 2.5px
+                  - box-shadow: none
+                  - width: 250px
+                  - margin-left: 10px
+                  - padding-top: 10px
+                  - padding-bottom: 10px
+                  - margin-bottom: 5px
+                name:
+                  - font-size: 15px
+                  - font-weight: bold
+                  - color: var(--dwains-theme-names)
+                  - justify-self: start
+                state:
+                  - justify-self: start
+                  - font-size: 13px
+                  - color: var(--dwains-theme-names)
+                label:
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - font-size: 12px
+                  - color: var(--dwains-theme-grey)
+                  - justify-self: start
+                icon:
+                  - color: var(--dwains-theme-accent)
+              name: OctoPrint
+              icon: mdi:printer-3d
+              color: var(--dwains-theme-accent)
+              tap_action:
+                action: url
+                url_path: 'http://192.168.1.60/'
+        - type: vertical-stack
+          cards:
+            - type: conditional
+              conditions:
+                - entity: switch.ender3
+                  state: 'on'
+              card:
+                type: markdown
+                style: |
+                  ha-card { 
+                    box-shadow: none; 
+                    background-color: var(--dwains-theme-primary);
+                  }
+                  ha-markdown { padding-bottom: 1px !important; }
+                content: >
+                  **Ender3**<br>
+                  &nbsp;&nbsp;&nbsp;**Status**: {{ states('sensor.3d_printer_current_state') }}
+                  <br>
+                  &nbsp;&nbsp;&nbsp;**Job**: {{ states('sensor.3d_printer_job_percentage') }} %
+                  <br>
+                  &nbsp;&nbsp;&nbsp;**Time elapsed**: {{ states('sensor.3d_printer_time_elapsed') }} second
+                  <br>
+                  &nbsp;&nbsp;&nbsp;**Time remaining**: {{ states('sensor.3d_printer_time_remaining') }} second
+                  <br>
+
+- type: horizontal-stack
+  cards:
+    - type: custom:button-card
+      entity: binary_sensor.3d_printer_printing
+      style: |
+        ha-card {
+          background: var(--dwains-theme-primary);
+          border-radius: 10px;
+          box-shadow: 10px;
+          font-weight: bold;
+        }
+      icon: mdi:printer-3d-nozzle
+      show_name: false
+      styles:
+        card:
+          - height: 65px
+      state:
+        - value: 'on'
+          color: var(--dwains-theme-accent)
+        - value: 'off'
+          color: grey
+    - type: custom:button-card
+      entity: switch.ender3
+      style: |
+        ha-card {
+          background: var(--dwains-theme-primary);
+          border-radius: 10px;
+          box-shadow: 10px;
+          font-weight: bold;
+        }
+      show_name: false
+      icon: mdi:power
+      styles:
+        card:
+          - height: 65px
+      state:
+        - value: 'on'
+          color: var(--dwains-theme-accent)
+    - type: custom:button-card
+      entity: binary_sensor.3d_printer_printing_error
+      style: |
+        ha-card {
+          background: var(--dwains-theme-primary);
+          border-radius: 10px;
+          box-shadow: 10px;
+          font-weight: bold;
+        }
+      icon: mdi:printer-alert
+      show_name: false
+      size: 100%
+      styles:
+        card:
+          - height: 65px
+      state:
+        - value: 'on'
+          color: red 
+        - value: 'off'
+          color: grey
+- type: conditional
+  conditions:
+    - entity: switch.ender3
+      state: 'on'
+  card:
+    type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+          }
+        entities:
+          - entity: sensor.3d_printer_actual_tool0_temp
+            name: Nozzle temp
+          - entity: sensor.3d_printer_target_tool0_temp
+            name: Nozzle temp target
+        height: 75
+        points_per_hour: 4
+        hours_to_show: 12
+      - type: custom:mini-graph-card
+        style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+          }
+        entities:
+          - entity: sensor.3d_printer_actual_bed_temp
+            name: Bed temp
+          - entity: sensor.3d_printer_target_bed_temp
+            name: Bed temp target
+        height: 75
+        points_per_hour: 4
+        hours_to_show: 12 
+
+- type: conditional
+  conditions:
+    - entity: sensor.3d_printer_current_state
+      state_not: 'unknown'
+    - entity: switch.3d_printer_controls
+      state: 'off'
+  card:
+    type: entity-button
+    entity: switch.3d_printer_controls
+    style: |
+      ha-card {
+        background: var(--dwains-theme-primary);
+        border-radius: 10px;
+        box-shadow: 10px;
+        font-weight: bold;
+      }
+    show_icon: false
+    name: Enable Controls
+- type: conditional
+  conditions:
+    - entity: sensor.3d_printer_current_state
+      state: 'Operational'
+    - entity: switch.3d_printer_controls
+      state: 'on'
+  card:
+    type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            entity: script.3d_printer_preheat_pla
+            show_icon: false
+            name: Preheat PLA
+            tap_action:
+              action: call-service
+              service: script.3d_printer_preheat_pla
+          - type: entity-button
+            entity: script.3d_printer_cooldown  
+            show_icon: false
+            name: Cooldown
+            tap_action:
+              action: call-service
+              service: script.3d_printer_cooldown
+          - type: entity-button
+            entity: script.3d_printer_preheat_petg
+            show_icon: false
+            name: Preheat PETG
+            tap_action:
+              action: call-service
+              service: script.3d_printer_preheat_petg
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            entity: script.3d_printer_home
+            show_icon: false
+            name: Home
+            tap_action:
+              action: call-service
+              service: script.3d_printer_home
+          - type: entity-button
+            entity: script.3d_printer_level_bed
+            show_icon: false
+            name: Level Bed
+            tap_action:
+              action: call-service
+              service: script.3d_printer_level_bed
+          - type: entity-button
+            entity: script.3d_printer_change_filament
+            show_icon: false
+            name: Change Filament
+            tap_action:
+              action: call-service
+              service: script.3d_printer_change_filament
+- type: conditional
+  conditions:
+    - entity: sensor.3d_printer_current_state
+      state_not: 'Operational'
+    - entity: sensor.3d_printer_current_state
+      state_not: 'unknown'
+    - entity: sensor.3d_printer_current_state
+      state_not: 'Cancelling'
+    - entity: switch.ender3
+      state: 'on'
+    - entity: switch.3d_printer_controls
+      state: 'on'
+  card:
+    type: horizontal-stack
+    cards:
+      - type: entity-button
+        entity: script.3d_printer_cancel_print
+        show_icon: false
+        name: Cancel
+        tap_action:
+          action: call-service
+          service: script.3d_printer_cancel_print
+      - type: conditional
+        conditions:
+          - entity: sensor.3d_printer_current_state
+            state: 'Printing'
+        card:
+          type: entity-button
+          entity: script.3d_printer_pause_print
+          show_icon: false
+          name: Pause
+          tap_action:
+            action: call-service
+            service: script.3d_printer_pause_print
+      - type: conditional
+        conditions:
+          - entity: sensor.3d_printer_current_state
+            state: 'Paused'
+        card:
+          type: entity-button
+          entity: script.3d_printer_resume_print
+          show_icon: false
+          name: Resume
+          tap_action:
+            action: call-service
+            service: script.3d_printer_resume_print
+- type: conditional
+  conditions:
+    - entity: switch.ender3
+      state: 'on'
+  card:
+    type: vertical-stack
+    cards:
+      - type: picture-entity
+        entity: camera.3d_printer
+        style: |
+          ha-card {
+            background: var(--dwains-theme-primary);
+            border-radius: 10px;
+            box-shadow: 10px;
+            font-weight: bold;
+          }
+        show_state: false
+        show_name: false
+        aspect_ratio: 50%

@@ -1,0 +1,248 @@
+---
+# 3d printer (package)
+#
+# more_page (addon)
+# Ruben Dijk
+# V 1.0.1
+
+# OctoPrint is a web interface for your 3D printer. This is the main integration to integrate OctoPrint sensors.
+#
+# https://www.home-assistant.io/integrations/octoprint/
+#
+octoprint:
+  - host: !secret octoprint_ip
+    api_key: !secret octoprint_api_key
+    name: 3DPrinter
+    number_of_tools: 1
+    bed: true
+    sensors:
+      monitored_conditions:
+        - 'Current State'
+        - 'Temperatures'
+        - 'Job Percentage'
+        - 'Time Elapsed'
+        - 'Time Remaining'
+
+binary_sensor:
+  - platform: octoprint
+    monitored_conditions:
+      - Printing
+      - Printing Error
+
+# Customize icon
+homeassistant:
+  customize: 
+    switch.3d_printer:
+      icon: mdi:printer-3d
+
+# Automations
+automation:
+  - alias: 3d_printer disable controls
+    trigger:
+      - platform: state
+        entity_id: switch.3d_printer_controls
+        to: 'on'
+    action:
+      - delay: '00:02:00'
+      - service: switch.turn_off
+        entity_id: switch.3d_printer_controls
+
+# The mjpeg camera platform allows you to integrate IP cameras which are capable to stream their video with MJPEG into Home Assistant.
+#
+# https://www.home-assistant.io/integrations/mjpeg/
+#
+# Optional if you have a camera/webcam
+#
+camera:
+  - platform: mjpeg
+    name: 3d_printer
+    still_image_url: !secret octoprint_cam_image # http://xxx.xxx.xxx.xxx:8080/?action=snapshot
+    mjpeg_url: !secret octoprint_cam_stream # http://xxx.xxx.xxx.xxx/webcam/?action=stream
+
+# Switch template
+switch:
+  - platform: template
+    switches:
+      ender3:
+        friendly_name: 3d_printer
+        value_template: "{{ is_state('switch.smartplug_relay', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.smartplug_relay # smartplug or relay
+        turn_off:
+          service: script.3d_printer_safe_power_down
+
+# 3d-printer control switch
+  - platform: mqtt
+    name: 3d_printer Controls
+    optimistic: true
+    command_topic: "3d_printer_controls"
+# Rest_commands
+
+rest_command:
+  3d_printer_job_command:
+    url: !secret octoprint_api_job_command # http://xxx.xxx.xxx.xxx/api/job
+    payload: '{{ payload }}'
+    headers:
+        Content-Type: 'application/json'
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+  3d_printer_home:
+    url: !secret octoprint_printhead_command # http://xxx.xxx.xxx.xxx/api/printer/printhead
+    payload: '{"command": "home", "axes": ["x", "y", "z"]}'
+    headers:
+        Content-Type: 'application/json'
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+  3d_printer_nozzle_temp:
+    url: !secret octoprint_tool_command # http://xxx.xxx.xxx.xxx/api/printer/tool
+    payload: '{"command": "target", "targets": {"tool0": {{ temp }} }}'
+    headers:
+        Content-Type: 'application/json'
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+  3d_printer_bed_temp:
+    url: !secret octoprint_bed_command # http://xxx.xxx.xxx.xxx/api/printer/bed
+    payload: '{"command": "target", "target": {{ temp }} }'
+    headers:
+        Content-Type: 'application/json'
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+  3d_printer_printer_command:
+    url: !secret octoprint_printer_command # http://xxx.xxx.xxx.xxx/api/printer/command
+    payload: '{"command": "{{ cmd }}"}'
+    headers:
+        Content-Type: 'application/json'
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+  3d_printer_octoprint_shutdown:
+    url: !secret octoprint_api_shutdown # http://xxx.xxx.xxx.xxx/api/system/commands/core/shutdown
+    headers:
+        X-Api-Key: !secret octoprint_api_key
+    method: POST
+
+# Scripts
+
+script:
+  3d_printer_safe_power_down:
+    sequence:
+      - condition: state
+        entity_id: binary_sensor.3d_printer_printing
+        state: 'off'
+      - service: rest_command.3d_printer_octoprint_shutdown
+        data: {}
+      - delay:
+          seconds: 20
+      - service: switch.turn_off
+        data:
+          entity_id: switch.smartplug_relay
+
+  3d_printer_cancel_print:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - service: rest_command.3d_printer_job_command
+        data:
+          payload: '{"command": "cancel"}'
+
+  3d_printer_pause_print:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - service: rest_command.3d_printer_command
+        data:
+          payload: '{"command": "pause", "action": "pause"}'
+  
+  3d_printer_resume_print:
+    alias: 3D Printer Resume
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - service: rest_command.3d_printer_job_command
+        data:
+          payload: '{"command": "pause", "action": "resume"}'
+
+  3d_printer_home:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - condition: state
+        entity_id: sensor.3d_printer_current_state
+        state: 'Operational'
+      - service: rest_command.3d_printer_home
+  
+  3d_printer_level_bed:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - condition: state
+        entity_id: sensor.3d_printer_current_state
+        state: 'Operational'
+      - service: rest_command.3d_printer_printer_command
+        data:
+          cmd: "G29"
+  
+  3d_printer_cooldown:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - condition: state
+        entity_id: sensor.3d_printer_current_state
+        state: 'Operational'
+      - service: rest_command.3d_printer_bed_temp
+        data:
+          temp: 0
+      - service: rest_command.3d_printer_nozzle_temp
+        data:
+          temp: 0
+
+  3d_printer_preheat_petg:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - condition: state
+        entity_id: sensor.3d_printer_current_state
+        state: 'Operational'
+      - service: rest_command.3d_printer_bed_temp
+        data:
+          temp: 75
+      - service: rest_command.3d_printer_nozzle_temp
+        data:
+          temp: 215
+
+  3d_printer_preheat_pla:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - condition: state
+        entity_id: sensor.3d_printer_current_state
+        state: 'Operational'
+      - service: rest_command.3d_printer_bed_temp
+        data:
+          temp: 60
+      - service: rest_command.3d_printer_nozzle_temp
+        data:
+          temp: 205
+
+  3d_printer_change_filament:
+    sequence:
+      - condition: state
+        entity_id: switch.3d_printer_controls
+        state: 'on'
+      - service: rest_command.3d_printer_printer_command
+        data:
+          cmd: "M600"
