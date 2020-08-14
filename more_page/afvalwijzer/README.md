@@ -4,7 +4,7 @@
 
 ### Installation
 - Install [Afvalbeheer](https://github.com/pippyn/Home-Assistant-Sensor-Afvalbeheer) from [HACS](https://hacs.xyz).
-- Copy the file `page.yaml`  to your `<config dir>/dwains-theme/addons/more_page/afvalbeheer` directory.
+- Copy the file `page.yaml`  to your `<config dir>/dwains-theme/addons/more_page/afvalwijzer` directory.
 - Configure your `more_page.yaml` file in `<config dir>/dwains-theme/configs` with config below.
 - Download the [images ZIP file](https://github.com/Klumpke/dwains-theme-addons/blob/master/more_page/afvalwijzer/.github/afvalwijzer-images.zip) and extract it into your `<config dir>/www/images`  directory.
 - Restart Home Assistant.
