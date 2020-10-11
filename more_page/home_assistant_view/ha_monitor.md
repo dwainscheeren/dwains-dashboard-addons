@@ -5,9 +5,9 @@
 
 ## Dwains Theme Addon:
 
-Dwains-Theme `Home Assistant Monitoring` Addon can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/ha_monitoring.yaml)
+Dwains-Theme `Home Assistant Monitoring` Addon can be found [here](https://noodlemctwoodle.github.io/homeassistant/addons/dwains/addons/more_page/ha_monitoring.html)
      
-Configuration instructions can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md)
+Configuration instructions can be found [here](https://noodlemctwoodle.github.io/homeassistant/guides/ha_core_metrics.html)
 
 ### Dwains Theme Configuration:
 
@@ -51,8 +51,8 @@ Configuration instructions can be found [here](https://github.com/noodlemctwoodl
 ### Version 0.3
  - Added update sensors
     - package + audio, dns, cli and core
- - Added configuration guide for Configuration [Checker](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#install-check-home-assistant-configuration)
- - Added configuration guide for HTML5 [notifications](https://github.com/noodlemctwoodle/homeassistant/blob/master/.github/wiki/guides/ha-core/HomeAssistant_Monitoting.md#setting-up-the-html5-notify-platform)
+ - Added configuration guide for Configuration [Checker](https://noodlemctwoodle.github.io/homeassistant/guides/ha_core_metrics.html#install-check-home-assistant-configuration)
+ - Added configuration guide for HTML5 [notifications](https://noodlemctwoodle.github.io/homeassistant/guides/ha_core_metrics.html#setting-up-the-html5-notify-platform)
  - [AVI](https://github.com/abeksis/My-HomeAssistant-Config) added template.dwains.psd for you to make your own container images
 
 ### Version 0.4
