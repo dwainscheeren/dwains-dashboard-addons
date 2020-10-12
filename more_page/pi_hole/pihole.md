@@ -6,7 +6,7 @@
 
 ## Dwains Theme Addon:
 
-Dwains Theme `Pi-Hole` add-on can be found [here](https://github.com/noodlemctwoodle/homeassistant/blob/master/dwains-theme/addons/more_page/adblocker.yaml)
+Dwains Theme `Pi-Hole` add-on can be found [here](https://noodlemctwoodle.github.io/homeassistant/addons/dwains/addons/more_page/adblocker.html)
 
 ### Dwains Theme Configuration:
 
