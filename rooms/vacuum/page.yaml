@@ -1,7 +1,7 @@
-# dwains_theme
+# dwains_dashboard
 ## Room add-on: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.0.4
+## Version: 1.1.0
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
@@ -10,9 +10,8 @@
     - type: custom:dwains-flexbox-card
       padding: true
       cards:
-        - !include
-          - ../../../../views/partials/heading.yaml
-          - title: Map
+        - type: custom:dwains-heading-card
+          title: Map
         - type: vertical-stack
           items_classes: 'col-sm-12'
           cards:
@@ -28,9 +27,8 @@
     - type: custom:dwains-flexbox-card
       padding: true
       cards:
-        - !include
-          - ../../../../views/partials/heading.yaml
-          - title: Presets
+        - type: custom:dwains-heading-card
+          title: Presets
 
       {% for rooms in (data | fromjson)['rooms'] %}
         - type: custom:button-card
@@ -44,18 +42,18 @@
           tap_action:
             action: call-service
             service: vacuum.send_command
-          {% if (data | fromjson)['platform'] == "valetudo" %}
+            {% if (data | fromjson)['platform'] == "valetudo" %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: zoned_cleanup
               params:
                 'zone_ids': ['{{ rooms.zone }}']
-          {% else %}
+            {% else %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: app_zoned_clean
               params: ['{{ rooms.zone }}']
-          {% endif %}
+            {% endif %}
           styles:
             grid:
               - grid-template-areas: '"i n"'
@@ -66,9 +64,8 @@
   {% endif %}
 
   {% if (data | fromjson)['controls'] %}
-        - !include
-          - ../../../../views/partials/heading.yaml
-          - title: Beheer
+        - type: custom:dwains-heading-card
+          title: Beheer
         - type: glance
           item_classes: 'col-xs-12'
           style: |
@@ -91,9 +88,8 @@
   {% endif %}
 
   {% if (data | fromjson)['sensors'] %}
-        - !include
-          - ../../../../views/partials/heading.yaml
-          - title: Information
+        - type: custom:dwains-heading-card
+          title: Informatie
         - type: glance
           item_classes: 'col-xs-12'
           style: |

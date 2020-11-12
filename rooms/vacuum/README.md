@@ -3,24 +3,25 @@
 
 
 ### Installation
-- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>/vacuum` directory.
-- Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
-- Create an input_boolean with the name `dummy1`. *You can find an example of the input_boolean [here](https://github.com/dwainscheeren/dwains-theme-addons/blob/master/rooms/vacuum/.github/examples/input_boolean.yaml).*
+- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-dashboard/addons/rooms/<your room>/vacuum` directory.
+- Configure your `rooms.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
+- Create an input_boolean with the name `dummy1`. *You can find an example of the input_boolean [here](https://github.com/dwainscheeren/dwains-dashboard-addons/blob/master/rooms/vacuum/.github/examples/input_boolean.yaml).*
 - Reload theme configuration at Theme settings.
 
-*NOTE: You can find an example of the used vacuum sensors [here](https://github.com/dwainscheeren/dwains-theme-addons/blob/master/rooms/vacuum/.github/examples/sensors.yaml).*
+*NOTE: You can find an example of the used vacuum sensors [here](https://github.com/dwainscheeren/dwains-dashboard-addons/blob/master/rooms/vacuum/.github/examples/sensors.yaml).*<br />
+<b>*NOTE: Version 1.1.0 and higher are only compatible with Dwains Dashboard 2.x and higher!*</b>
 
 
 ### Usage
-To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` file:
+To use this add-on in your Dwains Dashboard, add the following to your `rooms.yaml` file:
 ```yaml
 # Example rooms.yaml entry
   - name: Living Room
     addons:
       - name: Vacuum
         icon: mdi:robot-vacuum
-        path: 'dwains-theme/addons/rooms/livingroom/vacuum/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/livingroom/vacuum/button.yaml'
+        path: 'dwains-dashboard/addons/rooms/livingroom/vacuum/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/livingroom/vacuum/button.yaml'
         data:
           vacuum: vacuum.rockrobo
           platform: valetudo
@@ -71,13 +72,15 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
 
 ### Screenshots
 **Light theme:**<br>
-![light](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/vacuum/.github/screenshots/light.png "Light")
+![light](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/rooms/vacuum/.github/screenshots/light.png "Light")
 
 **Dark theme:**<br>
-![dark](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/vacuum/.github/screenshots/dark.png "Dark")
+![dark](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/rooms/vacuum/.github/screenshots/dark.png "Dark")
 
 
 ### Changelog
+#### 1.1.0
+- Made addon compatible with Dwains Dashboard 2.0 and rewritten the documentation
 #### 1.0.4
 - Improved zone support for the original and the valetudo software
 #### 1.0.3
