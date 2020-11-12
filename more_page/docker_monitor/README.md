@@ -5,14 +5,15 @@
 
 ### Installation (dwains-theme)
 - Manually install the next custom component from https://github.com/RubenDijk/docker_monitor
-- Copy the file `page.yaml`  to your `<config dir>/dwains-theme/addons/more_page/docker-monitor` directory.
-- Configure your `more_page.yaml` file in `<config dir>/dwains-theme/configs` with config below.
+- Copy the file `page.yaml`  to your `<config dir>/dwains-dashboard/addons/more_page/docker-monitor` directory.
+- Configure your `more_page.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
 - Restart Home Assistant.
 
 ### HACS components
 
 - Install [Vertical Stack In Card](https://github.com/ofekashery/vertical-stack-in-card) from [HACS](https://hacs.xyz).
 - Install [Bar-card](https://github.com/custom-cards/bar-card) from [HACS](https://hacs.xyz).
+- Install [Card-Mod](https://github.com/thomasloven/lovelace-card-mod) from [HACS](https://hacs.xyz).
 
 ---
 
@@ -25,7 +26,7 @@ more_page:
     addons:
       - name: Docker
         icon: 'mdi:docker'
-        path: 'dwains-theme/addons/more_page/portainer/page.yaml'
+        path: 'dwains-dashboard/addons/more_page/portainer/page.yaml'
 ````
 
 Optional for room addon:
@@ -34,8 +35,8 @@ Optional for room addon:
 addons:
   - name: Docker
     icon: mdi:docker
-    path: 'dwains-theme/addons/more_page/portainer/page.yaml'
-    button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
+    path: 'dwains-dashboard/addons/more_page/portainer/page.yaml'
+    button_path: 'dwains-dashboard/addons/rooms/hello-room/button.yaml'
     data:
       entity: sensor.docker_version
 ````

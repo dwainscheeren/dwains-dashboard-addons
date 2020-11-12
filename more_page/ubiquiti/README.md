@@ -6,8 +6,8 @@
 ### Installation (dwains-theme)
 - Manually install the next custom component from https://github.com/RubenDijk/homeassistant
 - Copy the my_unifi to your custom component folder.
-- Copy the file `unifi.yaml`  to your `<config dir>/dwains-theme/addons/more_page/ubiquiti` directory.
-- Configure your `more_page.yaml` file in `<config dir>/dwains-theme/configs` with config below.
+- Copy the file `unifi.yaml`  to your `<config dir>/dwains-dashboard/addons/more_page/ubiquiti` directory.
+- Configure your `more_page.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
 - Add unifi controller (Home-Assistant integration)
 - Restart Home Assistant.
 
@@ -17,6 +17,7 @@
 - Install [Multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row) from [HACS](https://hacs.xyz).
 - Install [Vertical Stack In Card](https://github.com/ofekashery/vertical-stack-in-card) from [HACS](https://hacs.xyz).
 - Install [Bar-card](https://github.com/custom-cards/bar-card) from [HACS](https://hacs.xyz).
+- Install [Card-Mod](https://github.com/thomasloven/lovelace-card-mod) from [HACS](https://hacs.xyz).
 
 ### Usage
 To use this add-on in your Dwains Theme, add the following to your `more_page.yaml` file:
@@ -27,7 +28,7 @@ more_page:
     addons:
       - name: Ubiquiti UniFi
         icon: 'mdi:router-network'
-        path: 'dwains-theme/addons/more_page/ubiquiti/unifi.yaml'
+        path: 'dwains-dashboard/addons/more_page/ubiquiti/unifi.yaml'
 ````
 
 Optional for room addon:
@@ -36,8 +37,8 @@ Optional for room addon:
 addons:
   - name: Ubiquiti UniFi
     icon: mdi:router-wireless
-    path: 'dwains-theme/addons/more_page/ubiquiti/unifi.yaml'
-    button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
+    path: 'dwains-dashboard/addons/more_page/ubiquiti/unifi.yaml'
+    button_path: 'dwains-dashboard/addons/rooms/hello-room/button.yaml'
     data:
       entity: sensor.unifi_gateway_alerts
 ````
