@@ -3,15 +3,18 @@
 
 
 ### Installation
-- Install [Afvalbeheer](https://github.com/pippyn/Home-Assistant-Sensor-Afvalbeheer) from [HACS](https://hacs.xyz).
-- Copy the file `page.yaml`  to your `<config dir>/dwains-theme/addons/more_page/afvalwijzer` directory.
-- Configure your `more_page.yaml` file in `<config dir>/dwains-theme/configs` with config below.
-- Download the [images ZIP file](https://github.com/Klumpke/dwains-theme-addons/blob/master/more_page/afvalwijzer/.github/afvalwijzer-images.zip) and extract it into your `<config dir>/www/images`  directory.
+- Install [auto-entities](https://github.com/thomasloven/lovelace-auto-entities) and [Afvalbeheer](https://github.com/pippyn/Home-Assistant-Sensor-Afvalbeheer) from [HACS](https://hacs.xyz).
+- In the HomeAssistant GUI, go to `Configuration` -> `Lovelace Dashboards` -> `Resources` -> `+` and add the following information.
+  - URL: /hacsfiles/lovelace-auto-entities/auto-entities.js
+  - Resource type: JavaScript Module
+- Copy the file `page.yaml`  to your `<config dir>/dwains-dashboard/addons/more_page/afvalwijzer` directory.
+- Configure your `more_page.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
+- Download the [images ZIP file](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/more_page/afvalwijzer/.github/afvalwijzer-images.zip) and extract it into your `<config dir>/www/images`  directory.
 - Restart Home Assistant.
 
 
 ### Usage
-To use this add-on in your Dwains Theme, add the following to your `more_page.yaml` file:
+To use this add-on in your Dwains Dashboard, add the following to your `more_page.yaml` file:
 
 ```yaml
 # Example more_page.yaml entry
@@ -19,7 +22,7 @@ more_page:
     addons:
       - name: Afvalwijzer
         icon: fas:recycle
-        path: 'dwains-theme/addons/more_page/afvalwijzer/page.yaml'
+        path: 'dwains-dashboard/addons/more_page/afvalwijzer/page.yaml'
         data:
           wastecollector: blink
           sort_attribute: Sort-date
@@ -27,10 +30,10 @@ more_page:
 
 ### Screenshots
 **Light theme:**<br>
-![light](https://github.com/Klumpke/dwains-theme-addons/blob/master/more_page/afvalwijzer/.github/screenshots/light.png "Light")
+![light](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/more_page/afvalwijzer/.github/screenshots/light.png "Light")
 
 **Dark theme:**<br>
-![dark](https://github.com/Klumpke/dwains-theme-addons/blob/master/more_page/afvalwijzer/.github/screenshots/dark.png "Dark")
+![dark](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/more_page/afvalwijzer/.github/screenshots/dark.png "Dark")
 
 
 ### Changelog
