@@ -1,5 +1,5 @@
 ## 3D-Printer Home-Assistant View 
-## More_page for dwains-theme
+## More_page for dwains-dashboard
 ##### Created by Ruben Dijk
 ---
 ### Needs:
@@ -15,8 +15,14 @@ Add the following to your more_page.yaml file:
 ````
       - name: Creality Ender 3
         icon: 'mdi:printer-3d'
-        path: 'dwains-theme/addons/more_page/3D-Printer/page.yaml'
+        path: 'dwains-dashboard/addons/more_page/3D-Printer/page.yaml'
 ````
+
+### HACS components
+
+- Install [Vertical Stack In Card](https://github.com/ofekashery/vertical-stack-in-card) from [HACS](https://hacs.xyz).
+- Install [Bar-card](https://github.com/custom-cards/bar-card) from [HACS](https://hacs.xyz).
+- Install [Card-Mod](https://github.com/thomasloven/lovelace-card-mod) from [HACS](https://hacs.xyz).
 
 ### Installation: 
   

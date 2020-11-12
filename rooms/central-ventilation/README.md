@@ -5,8 +5,8 @@
 
 ### Installation
 - Configure your fan entity 
-- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>` directory.
-- Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
+- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-dashboard/addons/rooms/<your room>` directory.
+- Configure your `rooms.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
 - Restart Home Assistant.
 
 
@@ -19,8 +19,8 @@ To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` 
     addons:
       - name: Central Ventilation
         icon: 'mdi:fan'
-        path: 'dwains-theme/addons/rooms/central-ventilation/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/central-ventilation/button.yaml'
+        path: 'dwains-dashboard/addons/rooms/central-ventilation/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/central-ventilation/button.yaml'
         data:
           entity: fan.attic_ventilation
 ````
