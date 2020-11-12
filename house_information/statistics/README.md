@@ -6,7 +6,7 @@
 - Install [bar-card](https://github.com/custom-cards/bar-card) from [HACS](https://hacs.xyz).
 - In the HomeAssistant GUI, go to `Configuration` -> `Lovelace Dashboards` -> `Resources` -> `+` and add the following information.
   - URL: /hacsfiles/bar-card/bar-card.js
-  - Resource type: JavaSscript Module
+  - Resource type: JavaScript Module
 - Copy the file `page.yaml` to your `<config dir>/dwains-dashboard/addons/house_information/statistics` directory.
 - Configure your `house_information.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
 - Reload theme configuration at Theme settings.
