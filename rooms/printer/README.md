@@ -4,28 +4,24 @@
 
 ### Installation
 - Install [bar-card](https://github.com/custom-cards/bar-card) from [HACS](https://hacs.xyz).
-- Configure your `custom_resources.yaml` file in `<config dir>/dwains-theme/resources` with the config below.
-- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-theme/addons/rooms/<your room>/printer` directory.
-- Configure your `rooms.yaml` file in `<config dir>/dwains-theme/configs` with config below.
+- In the HomeAssistant GUI, go to `Configuration` -> `Lovelace Dashboards` -> `Resources` -> `+` and add the following information.
+  - URL: /hacsfiles/bar-card/bar-card.js
+  - Resource type: JavaScript Module
+- Copy the files `page.yaml` and `button.yaml` to your `<config dir>/dwains-dashboard/addons/rooms/<your room>/printer` directory.
+- Configure your `rooms.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
 - Restart Home Assistant.
 
 
 ### Usage
-To use this add-on in your Dwains Theme, add the following to your `custom_resources.yaml` and `rooms.yaml` file:
-```yaml
-# Example custom_resources.yaml entry
-- url: /hacsfiles/bar-card/bar-card.js
-  type: module
-```
-
+To use this add-on in your Dwains Theme, add the following to your `rooms.yaml` file:
 ```yaml
 # Example rooms.yaml entry
   - name: Office
     addons:
       - name: Printer
         icon: mdi:printer
-        path: 'dwains-theme/addons/rooms/office/printer/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/office/printer/button.yaml'
+        path: 'dwains-dashboard/addons/rooms/office/printer/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/office/printer/button.yaml'
         data:
           printer:
             - entity: sensor.hp_m281fdw_status
@@ -51,10 +47,10 @@ To use this add-on in your Dwains Theme, add the following to your `custom_resou
 
 ### Screenshots
 **Light theme:**<br>
-![light](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/printer/.github/screenshots/light.png "Light")
+![light](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/rooms/printer/.github/screenshots/light.png "Light")
 
 **Dark theme:**<br>
-![dark](https://github.com/Klumpke/dwains-theme-addons/blob/master/rooms/printer/.github/screenshots/dark.png "Dark")
+![dark](https://github.com/Klumpke/dwains-dashboard-addons/blob/master/rooms/printer/.github/screenshots/dark.png "Dark")
 
 
 ### Changelog
