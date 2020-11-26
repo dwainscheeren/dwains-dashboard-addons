@@ -79,6 +79,8 @@ To use this add-on in your Dwains Dashboard, add the following to your `rooms.ya
 
 
 ### Changelog
+#### 1.1.1
+- Fix header alignment
 #### 1.1.0
 - Made addon compatible with Dwains Dashboard 2.0 and rewritten the documentation
 #### 1.0.4
