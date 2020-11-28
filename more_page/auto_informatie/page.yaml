@@ -1,0 +1,214 @@
+<<<<<<< Updated upstream:more_page/auto_informatie/page.yaml
+# dwains_dashboard
+## More-page add-on: Auto Informatie
+## Created by Nick Papenborg
+## Version: 1.1.0
+
+
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+  cards:
+
+# First car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_1_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_1_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_1_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_1_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_1_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_1_entity'] }}_recall
+        title: Info
+        show_header_toggle: false
+
+# Second car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_2_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_2_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_2_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_2_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_2_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_2_entity'] }}_recall
+        title: Info
+        show_header_toggle: false
+
+# Third car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_3_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_3_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_3_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_3_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_3_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_3_entity'] }}_recall
+        title: Info
+=======
+# dwains_dashboard
+## More-page add-on: Auto Informatie
+## Created by Nick Papenborg
+## Version: 1.1.0
+
+
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+  cards:
+
+# First car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_1_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_1_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_1_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_1_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_1_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_1_entity'] }}_recall
+        title: Info
+        show_header_toggle: false
+
+# Second car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_2_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_2_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_2_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_2_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_2_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_2_entity'] }}_recall
+        title: Info
+        show_header_toggle: false
+
+# Third car
+    - type: vertical-stack
+      cards:
+      - type: picture-elements
+        item_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+        style: |
+          ha-card {
+            border-radius: 10px;
+            box-shadow: 10px;
+            }
+        image: {{ (data | fromjson)['car_3_image'] }}
+        elements:
+        - type: state-label
+          entity: input_text.car_3_name
+          style:
+            top: 80%
+            left: 25%
+            pointer-events: none
+            transform: initial
+            font-size: 22px
+            color: rgba({{ (data | fromjson)['car_3_font_collor'] }},0.8)
+            line-height: 32px
+            padding: 0px 28px
+      
+      - type: entities
+        entities:
+          - entity: sensor.{{ (data | fromjson)['car_3_entity'] }}_expdate
+          - entity: binary_sensor.{{ (data | fromjson)['car_3_entity'] }}_insured
+          - entity: sensor.{{ (data | fromjson)['car_3_entity'] }}_recall
+        title: Info
+>>>>>>> Stashed changes:more_page/auto_informatie/auto_informatie.yaml
+        show_header_toggle: false
