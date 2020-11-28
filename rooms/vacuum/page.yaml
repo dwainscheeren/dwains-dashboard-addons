@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## Room add-on: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.1.0
+## Version: 1.1.1
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
@@ -11,6 +11,7 @@
       padding: true
       cards:
         - type: custom:dwains-heading-card
+          item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           title: Map
         - type: vertical-stack
           items_classes: 'col-sm-12'
@@ -28,8 +29,8 @@
       padding: true
       cards:
         - type: custom:dwains-heading-card
-          title: Presets
-
+          item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          title: Zones
       {% for rooms in (data | fromjson)['rooms'] %}
         - type: custom:button-card
           item_classes: 'col-xs-6'
@@ -65,7 +66,8 @@
 
   {% if (data | fromjson)['controls'] %}
         - type: custom:dwains-heading-card
-          title: Beheer
+          item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          title: Control
         - type: glance
           item_classes: 'col-xs-12'
           style: |
@@ -89,7 +91,8 @@
 
   {% if (data | fromjson)['sensors'] %}
         - type: custom:dwains-heading-card
-          title: Informatie
+          item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          title: Information
         - type: glance
           item_classes: 'col-xs-12'
           style: |
