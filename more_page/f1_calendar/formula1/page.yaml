@@ -1,0 +1,83 @@
+- type: conditional
+  conditions:
+    - entity: sensor.formula_1
+      state: "No race planned for this week."
+  card:
+    type: custom:dwains-flexbox-card
+    items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+    cards:
+      - type: markdown
+        content: >-
+          ![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1280px-F1.svg.png)
+          
+          No race planned for this week.
+
+
+- type: conditional
+  conditions:
+    - entity: sensor.formula_1
+      state: "There is a race planned for this week."
+  card:
+    type: custom:dwains-flexbox-card
+    items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+    cards:
+      - type: custom:dwains-flexbox-card
+        items_classes: 'col-xs-12 col-md-12'
+        padding: true
+        cards:
+          - type: markdown
+            content: >
+              ![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1280px-F1.svg.png)
+      - type: custom:dwains-flexbox-card
+        items_classes: 'col-xs-12 col-md-12'
+        padding: true
+        cards: 
+          - type: entities
+            title: Race details
+            entities:
+              - type: section
+                label: Location
+              - type: attribute
+                name: Grand Prix
+                icon: 'mdi:alpha-g-box-outline'
+                entity: sensor.formula_1
+                attribute: race_name
+              - type: attribute
+                name: Track
+                icon: 'mdi:alpha-t-box-outline'
+                entity: sensor.formula_1
+                attribute: race_track
+              - type: section
+                label: Dates
+              - type: attribute
+                name: Free practice 1 day
+                icon: 'mdi:numeric-1-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_1_day
+              - type: attribute
+                name: Free practice 1 time
+                icon: 'mdi:numeric-1-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_1_time
+              - type: divider
+              - type: attribute
+                name: Free practice 2 day
+                icon: 'mdi:numeric-2-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_2_day
+              - type: attribute
+                name: Free practice 2 time
+                icon: 'mdi:numeric-2-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_2_time
+              - type: divider
+              - type: attribute
+                name: Free practice 3 day
+                icon: 'mdi:numeric-3-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_3_day
+              - type: attribute
+                name: Free practice 3 time
+                icon: 'mdi:numeric-3-box-outline'
+                entity: sensor.formula_1
+                attribute: free_practice_3_time
