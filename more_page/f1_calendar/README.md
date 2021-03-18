@@ -56,3 +56,14 @@ Replace it with the following;
        path: 'dwains-dashboard/addons/more_page/formula1/page.yaml'
 ```
 - Reload the theme configuration via Theme Settings
+
+### Additional options
+You can translate the page by editing the following lines;
+- Line 18
+- Line 57
+- Line 121, 122, 123, 124 and 125
+
+You can translate the dates as well, instead of using the English `formula1.yaml` sensor file, use the Dutch `formula1-translated.yaml` and change the second parameter in the `replace()` filters on lines 17, 21, 25, 29 and 33.
+
+### Result
+![Image](https://raw.githubusercontent.com/dwainscheeren/dwains-dashboard-addons/master/more_page/f1_calendar/Race.png)
