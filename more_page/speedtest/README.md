@@ -3,7 +3,6 @@ Speedtest Add-on (more_page)
 
 
 ### Installation
-- Install [P2000 Sensor](https://github.com/cyberjunky/home-assistant-p2000) from [HACS](https://hacs.xyz).
 - Install Speedtest plugin in homeassistant (https://www.home-assistant.io/integrations/speedtestdotnet)
 - Copy the file `page.yaml`  to your `<config dir>/dwains-dashboard/addons/more_page/speedtest` directory.
 - Configure your `more_page.yaml` file in `<config dir>/dwains-dashboard/configs` with config below.
