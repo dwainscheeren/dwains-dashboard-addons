@@ -1,0 +1,73 @@
+# dwains_dashboard
+## Room add on: Synology NAS
+## Created by Eelco Bode
+## Version: 0.0.1
+
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.synology_cpu_load_averarge_5_min
+      name: CPU Load
+      line_color: 'var(--dwains-theme-accent)'
+      hours_to_show: 168
+      hour24: true
+      points_per_hour: 0.25
+      smoothing: true
+      show:
+        points: false
+        graph: line
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.synology_memory_usage_real
+      name: Memory Usage
+      line_color: 'var(--dwains-theme-accent)'
+      hours_to_show: 168
+      hour24: true
+      points_per_hour: 0.25
+      smoothing: true
+      show:
+        points: false
+        graph: line
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.synology_temperature
+      name: Temprature
+      line_color: 'var(--dwains-theme-accent)'
+      hours_to_show: 168
+      hour24: true
+      points_per_hour: 0.25
+      smoothing: true
+      show:
+        points: false
+        graph: line
+
+- type: 'custom:auto-entities'
+  card:
+    type: glance
+    style: |
+      ha-card {
+        border-radius: 5px;
+        background-color: var(--dwains-theme-primary);
+      }
+  filter:
+    include:
+      {% for disks in (data | fromjson)['disks'] %}
+        - entity_id: {{ disks.status }}
+        #- entity_id: {{ (data | fromjson)['disks'] }}
+      {% endfor %}
+  show_header_toggle: false
