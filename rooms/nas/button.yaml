@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## Synology custom button
 ## Created by Eelco Bode
-## Version: 0.0.2
+## Version: 0.0.1
 
 type: custom:button-card
 entity: {{ (data | fromjson)['disks'][0].status }}
@@ -23,7 +23,7 @@ label: >
     {% endfor %}
 
     if(problemDisks > 0){
-      return problemDisks + ' ' + hass.localize('component.binary_sensor.state.problem.on');
+      return 'Disk Problem!;
     } else {
       return '&nbsp;';
     }
