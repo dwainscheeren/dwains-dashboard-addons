@@ -1,0 +1,25 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12'
+  cards: 
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+      cards:
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: markdown
+              content: >
+                ![Image](https://www.iotworldtoday.com/files/2019/11/GettyImages-1097894826-724x432.jpg)
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: 'custom:fold-entity-row'
+              head: group.1 #delete number 1 and fill in the correct group name
+              entities:
+                - automation.1 #delete number 1 and fill in the correct automation name
+                - automation.2 #delete number 2 and fill in the correct automation name
+            - type: 'custom:fold-entity-row'
+              head: group.2 #delete number 2 and fill in the correct group name
+              entities:
+                - automation.2 #delete number 3 and fill in the correct automation name
+                - automation.3 #delete number 4 and fill in the correct automation name
