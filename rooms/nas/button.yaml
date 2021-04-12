@@ -1,0 +1,38 @@
+# dwains_dashboard
+## Synology custom button
+## Created by Eelco Bode
+## Version: 0.0.1
+
+type: custom:button-card
+entity: {{ (data | fromjson)['disks'][0].status }}
+template: rooms_child
+name: {{ name }}
+icon: {{ icon|default('mdi:nas') }}
+tap_action:
+  action: navigate
+  navigation_path: {{ navigation_path }}
+label: >
+  [[[
+  {% if (data | fromjson)['disks']['status']|length > 1 %}
+    var problemDisks = 0;
+
+    {% for disks in (data | fromjson)['disks'] %}
+      var state = states['{{disks.status}}'].state
+      if (state != 'normal'
+        problemDisks++;
+    {% endfor %}
+
+    if(problemDisks > 0){
+      return 'Disk Problem!;
+    } else {
+      return '&nbsp;';
+    }
+
+  {% else %}
+    if (entity.state == 'normal') {
+      return 'ok';
+    } else {
+      return 'Disk Problem!';
+    }
+ {% endif %}
+  ]]]

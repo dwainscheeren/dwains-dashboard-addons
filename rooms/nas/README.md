@@ -17,7 +17,7 @@ To use this add-on in your Dwains Dashboard, add the following to your `rooms.ya
       - name: Synology
         icon: mdi:nas
         path: 'dwains-dashboard/addons/rooms/Living/nas/page.yaml'
-        #button_path: 'dwains-dashboard/addons/rooms/Living/nas/button.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/Living/nas/button.yaml'
         data:
           disks:
             - status: sensor.synology_drive_1_status

@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## Room add on: Synology NAS
 ## Created by Eelco Bode
-## Version: 0.0.1
+## Version: 0.0.2
 
 - type: horizontal-stack
   cards:
@@ -68,6 +68,5 @@
     include:
       {% for disks in (data | fromjson)['disks'] %}
         - entity_id: {{ disks.status }}
-        #- entity_id: {{ (data | fromjson)['disks'] }}
       {% endfor %}
   show_header_toggle: false
