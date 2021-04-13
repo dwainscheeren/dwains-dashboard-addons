@@ -40,29 +40,29 @@ UptimeRobot monitoring in Home Assistant Dwains Dashboard
        hours_to_show: 72
        status_adaptive_color: true
        average_text: '% uptime'
-         alias:
-           ok: Online
-           ko: Offline
-         color:
-           icon: white
-           ok: '#45C669'
-           ko: '#C6B145'
-           half: '#C66445'
-           none: '#C9C9C9'
-           title: white
-         show:
-           header: true
-           title: true
-           icon: true
-           footer: true
-           status: true
-           timeline: true
-           average: true
-         tooltip:
-            animation: true
-          #tap_action:
-            #action: url
-            #url: 'https://'
+       alias:
+         ok: Online
+         ko: Offline
+       color:
+         icon: white
+         ok: '#45C669'
+         ko: '#C6B145'
+         half: '#C66445'
+         none: '#C9C9C9'
+         title: white
+       show:
+         header: true
+         title: true
+         icon: true
+         footer: true
+         status: true
+         timeline: true
+         average: true
+       tooltip:
+          animation: true
+       #tap_action:
+          #action: url
+          #url: 'https://'
 ```
 - add the correct `binary_sensor` to monitor
 - fill in the correct `name:`
