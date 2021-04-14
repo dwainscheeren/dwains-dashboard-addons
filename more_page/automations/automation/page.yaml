@@ -23,3 +23,15 @@
               entities:
                 - automation.2 #delete number 3 and fill in the correct automation name
                 - automation.3 #delete number 4 and fill in the correct automation name
+                
+            - type: 'custom:scheduler-card'
+              include:
+                - alarm_control_panel
+                - climate
+                - group
+                - light
+                - media_player
+                - person
+                - scene
+                - switch
+              title: Schedular
