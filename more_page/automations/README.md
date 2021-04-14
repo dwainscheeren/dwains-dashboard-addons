@@ -104,7 +104,8 @@ Install using HACS component:
 
 ## Scheduler Card
 ---
-<img width="439" alt="image" src="https://user-images.githubusercontent.com/77990847/114762133-acb71400-9d61-11eb-9296-ae70ae510ad6.png">
+
+<img width="621" alt="image" src="https://user-images.githubusercontent.com/77990847/114769693-d4f74080-9d6a-11eb-8e48-8a1d64d016a1.png">
 
 ![image](https://user-images.githubusercontent.com/77990847/114762691-4bdc0b80-9d62-11eb-9639-d3e2a44a2e96.gif)
 
