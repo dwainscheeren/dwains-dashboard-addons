@@ -1,0 +1,79 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12'
+  cards: 
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+      cards:
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: markdown
+              content: >
+                ![Image](https://cryptonavia-showcase-production-media.s3.amazonaws.com/media/images/github-logo-770x515.original.width-1000.jpg)
+      
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: 'custom:github-flexi-card'
+              title: Github LRvdLinden
+              secondary_info: '{latest_release_tag}'
+              url: true
+              attribute_urls: true
+              attributes:
+                - views
+                - stargazers
+                - open_issues
+                - clones
+                - forks
+                - open_pull_requests
+              sort:
+                - by: stargazers
+                - by: views_unique
+              ascending: true
+              entities:
+                - sensor.automations_dashboard_dwains_add_on
+                - sensor.birthday_dwains_add_on
+                - sensor.github_dwains_add_on
+                - sensor.uptimerobot_dwains_add_on
+                - sensor.uptimerobot_lovelace_card
+                
+      
+            - type: 'custom:github-flexi-card'
+              title: Dwains Dashboard
+              secondary_info: '{latest_release_tag}'
+              url: true
+              attribute_urls: true
+              attributes:
+                - stargazers
+                - open_issues
+                - forks
+                - open_pull_requests
+              sort:
+                - by: stargazers
+                - by: views_unique
+              ascending: true
+              entities:
+                - sensor.dwains_dashboard  
+                - entity: sensor.dwains_dashboard_addons
+                  secondary_info: null
+                  
+            - type: 'custom:github-flexi-card'
+              title: Home Assistant
+              secondary_info: '{latest_release_tag}'
+              url: true
+              attribute_urls: true
+              attributes:
+                - stargazers
+                - open_issues
+                - forks
+                - open_pull_requests
+              sort:
+                - by: stargazers
+                - by: views_unique
+              ascending: true
+              entities:
+                - sensor.home_assistant_website
+                - sensor.home_assistant_os
+                - sensor.home_assistant_core
+                - sensor.home_assistant_fronted
+                - sensor.home_assistant_supervisor
