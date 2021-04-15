@@ -1,0 +1,22 @@
+## Created by Eelco Bode
+## More-page add-on: NOS News
+## Version: 0.0.1
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-md-12'
+  cards:
+   - type: custom:list-card
+     entity: sensor.nos_feed
+     #title: News Feed
+     feed_attribute: entries
+     columns:
+       - title: ' '
+         field: image
+         type: image
+         width: auto
+         add_link: link
+       - title: ' ' 
+         field: title
+## Uglyness warning, summary of NOS is not a summary but MASSSSSIVE!
+#       - title: Detail
+#         field: summary
