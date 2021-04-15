@@ -1,6 +1,6 @@
-## Created by Mobiledude
-## More-page add-on: Power
-## Version: 1.0.0
+## Created by LRvdLinden
+## More-page add-on: Weather
+## Version: 1.1.0
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
@@ -62,6 +62,13 @@
             icon: 'fas:thermometer-half'
             entities:
               - sensor.apeldoorn_feel_temperature
+            line_color: '#299ec2'
+          - cards:
+            type: 'custom:mini-graph-card'
+            name: Grondtemperatuur
+            icon: 'fas:thermometer-half'
+            entities:
+              - sensor.apeldoorn_ground_temperature
             line_color: '#299ec2'
           - cards:
             Refresh: null
@@ -127,12 +134,25 @@
                 - entity: sensor.apeldoorn_humidity
                 - entity: sensor.apeldoorn_pressure
                 - entity: sensor.apeldoorn_visibility
-                - entity: sensor.apeldoorn_wind_speed
-                  name: Wind snelheid
-                - entity: sensor.apeldoorn_wind_direction
-                  name: Wind richting
-                  icon: 'fas:compass'
-                - entity: sensor.apeldoorn_ground_temperature
-                  name: Grond temperatuur
+                - type: custom:fold-entity-row
+                  head:
+                    type: section
+                    label: Meer informatie
+                  entities:
+                    - entity: sensor.apeldoorn_wind_speed
+                      name: Wind snelheid
+                    - entity: sensor.apeldoorn_wind_direction
+                      name: Wind richting
+                      icon: 'fas:compass'
+                    - entity: sensor.apeldoorn_ground_temperature
+                      name: Grond temperatuur
             type: entities
+##Pollen
+          - entities:
+              - entity: sensor.ambee_pollen_grass
+              - entity: sensor.ambee_pollen_tree
+              - entity: sensor.ambee_pollen_weed
+            state_color: true
+            title: Pollen
+            type: 'glance'
         type: vertical-stack
