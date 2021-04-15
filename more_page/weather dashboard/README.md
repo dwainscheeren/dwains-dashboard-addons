@@ -37,7 +37,7 @@
 
 ## Prerequisite
 ---
-- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Butten Card](https://github.com/custom-cards/button-card) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
+- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Button Card](https://github.com/custom-cards/button-card) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/77990847/114733529-b6ca1a00-9d43-11eb-876a-6f4beda466ec.png">
 
@@ -45,7 +45,7 @@
 
 ## Make Home Assistant integration 
 ---
-Please reboot Home Assistant after vonfig the sensors!
+<h3>Please reboot Home Assistant after config the sensors!</h3>
 
 ### Buienradar sensor + Radar map
 - Make the integration with [Buienradar](https://www.home-assistant.io/integrations/sensor.buienradar/)
@@ -120,6 +120,71 @@ camera:
   - platform: buienradar
 ```
 
+### Ambee Pollen sensoren
+- Make the integration with [Ambee Pollen](https://api-dashboard.getambee.com/#/signup)
+- Make sure you have reboot Home Assistant after that you have made the sensors!
+
+![image](https://user-images.githubusercontent.com/77990847/114853382-052ef580-9de4-11eb-9d23-4963ea8fc77a.png)
+
+```yaml
+### Ambee Pollen
+
+# Must be added in sensor.yml
+# replace LAT, LONG and API-KEY with your values
+
+- platform: rest
+  scan_interval: 3600
+  resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=LAT&lng=LONG
+  name: "Ambee Pollen"
+  headers:
+    content-type: "application/json"
+    x-api-key: "YOUR-API-KEY"
+  json_attributes_path: "$.data.['Risk']"
+  json_attributes:
+    - tree_pollen
+    - grass_pollen
+    - weed_pollen
+
+- platform: template
+  sensors:
+    ambee_pollen_tree:
+      icon_template: "mdi:tree-outline"
+      friendly_name: "tree"
+      value_template: >-
+        {% set state = state_attr('sensor.ambee_pollen', 'tree_pollen') %}
+        {% if state == "Low" %}Low
+        {% elif state == "Moderate"%}Moderate
+        {% elif state == "High"%}High
+        {% elif state == "Very High"%}Very High
+        {% else %}Unbekannt{% endif %}
+
+- platform: template
+  sensors:
+    ambee_pollen_weed:
+      icon_template: "mdi:nature"
+      friendly_name: "weed"
+      value_template: >-
+        {% set state = state_attr('sensor.ambee_pollen', 'weed_pollen') %}
+        {% if state == "Low" %}Low
+        {% elif state == "Moderate"%}Moderate
+        {% elif state == "High"%}High
+        {% elif state == "Very High"%}Very High
+        {% else %}Unbekannt{% endif %}
+
+- platform: template
+  sensors:
+    ambee_pollen_grass:
+      icon_template: "mdi:grass"
+      friendly_name: "grass"
+      value_template: >-
+        {% set state = state_attr('sensor.ambee_pollen', 'grass_pollen') %}
+        {% if state == "Low" %}Low
+        {% elif state == "Moderate"%}Moderate
+        {% elif state == "High"%}High
+        {% elif state == "Very High"%}Very High
+        {% else %}Unbekannt{% endif %}
+```
+
 ### KMNI sensor
 - Make the integration with [KNMI](https://www.home-assistant.io/integrations/scrape/)
 ```yaml
@@ -173,12 +238,17 @@ sun:
 ## Replace the following
 ---
 - If some `sensors` not showing after this manual, please add the correct `sensor` to monitor
-
-
+- The dashboard will refresh every 10 minutes. When you want to skip this, delete the code between line 66 till 69
+```yaml
+ - cards:
+   Refresh: null
+   type: 'custom:auto-reload-card'
+   delay_in_minute: 10
+```
 
 ## Result
 ---
-![vd-weer](https://user-images.githubusercontent.com/77990847/114725586-e590c200-9d3c-11eb-8c2d-ad4bbd616815.png)
+![image](https://user-images.githubusercontent.com/77990847/114860224-03693000-9dec-11eb-9878-ece886b44689.png)
 
 
 
