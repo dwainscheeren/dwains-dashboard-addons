@@ -45,7 +45,7 @@
 
 ## Make Home Assistant integration 
 ---
-<h3>Please reboot Home Assistant after config the sensors!</h3>
+:warning: Please reboot Home Assistant after config the sensors! :warning:
 
 ### Buienradar sensor + Radar map
 - Make the integration with [Buienradar](https://www.home-assistant.io/integrations/sensor.buienradar/)
@@ -122,68 +122,10 @@ camera:
 
 ### Ambee Pollen sensoren
 - Make the integration with [Ambee Pollen](https://api-dashboard.getambee.com/#/signup)
-- Make sure you have reboot Home Assistant after that you have made the sensors!
+- Download the file `pollen.yaml` and place it in youre `sensor` directory or copy it in to `configuration.yaml`
 
-![image](https://user-images.githubusercontent.com/77990847/114853382-052ef580-9de4-11eb-9d23-4963ea8fc77a.png)
+<img width="314" alt="image" src="https://user-images.githubusercontent.com/77990847/115065163-16642900-9eee-11eb-9074-1fb4d462b7ea.png">
 
-```yaml
-### Ambee Pollen
-
-# Must be added in sensor.yml
-# replace LAT, LONG and API-KEY with your values
-
-- platform: rest
-  scan_interval: 3600
-  resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=LAT&lng=LONG
-  name: "Ambee Pollen"
-  headers:
-    content-type: "application/json"
-    x-api-key: "YOUR-API-KEY"
-  json_attributes_path: "$.data.['Risk']"
-  json_attributes:
-    - tree_pollen
-    - grass_pollen
-    - weed_pollen
-
-- platform: template
-  sensors:
-    ambee_pollen_tree:
-      icon_template: "mdi:tree-outline"
-      friendly_name: "tree"
-      value_template: >-
-        {% set state = state_attr('sensor.ambee_pollen', 'tree_pollen') %}
-        {% if state == "Low" %}Low
-        {% elif state == "Moderate"%}Moderate
-        {% elif state == "High"%}High
-        {% elif state == "Very High"%}Very High
-        {% else %}Unbekannt{% endif %}
-
-- platform: template
-  sensors:
-    ambee_pollen_weed:
-      icon_template: "mdi:nature"
-      friendly_name: "weed"
-      value_template: >-
-        {% set state = state_attr('sensor.ambee_pollen', 'weed_pollen') %}
-        {% if state == "Low" %}Low
-        {% elif state == "Moderate"%}Moderate
-        {% elif state == "High"%}High
-        {% elif state == "Very High"%}Very High
-        {% else %}Unbekannt{% endif %}
-
-- platform: template
-  sensors:
-    ambee_pollen_grass:
-      icon_template: "mdi:grass"
-      friendly_name: "grass"
-      value_template: >-
-        {% set state = state_attr('sensor.ambee_pollen', 'grass_pollen') %}
-        {% if state == "Low" %}Low
-        {% elif state == "Moderate"%}Moderate
-        {% elif state == "High"%}High
-        {% elif state == "Very High"%}Very High
-        {% else %}Unbekannt{% endif %}
-```
 
 ### KMNI sensor
 - Make the integration with [KNMI](https://www.home-assistant.io/integrations/scrape/)

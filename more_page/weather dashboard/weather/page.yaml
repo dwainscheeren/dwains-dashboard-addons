@@ -1,6 +1,6 @@
 ## Created by LRvdLinden
 ## More-page add-on: Weather
-## Version: 1.1.0
+## Version: 1.2.0
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
@@ -148,11 +148,24 @@
                       name: Grond temperatuur
             type: entities
 ##Pollen
-          - entities:
-              - entity: sensor.ambee_pollen_grass
-              - entity: sensor.ambee_pollen_tree
-              - entity: sensor.ambee_pollen_weed
+         
+          - cards:
+            type: 'glance'
+            entities:
+              - entity: sensor.pollen_grass_risk
+              - entity: sensor.pollen_tree_risk
+              - entity: sensor.pollen_weed_risk
             state_color: true
             title: Pollen
+          - cards:
             type: 'glance'
+            entities:
+              - entity: sensor.pollen_grass_count
+              - entity: sensor.pollen_tree_count
+              - entity: sensor.pollen_weed_count
+            state_color: true
+            show_name: false
+            show_icon: false
+            show_state: true
         type: vertical-stack
+            
