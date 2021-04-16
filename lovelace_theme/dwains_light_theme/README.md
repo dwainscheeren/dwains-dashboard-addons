@@ -28,7 +28,14 @@
 ## Prerequisite
 ---
 - Make sure you can access youre Home Assistant config files with [Samba Share](https://www.youtube.com/watch?v=udqY2CYzYGk)
-
+- Make shure you have created a `themes` folder in youre `config/` directory and added the following code to youre `configuration.yaml`
+```yaml
+# Core Configuration
+default_config:
+frontend:
+  themes: !include_dir_merge_named themes/
+```
+- Reboot Home Assistant or after insatllation Dwains Light Theme
 
 ## Installation Dwains Light Theme
 ---
@@ -40,11 +47,12 @@
 - Click on youre profile picture
 - By `themes` you need to select Dwains Light Theme 
 
-![image](https://user-images.githubusercontent.com/77990847/114995688-61565000-9e9e-11eb-9787-e1d1a672e6bb.png)
+![image](https://user-images.githubusercontent.com/77990847/115010504-cbc2bc80-9ead-11eb-8611-a8a1740b7c76.png)
 
 
-## Set HA theme for day and night
+## Automation options
 ---
+### Set HA theme for day and night
 - When you want to switch automatic between the Dark and Light theme based on the sun, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
 - Reboot Home Assistant
 ```yaml
@@ -69,11 +77,25 @@
             Dwains Dark Theme
           {% endif %}
 ```
+### Automation for default theme after starup HA
+- When you want to have a default theme after startup HA, please copy the file `set_theme_at_startup.yaml` into youre `automations.yaml` or `directory`
+- Reboot Home Assistant
+```yaml
+- alias: 'Set theme at startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: Dwains Light Theme
+```
+
 ## Result
 ---
 ![image](https://user-images.githubusercontent.com/77990847/114995529-366bfc00-9e9e-11eb-929a-a19d4d4d494f.png)
 ![image](https://user-images.githubusercontent.com/77990847/114995357-04f33080-9e9e-11eb-951f-2588ec75bb2b.png)
 ---
-Enjoy my card? Help me out for a couple of :beers: or a :coffee:!
+Enjoy my Lovelace theme? Help me out for a couple of :beers: or a :coffee:!
 
 [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://www.buymeacoffee.com/LRvdLinden)
