@@ -1,12 +1,12 @@
-<h1 align="center">Dwains Dark Theme</h1> 
+<h1 align="center">Dwains Light Theme</h1> 
 
 
 <p align="center">
-  <a href="https://github.com/LRvdLinden/dwains_dark_theme">
-    <img src="https://img.shields.io/github/v/release/LRvdLinden/dwains_dark_theme" />
+  <a href="https://github.com/LRvdLinden/dwains_light_theme">
+    <img src="https://img.shields.io/github/v/release/LRvdLinden/dwains_light_theme" />
   </a>
-      <a href="https://github.com/LRvdLinden/dwains_dark_theme">
-    <img src="https://img.shields.io/github/downloads/LRvdLinden/dwains_dark_theme/latest/total?color=purple&label=%20release%20Downloads" />
+      <a href="https://github.com/LRvdLinden/dwains_light_theme">
+    <img src="https://img.shields.io/github/downloads/LRvdLinden/dwains_light_theme/latest/total?color=purple&label=%20release%20Downloads" />
   </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
@@ -17,30 +17,31 @@
   </a>
 </p>
 
-<p align="center">A Lovelace Dark theme based on <a href=https://github.com/dwainscheeren/dwains-lovelace-dashboard>Dwains Dashboard</a></p>
+<p align="center">A Lovelace light theme based on <a href=https://github.com/dwainscheeren/dwains-lovelace-dashboard>Dwains Dashboard</a></p>
 <p align="center">Created by <a href="https://github.com/LRvdLinden">Léon van der Linden</a></p> 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77990847/114923935-b312c200-9e2d-11eb-81b2-3ae17998b3dd.png" />
+  <img src="https://user-images.githubusercontent.com/77990847/114995388-0e7c9880-9e9e-11eb-813b-ac55fb055534.png" />
 </p>
 
 
 ## Prerequisite
 ---
-- Make sure you can access youre Home Assistant config files with [Samba Share](https://www.youtube.com/watch?v=udqY2CYzYGk) or [ssh](https://community.home-assistant.io/t/home-assistant-community-add-on-ssh-web-terminal/33820)
+- Make sure you can access youre Home Assistant config files with [Samba Share](https://www.youtube.com/watch?v=udqY2CYzYGk)
 
 
-## Installation Dwains Dark Theme
+## Installation Dwains Light Theme
 ---
-- Download the `dwains_dark_theme` folder and place in your `config/theme` directory.
+- Download the `dwains_light_theme` folder and place in your `config/themes` directory.
 - Reboot Home Assistant
 
-## Selecting Dwains Dark Theme
+## Selecting Dwains Light Theme
 ---
 - Click on youre profile picture
-- By `themes` you need to select Dwains Dark Theme 
+- By `themes` you need to select Dwains Light Theme 
 
-![image](https://user-images.githubusercontent.com/77990847/114926311-7bf1e000-9e30-11eb-8193-d669545a642d.png)
+![image](https://user-images.githubusercontent.com/77990847/114995688-61565000-9e9e-11eb-9787-e1d1a672e6bb.png)
+
 
 ## Set HA theme for day and night
 ---
@@ -68,11 +69,10 @@
             Dwains Dark Theme
           {% endif %}
 ```
-
 ## Result
 ---
-![image](https://user-images.githubusercontent.com/77990847/114926388-91670a00-9e30-11eb-8747-570b62393dc8.png)
-![image](https://user-images.githubusercontent.com/77990847/114923935-b312c200-9e2d-11eb-81b2-3ae17998b3dd.png)
+![image](https://user-images.githubusercontent.com/77990847/114995529-366bfc00-9e9e-11eb-929a-a19d4d4d494f.png)
+![image](https://user-images.githubusercontent.com/77990847/114995357-04f33080-9e9e-11eb-951f-2588ec75bb2b.png)
 ---
 Enjoy my card? Help me out for a couple of :beers: or a :coffee:!
 
