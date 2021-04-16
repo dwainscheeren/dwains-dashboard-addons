@@ -124,7 +124,7 @@ camera:
 - Make the integration with [Ambee Pollen](https://api-dashboard.getambee.com/#/signup)
 - Download the file `pollen.yaml` and place it in youre `sensor` directory or copy it in to `configuration.yaml`
 
-<img width="311" alt="image" src="https://user-images.githubusercontent.com/77990847/115063777-51fdf380-9eec-11eb-9433-a983fe5d6046.png">
+<img width="314" alt="image" src="https://user-images.githubusercontent.com/77990847/115065163-16642900-9eee-11eb-9074-1fb4d462b7ea.png">
 
 
 ### KMNI sensor
