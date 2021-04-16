@@ -33,7 +33,14 @@
 ## Installation Dwains Dark Theme
 ---
 - Download the `dwains_dark_theme` folder and place in your `config/theme` directory.
-- Reboot Home Assistant
+- Make shure you have created a `themes` folder in youre `config/` directory and added the following code to youre `configuration.yaml`
+```yaml
+# Core Configuration
+default_config:
+frontend:
+  themes: !include_dir_merge_named themes/
+```
+- Reboot Home Assistant or after insatllation Dwains Dark Theme
 
 ## Selecting Dwains Dark Theme
 ---
@@ -42,8 +49,9 @@
 
 ![image](https://user-images.githubusercontent.com/77990847/114926311-7bf1e000-9e30-11eb-8193-d669545a642d.png)
 
-## Set HA theme for day and night
+## Automation options
 ---
+### Set HA theme for day and night
 - When you want to switch automatic between the Dark and Light theme based on the sun, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
 - Reboot Home Assistant
 ```yaml
@@ -68,12 +76,25 @@
             Dwains Dark Theme
           {% endif %}
 ```
+### Automation for default theme after starup HA
+- When you want to have a default theme after startup HA, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
+- Reboot Home Assistant
+```yaml
+- alias: 'Set theme at startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: Dwains Dark Theme
+```
 
 ## Result
 ---
 ![image](https://user-images.githubusercontent.com/77990847/114926388-91670a00-9e30-11eb-8747-570b62393dc8.png)
 ![image](https://user-images.githubusercontent.com/77990847/114923935-b312c200-9e2d-11eb-81b2-3ae17998b3dd.png)
 ---
-Enjoy my card? Help me out for a couple of :beers: or a :coffee:!
+Enjoy my Lovelace theme? Help me out for a couple of :beers: or a :coffee:!
 
 [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://www.buymeacoffee.com/LRvdLinden)
