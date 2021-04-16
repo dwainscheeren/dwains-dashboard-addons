@@ -77,7 +77,7 @@ frontend:
           {% endif %}
 ```
 ### Automation for default theme after starup HA
-- When you want to have a default theme after startup HA, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
+- When you want to have a default theme after startup HA, please copy the file `set_theme_at_startup.yaml` into youre `automations.yaml` or `directory`
 - Reboot Home Assistant
 ```yaml
 - alias: 'Set theme at startup'
