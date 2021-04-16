@@ -1,9 +1,9 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v.1.0.0
+# v.1.0.1
 #
-Dwains light Theme:
+Dwains Light Theme:
   # Header:
   app-header-background-color: '#262628'
   app-header-text-color: '#f2f2f7'
