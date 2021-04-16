@@ -1,0 +1,81 @@
+#sensor 
+#===============================================================
+sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je configuration.yaml staan.
+# Ambee Pollen vertaald door huizebruin.nl
+# https://api-dashboard.getambee.com/#/signup account aanmaken voor een 100 api calls per dag..
+# vervang LAT, LONG en API-KEY door uw waarden  XX.XXXXXXXX X.XXXXXX
+# in je Secrits.yaml de volgende regels plaatsen: 
+# (zonder hekje ervoor)     ambee-resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=XX.XXXXXX&lng=X.XXXXXX
+# (zonder hekje ervoor)     ambee-api: XXXXXXXXX
+# Bron : https://gist.github.com/michilehr/7ce7431f97e82523336a120b50d0ebe2
+  - platform: rest
+    scan_interval: 3600
+    resource: !secret ambee-resource   # ambee-resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=xx.xxxxxx&lng=x.xxxxxx
+    name: "pollen"
+    headers:
+      content-type: "application/json"
+      x-api-key: !secret ambee-api # zodat je veilig het kunt delen xxxxxx
+    json_attributes_path: "$.data[0]"
+    json_attributes:
+      - Risk
+      - Count
+      - updatedAt
+
+  - platform: template
+    sensors:
+      pollen_tree_risk:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Bomen"
+        value_template: >-
+          {% set state = state_attr('sensor.pollen', 'Risk')['tree_pollen'] %}
+          {% if state == "Low" %}Weinig
+          {% elif state == "Moderate"%}Middel
+          {% elif state == "High"%}Hoog
+          {% elif state == "Very High"%}zeer hoog
+          {% else %}Onbekend{% endif %}
+
+      pollen_weed_risk:
+        icon_template: "mdi:nature"
+        friendly_name: "Onkruid"
+        value_template: >-
+          {% set state = state_attr('sensor.pollen', 'Risk')['weed_pollen'] %}
+          {% if state == "Low" %}Weinig
+          {% elif state == "Moderate"%}Middel
+          {% elif state == "High"%}Hoog
+          {% elif state == "Very High"%}zeer hoog
+          {% else %}Onbekend{% endif %}
+
+      pollen_grass_risk:
+        icon_template: "mdi:grass"
+        friendly_name: "Gras"
+        value_template: >-
+          {% set state = state_attr('sensor.pollen', 'Risk')['grass_pollen'] %}
+          {% if state == "Low" %}Weinig
+          {% elif state == "Moderate"%}Middel
+          {% elif state == "High"%}Hoog
+          {% elif state == "Very High"%}zeer hoog
+          {% else %}Onbekend{% endif %}
+
+      pollen_tree_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Bomen"
+        unit_of_measurement: " /mÂ³"
+        value_template: "{{ state_attr('sensor.pollen', 'Count')['tree_pollen'] }}"
+        
+      pollen_weed_count:
+        icon_template: "mdi:nature"
+        friendly_name: "Onkruid"
+        unit_of_measurement: " /mÂ³"
+        value_template: "{{ state_attr('sensor.pollen', 'Count')['weed_pollen'] }}"
+        
+      pollen_grass_count:
+        icon_template: "mdi:grass"
+        friendly_name: "Gras"
+        unit_of_measurement: " /mÂ³"
+        value_template: "{{ state_attr('sensor.pollen', 'Count')['grass_pollen'] }}"
+        
+      pollen_last_updated:
+        icon_template: "mdi:clock"
+        friendly_name: "Laatste update"
+        device_class: timestamp
+        value_template: "{{ state_attr('sensor.pollen', 'updatedAt') }}"
