@@ -42,6 +42,32 @@
 
 ![image](https://user-images.githubusercontent.com/77990847/114926311-7bf1e000-9e30-11eb-8193-d669545a642d.png)
 
+## Set HA theme for day and night
+---
+- When you want to switch automatic between the Dark and Light theme based on the sun, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
+- Reboot Home Assistant
+```yaml
+- alias: Set HA theme for day and night
+  id: set_theme_for_day_and_night
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sun.sun
+      to: above_horizon
+    - platform: state
+      entity_id: sun.sun
+      to: below_horizon
+  action:
+    - service: frontend.set_theme
+      data:
+        name: >
+          {% if states.sun.sun.state == "above_horizon" %}
+            Dwains Light Theme
+          {% else %}
+            Dwains Dark Theme
+          {% endif %}
+```
 
 ## Result
 ---
