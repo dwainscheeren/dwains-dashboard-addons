@@ -1,171 +1,84 @@
-## Created by LRvdLinden
-## More-page add-on: Weather
-## Version: 1.2.0
-
-- type: custom:dwains-flexbox-card
-  items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
-  cards:
-## forecast
-      - cards:
-          - name: Forecast
-            styles:
-              card:
-                - text-transform: uppercase
-                - color: 'var(--dwains-theme-accent)'
-                - font-size: 125%
-                - border-radius: 0%
-                - font-weight: 100
-                - letter-spacing: 10px
-            type: 'custom:button-card'
-          - cards:
-            type: weather-forecast
-            entity: weather.thuis
-            show_forecast: true
-          - card:
-            type: picture-entity
-            entity: camera.buienradar_loop
-            image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
-            name: Buienradar
-            show_state: false
-            show_name: false
-          - card:
-            type: iframe
-            aspect_ratio: 80%
-            url: >-
-             https://embed.windy.com/embed2.html?lat=52.255&lon=5.273&detailLat=52.255&detailLon=5.273&width=650&height=450&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=true&calendar=12&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
-            name: Windy.com
-            show_state: false
-            show_name: false
-        type: vertical-stack
-## temperatuur
-      - cards:
-          - name: Temperatuur
-            styles:
-              card:
-                - text-transform: uppercase
-                - color: 'var(--dwains-theme-accent)'
-                - font-size: 125%
-                - border-radius: 0%
-                - font-weight: 100
-                - letter-spacing: 10px
-            type: 'custom:button-card'
-          - cards:
-            type: 'custom:mini-graph-card'
-            name: Buiten
-            icon: 'fas:thermometer-half'
-            entities:
-              - sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_tuin_temperature
-            line_color: '#299ec2'
-          - cards:
-            type: 'custom:mini-graph-card'
-            name: Gevoelstemperatuur
-            icon: 'fas:thermometer-half'
-            entities:
-              - sensor.apeldoorn_feel_temperature
-            line_color: '#299ec2'
-          - cards:
-            type: 'custom:mini-graph-card'
-            name: Grondtemperatuur
-            icon: 'fas:thermometer-half'
-            entities:
-              - sensor.apeldoorn_ground_temperature
-            line_color: '#299ec2'
-          - cards:
-            Refresh: null
-            type: 'custom:auto-reload-card'
-            delay_in_minute: 10
-        type: vertical-stack
-## neerslag
-      - cards:
-          - name: Neerslag
-            styles:
-              card:
-                - text-transform: uppercase
-                - color: 'var(--dwains-theme-accent)'
-                - font-size: 125%
-                - border-radius: 0%
-                - font-weight: 100
-                - letter-spacing: 10px
-            type: 'custom:button-card'
-          - cards:
-            type: 'custom:mini-graph-card'
-            entities:
-              - sensor.apeldoorn_rain_last_24h
-            line_color: '#299ec2'
-            name: Afgelopen 24uur
-            show:
-              graph: bar
-          - cards:
-            type: 'custom:mini-graph-card'
-            entities:
-              - sensor.apeldoorn_rain_last_hour
-            line_color: '#299ec2'
-            name: Afgelopen uur
-            show:
-              graph: bar
-          - cards:
-            type: 'custom:neerslag-card'
-            title: Voorspelling
-            entities:
-              - sensor.neerslag_buienalarm_regen_data
-              - sensor.neerslag_buienradar_regen_data
-        type: vertical-stack
-
-## Stats
-      - cards:
-          - name: Statistieken
-            styles:
-              card:
-                - text-transform: uppercase
-                - color: 'var(--dwains-theme-accent)'
-                - font-size: 125%
-                - border-radius: 0%
-                - font-weight: 100
-                - letter-spacing: 10px
-            type: 'custom:button-card'        
-          - entities:
-                - entity: sensor.season
-                - entity: sensor.moon
-                - entity: sun.sun
-                - entity: sensor.knmi_weercode
-                - entity: sensor.knmi_weer_waarschuwing
-                - entity: sensor.apeldoorn_barometer
-                - entity: sensor.apeldoorn_barometer_value
-                - entity: sensor.apeldoorn_humidity
-                - entity: sensor.apeldoorn_pressure
-                - entity: sensor.apeldoorn_visibility
-                - type: custom:fold-entity-row
-                  head:
-                    type: section
-                    label: Meer informatie
-                  entities:
-                    - entity: sensor.apeldoorn_wind_speed
-                      name: Wind snelheid
-                    - entity: sensor.apeldoorn_wind_direction
-                      name: Wind richting
-                      icon: 'fas:compass'
-                    - entity: sensor.apeldoorn_ground_temperature
-                      name: Grond temperatuur
-            type: entities
-##Pollen
-         
-          - cards:
-            type: 'glance'
-            entities:
-              - entity: sensor.pollen_grass_risk
-              - entity: sensor.pollen_tree_risk
-              - entity: sensor.pollen_weed_risk
-            state_color: true
-            title: Pollen
-          - cards:
-            type: 'glance'
-            entities:
-              - entity: sensor.pollen_grass_count
-              - entity: sensor.pollen_tree_count
-              - entity: sensor.pollen_weed_count
-            state_color: true
-            show_name: false
-            show_icon: false
-            show_state: true
-        type: vertical-stack
-            
+# Theme based on Dwains Dashboard
+# Creator: LRvdLinden
+# Website: https://github.com/LRvdLinden
+# v1.2.1
+#
+Dwains Dark Theme:
+  # Header:
+  app-header-background-color: '#262628'
+  app-header-text-color: '#ffffff'
+  # Main Interface Colors
+  primary-color: rgb(41, 158, 194)
+  light-primary-color: var(--primary-color)
+  primary-background-color: '#1c1c1e'
+  secondary-background-color: '#1c1c1e'
+  divider-color: var(--primary-background-color)
+  accent-color: rgb(41, 158, 194)
+  # Text
+  primary-text-color: '#f2f2f7'
+  secondary-text-color: rgb(174, 174, 178)
+  text-primary-color: var(--primary-text-color)
+  disabled-text-color: rgb(41, 158, 194)
+  # Sidebar Menu
+  sidebar-icon-color: rgb(41, 158, 194)
+  sidebar-text-color: var(--primary-text-color)
+  sidebar-background-color: '#262628'
+  sidebar-selected-background-color: '#1c1c1e'
+  sidebar-selected-icon-color: rgb(41, 158, 194)
+  sidebar-selected-text-color: rgb(41, 158, 194)
+  # Buttons
+  paper-item-icon-color: '#f2f2f7'
+  paper-item-icon-active-color: rgb(41, 158, 194)
+  # States and Badges
+  state-icon-color: rgb(41, 158, 194)
+  state-icon-active-color: rgb(169, 177, 188)
+  state-icon-unavailable-color: rgb(41, 158, 194)
+  # Sliders
+  paper-slider-knob-color: rgb(242, 242, 247)
+  paper-slider-knob-start-color: rgb(242, 242, 247)
+  paper-slider-pin-color: rgb(41, 158, 194)
+  paper-slider-active-color: rgb(41, 158, 194)
+  paper-slider-secondary-color: rgb(41, 158, 194)
+  # Labels
+  label-badge-background-color: var(--primary-background-color)
+  label-badge-text-color: var(--primary-text-color)
+  label-badge-red: rgb(255, 69, 58)
+  label-badge-green: rgb(48, 209, 88)
+  label-badge-blue: rgb(41, 158, 194)
+  label-badge-yellow: rgb(255, 214, 10)
+  label-badge-gray: rgb(72, 72, 74)
+  # Cards
+  card-background-color: var(--primary-background-color)
+  ha-card-border-radius: "10px"
+  ha-card-box-shadow: none
+  paper-card-header-color: '#f2f2f7'
+  paper-card-background-color: '#36373a'
+  paper-dialog-background-color: '#36373a'
+  paper-item-icon_-_color: '#f2f2f7'
+  paper-item-selected_-_background-color: '#36373a'
+  paper-tabs-selection-bar-color: '#f2f2f7'
+  paper-listbox-background-color: '#262628'
+  # Switches
+  switch-checked-button-color: '#f2f2f7'              
+  switch-unchecked-button-color: '#616161'               
+  switch-checked-track-color: rgb(41, 158, 194)                
+  switch-unchecked-track-color: '#131314'   
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  # Table
+  table-row-background-color: '#262628'
+  table-row-alternative-background-color: '#262628'
+  data-table-background-color: '#262628'
+  mdc-checkbox-unchecked-color: rgb(169, 177, 188)
+  # Dropdowns
+  material-background-color: '#1c1c1e'
+  material-secondary-background-color: '#1c1c1e'
+  mdc-theme-primary: '#6c6c75'
+  # Pre/Code
+  markdown-code-background-color: rgb(23, 23, 23)
+  #Popups settings
+  more-info-header-background: '#262628'
+  more-info-header-color: '#f2f2f7'
