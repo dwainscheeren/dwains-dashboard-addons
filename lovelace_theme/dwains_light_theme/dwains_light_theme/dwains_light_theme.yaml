@@ -1,7 +1,7 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v.1.0.2
+# v.2.0.0
 #
 Dwains Light Theme:
   # Header:
@@ -27,11 +27,11 @@ Dwains Light Theme:
   sidebar-selected-icon-color: rgb(41, 158, 194)
   sidebar-selected-text-color: rgb(41, 158, 194)
   # Buttons
-  paper-item-icon-color: rgb(95, 99, 104)
+  paper-item-icon-color: rgb(41, 158, 194)
   paper-item-icon-active-color: rgb(41, 158, 194)
   # States and Badges
   state-icon-color: rgb(41, 158, 194)
-  state-icon-active-color: rgb(169, 177, 188)
+  state-icon-active-color: rgb(41, 158, 194)
   state-icon-unavailable-color: rgb(41, 158, 194)
   # Sliders
   paper-slider-knob-color: rgb(41, 158, 194)
@@ -74,3 +74,17 @@ Dwains Light Theme:
   mdc-theme-surface: var(--paper-card-background-color)
   # Pre/Code
   markdown-code-background-color: rgb(242, 242, 242)
+  
+  #DWAINS DASHBOARD
+  primary-font-family: 'Open Sans'
+  dwains-theme-background: '#f2f2f7'
+  dwains-theme-primary: '#FFFFFF'
+  dwains-theme-accent: 'placeholder_primary_color'
+  dwains-theme-names: '#101012'
+  dwains-theme-grey: '#adadb7'
+  dwains-theme-header-background: '#262628'
+  dwains-theme-header-text: '#f2f2f7'
+  dwains-theme-header-button-text: '#f2f2f7'
+  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#909090' 
