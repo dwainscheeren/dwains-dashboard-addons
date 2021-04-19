@@ -1,7 +1,7 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v1.0.0
+# v1.0.3
 #
 Dwains Dark Theme:
   # Header:
@@ -14,6 +14,7 @@ Dwains Dark Theme:
   secondary-background-color: '#1c1c1e'
   divider-color: var(--primary-background-color)
   accent-color: rgb(41, 158, 194)
+  dwains-theme-accent: rgb(41, 158, 194)
   # Text
   primary-text-color: '#f2f2f7'
   secondary-text-color: rgb(174, 174, 178)
@@ -40,15 +41,15 @@ Dwains Dark Theme:
   paper-slider-active-color: rgb(41, 158, 194)
   paper-slider-secondary-color: rgb(41, 158, 194)
   # Labels
-  label-badge-background-color: rgb(28, 28, 30)
-  label-badge-text-color: rgb(242, 242, 247)
+  label-badge-background-color: var(--primary-background-color)
+  label-badge-text-color: var(--primary-text-color)
   label-badge-red: rgb(255, 69, 58)
   label-badge-green: rgb(48, 209, 88)
   label-badge-blue: rgb(41, 158, 194)
   label-badge-yellow: rgb(255, 214, 10)
   label-badge-gray: rgb(72, 72, 74)
   # Cards
-  card-background-color: '#262628'
+  card-background-color: var(--primary-background-color)
   ha-card-border-radius: "10px"
   ha-card-box-shadow: none
   paper-card-header-color: '#f2f2f7'
