@@ -1,7 +1,7 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v1.0.3
+# v2.0.0
 #
 Dwains Dark Theme:
   # Header:
@@ -14,7 +14,6 @@ Dwains Dark Theme:
   secondary-background-color: '#1c1c1e'
   divider-color: var(--primary-background-color)
   accent-color: rgb(41, 158, 194)
-  dwains-theme-accent: rgb(41, 158, 194)
   # Text
   primary-text-color: '#f2f2f7'
   secondary-text-color: rgb(174, 174, 178)
@@ -83,3 +82,17 @@ Dwains Dark Theme:
   #Popups settings
   more-info-header-background: '#262628'
   more-info-header-color: '#f2f2f7'
+  
+  #DWAINS DASHBOARD
+  primary-font-family: 'Open Sans'
+  dwains-theme-accent: 'placeholder_primary_color'
+  dwains-theme-background: '#1c1c1e'
+  dwains-theme-primary: '#262628'
+  dwains-theme-names: '#f2f2f7'
+  dwains-theme-grey: '#6c6c75'
+  dwains-theme-header-background: 'var(--dwains-theme-primary)'
+  dwains-theme-header-text: 'var(--dwains-theme-names)'
+  dwains-theme-header-button-text: '#f2f2f7'
+  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#606060' 
