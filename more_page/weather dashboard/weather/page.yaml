@@ -1,6 +1,6 @@
 ## Created by LRvdLinden
 ## More-page add-on: Weather
-## Version: 1.2.1
+## Version: 1.2.0
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
@@ -168,4 +168,4 @@
             show_icon: false
             show_state: true
         type: vertical-stack
-            
+           
