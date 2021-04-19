@@ -1,3 +1,8 @@
+# Dashboard based on Uptime Card and api UptimeRobot
+# Creator: LRvdLinden
+# Website: https://github.com/LRvdLinden
+# v.1.0.2
+
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
   cards: 
@@ -14,22 +19,26 @@
           items_classes: 'col-xs-12 col-md-12'
           cards:
             - type: 'custom:uptime-card'
-              entity: binary_sensor. # <-vul de sensor aan
-              icon: 'mdi:google'
-              name: Google DNS
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'hass:home-assistant'
+              name: Home Assistant
               hours_to_show: 72
               status_adaptive_color: true
               average_text: '% uptime'
               alias:
                 ok: Up
                 ko: Down
+              blink:
+                effect: fade
+                target: card
+                speed: 1
               color:
-                icon: white
+                icon: gray
                 ok: '#45C669'
                 ko: '#C6B145'
                 half: '#C66445'
                 none: '#C9C9C9'
-                title: white
+                title: gray
               show:
                 header: true
                 title: true
@@ -40,6 +49,173 @@
                 average: true
               tooltip:
                 animation: true
-              #tap_action:
-                #action: url
-                #url: 'https://'
+            - type: 'custom:uptime-card'
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'fas:server'
+              name: Synology DSM
+              hours_to_show: 72
+              status_adaptive_color: true
+              average_text: '% uptime'
+              alias:
+                ok: Up
+                ko: Down
+              blink:
+                effect: fade
+                target: card
+                speed: 1
+              color:
+                icon: gray
+                ok: '#45C669'
+                ko: '#C6B145'
+                half: '#C66445'
+                none: '#C9C9C9'
+                title: gray
+              show:
+                header: true
+                title: true
+                icon: true
+                footer: true
+                status: true
+                timeline: true
+                average: true
+              tooltip:
+                animation: true
+              tap_action:
+                action: url
+                url_path: 'http://'
+            - type: 'custom:uptime-card'
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'fas:server'
+              name: Virtual Machine
+              hours_to_show: 72
+              status_adaptive_color: true
+              average_text: '% uptime'
+              alias:
+                ok: Up
+                ko: Down
+              blink:
+                effect: fade
+                target: card
+                speed: 1
+              color:
+                icon: gray
+                ok: '#45C669'
+                ko: '#C6B145'
+                half: '#C66445'
+                none: '#C9C9C9'
+                title: gray
+              show:
+                header: true
+                title: true
+                icon: true
+                footer: true
+                status: true
+                timeline: true
+                average: true
+              tooltip:
+                animation: true
+              tap_action:
+                action: url
+                url_path: 'http://'
+            - type: 'custom:uptime-card'
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'fab:safari'
+              name: .nl
+              hours_to_show: 72
+              status_adaptive_color: true
+              average_text: '% uptime'
+              alias:
+                ok: Online
+                ko: Offline
+              blink:
+                effect: fade
+                target: card
+                speed: 1
+              color:
+                icon: gray
+                ok: '#45C669'
+                ko: '#C6B145'
+                half: '#C66445'
+                none: '#C9C9C9'
+                title: gray
+              show:
+                header: true
+                title: true
+                icon: true
+                footer: true
+                status: true
+                timeline: true
+                average: true
+              tooltip:
+                animation: true
+              tap_action:
+                action: url
+                url_path: 'https://'
+            - type: 'custom:uptime-card'
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'fab:safari'
+              name: .nl
+              hours_to_show: 72
+              status_adaptive_color: true
+              average_text: '% uptime'
+              alias:
+                ok: Online
+                ko: Offline
+              blink:
+                effect: fade
+                target: card
+                speed: 1
+              color:
+                icon: gray
+                ok: '#45C669'
+                ko: '#C6B145'
+                half: '#C66445'
+                none: '#C9C9C9'
+                title: gray
+              show:
+                header: true
+                title: true
+                icon: true
+                footer: true
+                status: true
+                timeline: true
+                average: true
+              tooltip:
+                animation: true
+              tap_action:
+                action: url
+                url_path: 'https://'
+            - type: 'custom:uptime-card'
+              entity: binary_sensor.#<- fill in the right sensor
+              icon: 'mdi:google'
+              name: Google DNS
+              hours_to_show: 72
+              status_adaptive_color: true
+              average_text: '% uptime'
+              alias:
+                ok: Up
+                ko: Down
+              blink:
+                effect: fade
+                target: card
+                speed: 1
+              color:
+                icon: gray
+                ok: '#45C669'
+                ko: '#C6B145'
+                half: '#C66445'
+                none: '#C9C9C9'
+                title: gray
+              show:
+                header: true
+                title: true
+                icon: true
+                footer: true
+                status: true
+                timeline: true
+                average: true
+              tooltip:
+                animation: true
+              tap_action:
+                action: url
+                url_path: 'https://www.google.com/'
