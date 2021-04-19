@@ -39,7 +39,7 @@ frontend:
 
 ## Installation Dwains Light Theme
 ---
-- Download the `dwains_light_theme` folder and place in your `config/themes` directory.
+- Download the `dwains_light_theme` folder and place it into your `config/themes` directory.
 - Reboot Home Assistant
 
 ## Selecting Dwains Light Theme
@@ -90,7 +90,23 @@ frontend:
     data:
       name: Dwains Light Theme
 ```
-
+### Delete Dwains Dashboard support
+- When you dont use `Dwains Dashboard` delete line `86` til `98` of `dwains_light_theme.yaml`
+```yaml
+  #DWAINS DASHBOARD
+  primary-font-family: 'Open Sans'
+  dwains-theme-background: '#f2f2f7'
+  dwains-theme-primary: '#FFFFFF'
+  dwains-theme-accent: 'placeholder_primary_color'
+  dwains-theme-names: '#101012'
+  dwains-theme-grey: '#adadb7'
+  dwains-theme-header-background: '#262628'
+  dwains-theme-header-text: '#f2f2f7'
+  dwains-theme-header-button-text: '#f2f2f7'
+  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#909090' 
+```
 ## Result
 ---
 ![image](https://user-images.githubusercontent.com/77990847/114995529-366bfc00-9e9e-11eb-929a-a19d4d4d494f.png)

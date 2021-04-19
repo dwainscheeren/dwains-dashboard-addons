@@ -1,7 +1,7 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v1.0.0
+# v2.0.0
 #
 Dwains Dark Theme:
   # Header:
@@ -40,15 +40,15 @@ Dwains Dark Theme:
   paper-slider-active-color: rgb(41, 158, 194)
   paper-slider-secondary-color: rgb(41, 158, 194)
   # Labels
-  label-badge-background-color: rgb(28, 28, 30)
-  label-badge-text-color: rgb(242, 242, 247)
+  label-badge-background-color: var(--primary-background-color)
+  label-badge-text-color: var(--primary-text-color)
   label-badge-red: rgb(255, 69, 58)
   label-badge-green: rgb(48, 209, 88)
   label-badge-blue: rgb(41, 158, 194)
   label-badge-yellow: rgb(255, 214, 10)
   label-badge-gray: rgb(72, 72, 74)
   # Cards
-  card-background-color: '#262628'
+  card-background-color: var(--primary-background-color)
   ha-card-border-radius: "10px"
   ha-card-box-shadow: none
   paper-card-header-color: '#f2f2f7'
@@ -82,3 +82,17 @@ Dwains Dark Theme:
   #Popups settings
   more-info-header-background: '#262628'
   more-info-header-color: '#f2f2f7'
+  
+  #DWAINS DASHBOARD
+  primary-font-family: 'Open Sans'
+  dwains-theme-accent: 'placeholder_primary_color'
+  dwains-theme-background: '#1c1c1e'
+  dwains-theme-primary: '#262628'
+  dwains-theme-names: '#f2f2f7'
+  dwains-theme-grey: '#6c6c75'
+  dwains-theme-header-background: 'var(--dwains-theme-primary)'
+  dwains-theme-header-text: 'var(--dwains-theme-names)'
+  dwains-theme-header-button-text: '#f2f2f7'
+  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#606060' 

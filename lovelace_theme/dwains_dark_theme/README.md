@@ -32,7 +32,7 @@
 
 ## Installation Dwains Dark Theme
 ---
-- Download the `dwains_dark_theme` folder and place in your `config/theme` directory.
+- Download the `themes` folder and place `dwains_dark_theme` in to your `config/theme` directory.
 - Make shure you have created a `themes` folder in youre `config/` directory and added the following code to youre `configuration.yaml`
 ```yaml
 # Core Configuration
@@ -89,7 +89,23 @@ frontend:
     data:
       name: Dwains Dark Theme
 ```
-
+### Delete Dwains Dashboard support
+- When you dont use `Dwains Dashboard` delete line `86` til `98` of `dwains_dark_theme.yaml`
+```yaml
+  #DWAINS DASHBOARD
+  primary-font-family: 'Open Sans'
+  dwains-theme-accent: 'placeholder_primary_color'
+  dwains-theme-background: '#1c1c1e'
+  dwains-theme-primary: '#262628'
+  dwains-theme-names: '#f2f2f7'
+  dwains-theme-grey: '#6c6c75'
+  dwains-theme-header-background: 'var(--dwains-theme-primary)'
+  dwains-theme-header-text: 'var(--dwains-theme-names)'
+  dwains-theme-header-button-text: '#f2f2f7'
+  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#606060' 
+```
 ## Result
 ---
 ![image](https://user-images.githubusercontent.com/77990847/114926388-91670a00-9e30-11eb-8747-570b62393dc8.png)
