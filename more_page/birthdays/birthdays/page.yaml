@@ -1,3 +1,9 @@
+# Birthdays Dwains Dashboard Add-on (more_page)
+# Creator: LRvdLinden
+# Website: https://github.com/LRvdLinden
+# v.1.0.1
+#
+
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
   cards: 
@@ -52,7 +58,10 @@
                 .cal-titleContainer {
                   display: none;
                 }
-              showProgressBar: false
+              showProgressBar: true
+              maxDaysToShow: 30
+              showMonth: true
+              showWeekDay: false
               eventBarColor: 'var(--dwains-theme-grey)'
               dayWrapperLineColor: 'var(--dwains-theme-grey)'
               timeColor: 'var(--dwains-theme-grey)'
