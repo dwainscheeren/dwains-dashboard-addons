@@ -1,0 +1,506 @@
+## Created by Léon van der Linden
+## More-page add-on: Security dashboard
+## Version: 1.0.0
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
+  cards:
+#alarm panel  
+      - cards:
+          - name: Alarm panel
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - cards:
+            type: alarm-panel
+            states:
+              - arm_away
+            entity: alarm_control_panel.ha_alarm
+            name: Alarm Control Center
+            theme: Backend-selected 
+## Sensoren
+          - cards:
+              - color_type: blank-card
+                icon: 'mdi:led-strip-variant'
+                name: Floor
+                styles:
+                  card:
+                    - width: 5px
+                type: 'custom:button-card'
+              - entity: binary_sensor.contact_sensor_voordeur
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:doorbell'
+                name: Voordeur
+                state:
+                  - icon: 'mdi:door-closed'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:door-open'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.entree_sensor_motion
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:key'
+                name: Entree
+                state:
+                  - icon: 'mdi:key'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:key'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.wc_sensor_motion
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:toilet'
+                name: Toilet
+                state:
+                  - icon: 'mdi:toilet'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:toilet'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - color_type: blank-card
+                icon: 'mdi:led-strip-variant'
+                name: Floor
+                styles:
+                  card:
+                    - width: 5px
+                type: 'custom:button-card'
+              - entity: binary_sensor.contact_sensor_achterdeur
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:doorbell'
+                name: Achterdeur
+                state:
+                  - icon: 'mdi:door-closed'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:door-open'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.logi_circle_kai
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:bed'
+                name: Kai
+                state:
+                  - icon: 'mdi:bed'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:bed'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.logi_circle_fay
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:bed'
+                name: Fay
+                state:
+                  - icon: 'mdi:bed'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:bed'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - color_type: blank-card
+                icon: 'mdi:led-strip-variant'
+                name: Floor
+                styles:
+                  card:
+                    - width: 5px
+                type: 'custom:button-card'
+              - entity: binary_sensor.logi_circle_zolder
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:home-roof'
+                name: Zolder
+                state:
+                  - icon: 'mdi:home-roof'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:home-roof'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.logi_circle_nyk
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:bed'
+                name: Nyk
+                state:
+                  - icon: 'mdi:bed'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:bed'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+              - entity: binary_sensor.kantoor_sensor_motion
+                extra_styles: |
+                  @keyframes mymove {
+                  50% {box-shadow: 0 0 20px red;}
+                  }
+                icon: 'mdi:briefcase'
+                name: Kantoor
+                state:
+                  - icon: 'mdi:briefcase'
+                    styles:
+                      card: null
+                      icon:
+                        - width: 45%
+                        - opacity: 0.5
+                        - padding-top: 10px
+                      name:
+                        - padding: 10px
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                    value: 'off'
+                  - color: white
+                    icon: 'mdi:briefcase'
+                    operator: default
+                    styles:
+                      card:
+                        - animation: mymove 2s infinite
+                      icon:
+                        - width: 45%
+                        - padding-top: 10px
+                        - color: 'rgba(255, 0, 0, 0.6)'
+                      name:
+                        - padding: 10px
+                        - color: red
+                        - font-weight: bold
+                        - font-size: 12px
+                        - text-overflow: unset
+                        - white-space: unset
+                        - word-break: break-word
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - color_type: blank-card
+                icon: 'mdi:led-strip-variant'
+                name: Floor
+                styles:
+                  card:
+                    - width: 15px
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+
+
+#Cams buiten
+      - cards:
+          - name: Camera's buiten
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.achterdeur
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.voordeur
+        type: vertical-stack    
+        
+#Cams binnen1
+      - cards:
+          - name: Camera's binnen 
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.logi_circle_kai
+            camera_view: auto
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.logi_circle_fay
+            camera_view: auto
+        type: vertical-stack    
+        
+#Cams binnen2
+      - cards:
+          - name: Camera's binnen 
+            styles:
+              card:
+                - text-transform: uppercase
+                - color: 'var(--dwains-theme-accent)'
+                - font-size: 125%
+                - border-radius: 0%
+                - font-weight: 100
+                - letter-spacing: 10px
+            type: 'custom:button-card'
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.logi_circle_nyk
+            camera_view: auto
+          - type: picture-entity
+            show_name: false
+            show_state: false
+            entity: camera.logi_circle_zolder
+            camera_view: auto
+        type: vertical-stack    
+          
+      
