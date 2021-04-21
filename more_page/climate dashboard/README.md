@@ -11,9 +11,6 @@
   <a href="https://github.com/LRvdLinden/climate_dashboard_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/climate_dashboard_dd_addon" />
   </a>
-      <a href="https://github.com/LRvdLinden/climate_dashboard_dd_addon">
-    <img src="https://img.shields.io/github/downloads/LRvdLinden/climate_dashboard_dd_addon/latest/total?color=purple&label=%20release%20Downloads" />
-  </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
   </a>
@@ -30,8 +27,9 @@
 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77990847/115149631-4124bd80-a065-11eb-98aa-f2694cbdcb79.png" />
+  <img src="https://user-images.githubusercontent.com/77990847/115537460-1fad1700-a29b-11eb-84b9-3067cc81dd01.png" />
 </p>
+
 
 
 ## Prerequisite
@@ -53,6 +51,25 @@
    path: 'dwains-dashboard/addons/more_page/climate_dashboard/page.yaml'
 ```
 - Reload the theme configuration via Theme Settings
+
+
+## Creat a temperature sensor
+---
+
+![image](https://user-images.githubusercontent.com/77990847/115536889-88e05a80-a29a-11eb-92a1-ebf78e3e9f85.png)
+
+- To get a base line on a special temperature, creat the following `platform sensor`
+- If you whant another temperature then 20, change it to what you want as a base line
+- Reboot Home Assistant
+
+```yaml
+  - platform: template
+    sensors:
+      20_sensor:
+        friendly_name: '20'
+        value_template: >
+          20
+```
 
 ## Replace the following
 ---

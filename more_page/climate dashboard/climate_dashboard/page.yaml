@@ -1,6 +1,7 @@
 ## Created by LRvdLinden
-## More-page add-on: Climate Dashboard
-## Version: 1.0.0
+## More-page add-on: Climate Control
+## Version: 1.0.1
+## https://github.com/LRvdLinden
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
@@ -19,9 +20,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_temperature
-                    name: Huidig Temperatuur (24h)
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_temperature
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -30,14 +35,15 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
-
+                  average: true     
+                theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
                 color: 'rgb(41, 158, 194)'
@@ -96,9 +102,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_tuin_temperature
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_tuin_temperature
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -107,26 +117,27 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_tuin_temperature
                 icon: 'mdi:flower'
                 name: Buiten
                 show_state: true
                 size: 30%
                 state:
-                  - color: rgb(41, 158, 194)
+                  - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: rgb(41, 158, 194)
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
@@ -172,9 +183,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -183,17 +198,18 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
                 icon: 'mdi:briefcase'
                 name: Kantoor
@@ -202,7 +218,7 @@
                 state:
                   - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: 'var(--dwains-theme-accent)'
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
@@ -248,9 +264,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
-                    name: Temperatuur(24h)
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
+                    name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -259,17 +279,18 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: bsensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
                 icon: 'mdi:home-roof'
                 name: Zolder
@@ -278,7 +299,7 @@
                 state:
                   - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: 'var(--dwains-theme-accent)'
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
@@ -324,9 +345,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_master_bedroom_temperature
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_master_bedroom_temperature
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -335,23 +360,28 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_master_bedroom_temperature
                 icon: 'mdi:bed'
                 name: Master Bedroom
                 show_state: true
                 size: 30%
-
+                state:
+                  - color: 'var(--disabled-text-color)'
+                    value: 'off'
+                  - color: 'rgb(41, 158, 194)'
+                    value: 'on'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -394,9 +424,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
+                  - entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -405,17 +439,18 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_zolder_temperature
                 icon: 'mdi:bed'
                 name: Slaapkamer Kai
@@ -424,7 +459,7 @@
                 state:
                   - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: 'var(--dwains-theme-accent)'
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
@@ -471,9 +506,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.temperature_sensor_temperature_2
+                  - entity: sensor.temperature_sensor_temperature_2
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -482,17 +521,18 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.temperature_sensor_temperature_2
                 icon: 'mdi:bed'
                 name: Slaapkamer Fay
@@ -501,7 +541,7 @@
                 state:
                   - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: 'var(--dwains-theme-accent)'
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
@@ -548,9 +588,13 @@
             type: 'custom:button-card'
           - cards:
               - entities:
-                  - color: 'var(--dwains-theme-accent)'
-                    entity: sensor.temperature_sensor_temperature
+                  - entity: sensor.temperature_sensor_temperature
                     name: Temperatuur (24h)
+                    color: 'var(--dwains-theme-accent)'
+                    show_fill: true
+                  - entity: sensor.20_sensor
+                    color: green
+                    show_fill: false
                 font_size: 80
                 hours_to_show: 24
                 line_width: 2
@@ -559,17 +603,18 @@
                 decimals: 0
                 show:
                   animate: true
-                  fill: true
+#                  fill: true
                   icon: false
                   labels: false
+                  legend: false
                   name: false
                   graph: line
                   extrema: true
-                  average: true
+                  average: true     
                 theme: ios-dark-mode-blue-red
                 type: 'custom:mini-graph-card'
               - aspect_ratio: 1/1
-                color: 'rgb(150, 150, 150)'
+                color: 'rgb(41, 158, 194)'
                 entity: sensor.temperature_sensor_temperature
                 icon: 'mdi:bed'
                 name: Slaapkamer Nyk
@@ -578,7 +623,7 @@
                 state:
                   - color: 'var(--disabled-text-color)'
                     value: 'off'
-                  - color: 'var(--dwains-theme-accent)'
+                  - color: 'rgb(41, 158, 194)'
                     value: 'on'
                 styles:
                   name:
