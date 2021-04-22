@@ -1,7 +1,7 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v2.0.0
+# v2.0.1
 #
 Dwains Dark Theme:
   # Header:
@@ -31,8 +31,8 @@ Dwains Dark Theme:
   paper-item-icon-active-color: rgb(41, 158, 194)
   # States and Badges
   state-icon-color: rgb(41, 158, 194)
-  state-icon-active-color: rgb(169, 177, 188)
-  state-icon-unavailable-color: rgb(41, 158, 194)
+  state-icon-active-color: rgb(255, 214, 10)
+  state-icon-unavailable-color: rgb(169, 177, 188)
   # Sliders
   paper-slider-knob-color: rgb(242, 242, 247)
   paper-slider-knob-start-color: rgb(242, 242, 247)
