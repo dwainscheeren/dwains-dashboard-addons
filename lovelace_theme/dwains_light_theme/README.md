@@ -25,7 +25,7 @@
 </p>
 
 
-## Prerequisite
+## Prerequisite ⚙️
 ---
 - Make sure you can access youre Home Assistant config files with [Samba Share](https://www.youtube.com/watch?v=udqY2CYzYGk)
 - Make shure you have created a `themes` folder in youre `config/` directory and added the following code to youre `configuration.yaml`
@@ -37,12 +37,12 @@ frontend:
 ```
 - Reboot Home Assistant or after insatllation Dwains Light Theme
 
-## Installation Dwains Light Theme
+## Installation Dwains Light Theme ⚙️
 ---
 - Download the `dwains_light_theme` folder and place it into your `config/themes` directory.
 - Reboot Home Assistant
 
-## Selecting Dwains Light Theme
+## Selecting Dwains Light Theme 🔧
 ---
 - Click on youre profile picture
 - By `themes` you need to select Dwains Light Theme 
@@ -50,7 +50,7 @@ frontend:
 ![image](https://user-images.githubusercontent.com/77990847/115010504-cbc2bc80-9ead-11eb-8611-a8a1740b7c76.png)
 
 
-## Automation options
+## Automation options 🔧
 ---
 ### Set HA theme for day and night
 - When you want to switch automatic between the Dark and Light theme based on the sun, please copy the file `auto_switch_theme.yaml` into youre `automations.yaml` or `directory`
@@ -77,7 +77,7 @@ frontend:
             Dwains Dark Theme
           {% endif %}
 ```
-### Automation for default theme after starup HA
+### Automation for default theme after starup HA 🔧
 - When you want to have a default theme after startup HA, please copy the file `set_theme_at_startup.yaml` into youre `automations.yaml` or `directory`
 - Reboot Home Assistant
 ```yaml
@@ -90,23 +90,15 @@ frontend:
     data:
       name: Dwains Light Theme
 ```
-### Delete Dwains Dashboard support
-- When you dont use `Dwains Dashboard` delete line `86` til `98` of `dwains_light_theme.yaml`
-```yaml
-  #DWAINS DASHBOARD
-  primary-font-family: 'Open Sans'
-  dwains-theme-background: '#f2f2f7'
-  dwains-theme-primary: '#FFFFFF'
-  dwains-theme-accent: 'placeholder_primary_color'
-  dwains-theme-names: '#101012'
-  dwains-theme-grey: '#adadb7'
-  dwains-theme-header-background: '#262628'
-  dwains-theme-header-text: '#f2f2f7'
-  dwains-theme-header-button-text: '#f2f2f7'
-  dwains-theme-header-button-background: '#1c1c1e'
-  dwains-theme-unavailable: '#303030'
-  dwains-theme-off: '#909090' 
-```
+
+## State icons 🎨
+---
+| Name | Type | Default | Since | 
+|------|:--------------:|:-------:|:-----:|
+| state icon | color | ![ ](https://dummyimage.com/20x10/299ec2&amp;text=+) `#299ec2` |  v2.0.1
+| active icon  | color | ![ ](https://dummyimage.com/20x10/ffd60a&amp;text=+) `#ffd60a` |  v2.0.1
+| unavailable icon | color | ![ ](https://dummyimage.com/20x10/a9b1bc&amp;text=+) `#a9b1bc` |  v2.0.1
+
 ## Result
 ---
 ![image](https://user-images.githubusercontent.com/77990847/114995529-366bfc00-9e9e-11eb-929a-a19d4d4d494f.png)
