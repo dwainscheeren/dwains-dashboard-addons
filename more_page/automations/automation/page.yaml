@@ -1,3 +1,8 @@
+## Created by LRvdLinden
+## More-page add-on: Automation
+## Version: 1.0.2
+## https://github.com/LRvdLinden
+
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
   cards: 
@@ -34,4 +39,12 @@
                 - person
                 - scene
                 - switch
-              title: Scheduler
+              title: Schedular
+            - type: 'custom:search-card'
+              entity_id:
+                '1': null
+              max_results: 15
+              name: 'Toggle {1}'
+              service: homeassistant.toggle
+              service_data: null
+              icon: 'mdi:database-search'
