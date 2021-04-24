@@ -1,0 +1,31 @@
+## Created by Eelco Bode
+# More-page add-on: Spotify
+## Version: 0.0.1
+
+- type: vertical-stack
+  cards:
+    - name: Media Player
+      styles:
+        card:
+          - padding: '2% 0px'
+          - text-transform: uppercase
+          - font-size: 125%
+          - color: 'var(--dwains-theme-accent)'
+          - border-radius: 0%
+          - font-weight: 100
+          - letter-spacing: 10px
+          - --mdc-ripple-press-opacity: 0
+          - cursor: initial
+        name:
+          - font-weight: 900
+      type: 'custom:button-card'
+    - type: 'custom:auto-entities'
+      filter:
+        include:
+          - entity_id: media_player.spotify*
+            options:
+              type: 'custom:mini-media-player'
+              icon: mdi:spotify
+              artwork: cover
+      card:
+        type: entities
