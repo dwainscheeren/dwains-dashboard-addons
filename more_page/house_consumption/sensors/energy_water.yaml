@@ -1,0 +1,109 @@
+#
+# Energy calculation
+#
+# https://community.home-assistant.io/t/custom-component-homewizard-energy-wifi-p1-meter/227441/52?fbclid=IwAR0r8MLFPQFGkwnGJ6WaeevDVE5a7orRuUr_-RwlLbQzgnN_Rr3pNRhzmLE
+#
+
+# import water
+- platform: template
+  sensors:
+    energy_water_eur:
+      friendly_name: 'Kosten vandaag water'
+      value_template: "{{ (states('sensor.water_daily')|float * states('input_number.water_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+# PRICES GAS
+- platform: template
+  sensors:
+    water_price_today:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_daily') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + c) + d) | round(2) }}
+    water_price_yesterday:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_yesterday') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + c) + d) | round(2) }}
+    water_price_week:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_weekly') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + ((c * 365) / 52)) + ((d * 365) / 52)) | round(2) }}
+    water_price_last_week:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_last_week') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + ((c * 365) / 52)) + ((d * 365) / 52)) | round(2) }}
+    water_price_month:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_monthly') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + ((c * 365) / 12)) + ((d * 365) / 12)) | round(2) }}
+    water_price_last_month:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_last_month') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + ((c * 365) / 12)) + ((d * 365) / 12)) | round(2) }}
+    water_price_year:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_yearly') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + (c * 365)) + (d * 365)) | round(2) }}
+    water_price_last_year:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.water_last_year') | float %}
+        {% set b = states('input_number.water_energy_cost') | float %}
+        {% set c = states('input_number.water_belasting_cost') | float %}
+        {% set d = states('input_number.vaste_leveringskosten_water') | float %}
+        {{ (((a * b) + (c * 365)) + (d * 365)) | round(2) }}
+
+# LAST PERIODS water
+- platform: template
+  sensors:
+    water_yesterday:
+      friendly_name: Yesterday Water
+      unit_of_measurement: m3
+      value_template: "{{ state_attr('sensor.water_daily','last_period') }}"
+    water_last_week:
+      friendly_name: Last Week Water
+      unit_of_measurement: m3
+      value_template: "{{ state_attr('sensor.water_weekly','last_period') }}"
+    water_last_month:
+      friendly_name: Last Month Water
+      unit_of_measurement: m3
+      value_template: "{{ state_attr('sensor.water_monthly','last_period') }}"
+    water_last_year:
+      friendly_name: Last Year Water
+      unit_of_measurement: m3
+      value_template: "{{ state_attr('sensor.water_yearly','last_period') }}"
+
+#Gemiddeld
+    average_water_day:
+      unit_of_measurement: 'm3'
+      value_template: >-
+        {% set a = states('sensor.water_last_month') | float %}
+        {{ (a / 30.41) | round(3) }}

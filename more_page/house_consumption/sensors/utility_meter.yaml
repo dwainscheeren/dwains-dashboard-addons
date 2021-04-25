@@ -1,0 +1,172 @@
+#
+# Utility meter configuration
+#
+# https://www.home-assistant.io/integrations/utility_meter/
+#
+
+utility_meter:
+# Hourly sensors
+  energy_offpeak_hourly:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: hourly
+  energy_peak_hourly:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: hourly
+  gas_hourly:
+    source: sensor.p1_meter_total_gas_m3
+    cycle: hourly
+  water_hourly:
+    source: sensor.water_meter_usage_in_m3
+    cycle: hourly
+  water_hourly_l:
+    source: sensor.water_meter_usage
+    cycle: hourly
+
+# Daily sensors
+  energy_offpeak_daily:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: daily
+  energy_peak_daily:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: daily
+
+  energy_import_t2_daily:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: daily
+
+  energy_import_t1_daily:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: daily
+
+  energy_export_t2_daily:
+    source: sensor.p1_meter_total_power_export_t2_kwh
+    cycle: daily
+
+  energy_export_t1_daily:
+    source: sensor.p1_meter_total_power_export_t1_kwh
+    cycle: daily
+
+  gas_daily:
+    source: sensor.p1_meter_total_gas_m3
+    cycle: daily
+
+  water_daily:
+    source: sensor.water_meter_usage_in_m3
+    cycle: daily
+
+  pv_daily:
+    source: sensor.pv_opbrengst_kwh
+    cycle: daily
+
+  wasdroger_energy_daily:
+    source: sensor.wasdroger_verbruik_kwh
+    cycle: daily
+
+  wasmachine_energy_daily:
+    source: sensor.wasmachine_verbruik_kwh
+    cycle: daily
+
+  koelkast_energy_daily:
+    source: sensor.koelkast_verbruik_kwh
+    cycle: daily
+
+  cv_energy_daily:
+    source: sensor.cv_verbruik_kwh
+    cycle: daily
+
+  wtw_energy_daily:
+    source: sensor.wtw_verbruik_kwh
+    cycle: daily
+
+  serverkast_energy_daily:
+    source: sensor.serverkast_verbruik_kwh
+    cycle: daily
+
+  meterkast_energy_daily:
+    source: sensor.meterkast_verbruik_kwh
+    cycle: daily
+
+  vaatwasser_energy_daily:
+    source: sensor.vaatwasser_verbruik_kwh
+    cycle: daily
+
+  quooker_energy_daily:
+    source: sensor.quooker_verbruik_kwh
+    cycle: daily
+
+  tv_energy_daily:
+    source: sensor.tv_verbruik_kwh
+    cycle: daily
+
+# Weekly sensors
+  energy_offpeak_weekly:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: weekly
+  energy_peak_weekly:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: weekly
+  gas_weekly:
+    source: sensor.p1_meter_total_gas_m3
+    cycle: weekly
+
+  water_weekly:
+    source: sensor.water_meter_usage_in_m3
+    cycle: weekly
+  
+  pv_weekly:
+    source: sensor.pv_opbrengst_kwh
+    cycle: weekly
+
+# Monthly sensors
+  # energy_peak_monthly:
+  #   source: sensor.p1_meter_total_power_import_t2_kwh
+  #   cycle: monthly
+
+  # energy_offpeak_monthly:
+  #   source: sensor.p1_meter_total_power_import_t1_kwh
+  #   cycle: monthly
+
+  energy_import_t2_monthly:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: monthly
+
+  energy_import_t1_monthly:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: monthly
+
+  energy_export_t2_monthly:
+    source: sensor.p1_meter_total_power_export_t2_kwh
+    cycle: monthly
+
+  energy_export_t1_monthly:
+    source: sensor.p1_meter_total_power_export_t1_kwh
+    cycle: monthly
+
+  gas_monthly:
+    source: sensor.p1_meter_total_gas_m3
+    cycle: monthly
+
+  water_monthly:
+    source: sensor.water_meter_usage_in_m3
+    cycle: monthly
+  
+  pv_monthly:
+    source: sensor.pv_opbrengst_kwh
+    cycle: monthly
+
+# Yearly sensors
+  energy_offpeak_yearly:
+    source: sensor.p1_meter_total_power_import_t1_kwh
+    cycle: yearly
+  energy_peak_yearly:
+    source: sensor.p1_meter_total_power_import_t2_kwh
+    cycle: yearly
+  gas_yearly:
+    source: sensor.p1_meter_total_gas_m3
+    cycle: yearly
+  water_yearly:
+    source: sensor.water_meter_usage_in_m3
+    cycle: yearly
+  pv_yearly:
+    source: sensor.pv_opbrengst_kwh
+    cycle: yearly

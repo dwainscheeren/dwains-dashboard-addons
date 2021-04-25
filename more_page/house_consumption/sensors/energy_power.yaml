@@ -1,0 +1,639 @@
+#
+# Energy calculation
+#
+# https://community.home-assistant.io/t/custom-component-homewizard-energy-wifi-p1-meter/227441/52?fbclid=IwAR0r8MLFPQFGkwnGJ6WaeevDVE5a7orRuUr_-RwlLbQzgnN_Rr3pNRhzmLE
+#
+
+# Export energy
+- platform: template
+  sensors:
+    energy_export_t2_daily_eur:
+      friendly_name: 'Opbrengsten vandaag nomaal tarief (T2)'
+      value_template: "{{ (states('sensor.energy_export_t2_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_export_t1_daily_eur:
+      friendly_name: 'Opbrengsten vandaag dal tarief (T1)'
+      value_template: "{{ (states('sensor.energy_export_t1_daily')|float * states('input_number.t1_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_export_total_daily_eur:
+      friendly_name: 'Opbrengsten export vandaag dal + normaal'
+      value_template: "{{ (states('sensor.energy_export_t2_daily_eur')|float + states('sensor.energy_export_t1_daily_eur')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_export_total_daily_kwh:
+      friendly_name: 'kWh export vandaag dal + normaal'
+      value_template: "{{ (states('sensor.energy_export_t2_daily')|float + states('sensor.energy_export_t1_daily')|float)|round(2) }}"
+      unit_of_measurement: "kWh"
+      icon_template: mdi:transmission-tower
+          
+# Import energy 
+- platform: template
+  sensors:
+    energy_import_t2_daily_eur:
+      friendly_name: 'Kosten import vandaag nomaal tarief (T2)'
+      value_template: "{{ (states('sensor.energy_import_t2_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_import_t1_daily_eur:
+      friendly_name: 'Kosten import vandaag dal tarief (T1)'
+      value_template: "{{ (states('sensor.energy_import_t1_daily')|float * states('input_number.t1_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_import_total_daily_eur:
+      friendly_name: 'Kosten import vandaag dal + normaal'
+      value_template: "{{ (states('sensor.energy_import_t2_daily_eur')|float + states('sensor.energy_import_t1_daily_eur')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_import_total_daily_kwh:
+      friendly_name: 'kWh import vandaag dal + normaal'
+      value_template: "{{ (states('sensor.energy_import_t1_daily')|float + states('sensor.energy_import_t2_daily')|float)|round(2) }}"
+      unit_of_measurement: "kWh"
+      icon_template: mdi:transmission-tower
+
+- platform: template
+  sensors:
+    energy_import_total_daily_w:
+      friendly_name: 'W import vandaag dal + normaal'
+      value_template: "{{ (states('sensor.energy_import_t1_daily')|float + states('sensor.energy_import_t2_daily')|float)|round(3) }}"
+      unit_of_measurement: "W"
+      icon_template: mdi:transmission-tower
+
+# PRICES energy
+- platform: template
+  sensors:
+    energy_price_today:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.energy_peak_hourly') | float %}
+        {% set b = states('sensor.energy_offpeak_hourly') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + e) + f) + g) | round(2) }}
+    energy_price_yesterday:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = state_attr('sensor.energy_peak_daily','last_period') | float %}
+        {% set b = state_attr('sensor.energy_offpeak_daily','last_period') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + e) + f) + g) | round(2) }}
+    energy_price_week:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.energy_peak_hourly_weekly') | float %}
+        {% set b = states('sensor.energy_offpeak_hourly_weekly') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + ((e * 365) / 52)) + ((f * 365) / 52)) + ((g * 365) / 52)) | round(2) }}
+    energy_price_last_week:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = state_attr('sensor.energy_peak_weekly','last_period') | float %}
+        {% set b = state_attr('sensor.energy_offpeak_weekly','last_period') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + ((e * 365) / 52)) + ((f * 365) / 52)) + ((g * 365) / 52)) | round(2) }}
+    energy_price_month:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.energy_import_t2_monthly') | float %}
+        {% set b = states('sensor.energy_energy_import_t1_monthly') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + ((e * 365) / 12)) + ((f * 365) / 12)) + ((g * 365) / 12)) | round(2) }}
+    energy_price_last_month:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = state_attr('sensor.energy_import_t2_monthly','last_period') | float %}
+        {% set b = state_attr('sensor.energy_import_t1_monthly','last_period') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + ((e * 365) / 12)) + ((f * 365) / 12)) + ((g * 365) / 12)) | round(2) }}
+    energy_price_year:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = states('sensor.energy_peak_hourly_yearly') | float %}
+        {% set b = states('sensor.energy_offpeak_hourly_yearly') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + (e * 365)) + (f * 365)) + (g * 365)) | round(2) }}
+    energy_price_last_year:
+      unit_of_measurement: 'EUR'
+      value_template: >-
+        {% set a = state_attr('sensor.energy_peak_yearly','last_period') | float %}
+        {% set b = state_attr('sensor.energy_offpeak_yearly','last_period') | float %}
+        {% set c = states('input_number.all_in_dubbeltarief_stroom_hoog') | float %}
+        {% set d = states('input_number.all_in_dubbeltarief_stroom_laag') | float %}
+        {% set e = states('input_number.netbeheerkosten_stroom') | float %}
+        {% set f = states('input_number.vaste_leveringskosten_stroom') | float %}
+        {% set g = states('input_number.vermindering_energiebelasting_stroom') | float / 365 %}
+        {{ (((((a * c) + (b * d)) + (e * 365)) + (f * 365)) + (g * 365)) | round(2) }}
+        
+
+- platform: template
+  sensors:
+    energy_hourly:
+      friendly_name: Hourly energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('sensor.energy_offpeak_hourly')|float + states('sensor.energy_peak_hourly')|float }}"
+    energy_daily:
+      friendly_name: Daily energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('sensor.energy_offpeak_daily')|float + states('sensor.energy_peak_daily')|float }}"
+    energy_weekly:
+      friendly_name: Weekly energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('sensor.energy_offpeak_weekly')|float + states('sensor.energy_peak_weekly')|float }}"
+    energy_monthly:
+      friendly_name: Monthly energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('sensor.energy_import_t2_monthly')|float + states('sensor.energy_import_t1_monthly')|float }}"
+    energy_yearly:
+      friendly_name: Yearly energy
+      unit_of_measurement: kWh
+      value_template: "{{ states('sensor.energy_offpeak_yearly')|float + states('sensor.energy_peak_yearly')|float }}"
+
+# LAST PERIODS energy
+    energy_yesterday:
+      friendly_name: Yesterday energy
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.energy_offpeak_daily','last_period')|float + state_attr('sensor.energy_peak_daily','last_period')|float }}"
+    energy_last_week:
+      friendly_name: Last Week energy
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.energy_offpeak_weekly','last_period')|float + state_attr('sensor.energy_peak_weekly','last_period')|float }}"
+    energy_last_month:
+      friendly_name: Last Month energy
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.energy_import_t2_monthly','last_period')|float + state_attr('sensor.energy_import_t1_monthly','last_period')|float }}"
+    energy_last_year:
+      friendly_name: Last Year energy
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.energy_offpeak_yearly','last_period')|float + state_attr('sensor.energy_peak_yearly','last_period')|float }}"      
+
+    pv_yesterday:
+      friendly_name: Yesterday solar
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.pv_daily','last_period')|float }}"
+    pv_last_week:
+      friendly_name: Last Week solar
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.pv_weekly','last_period')|float }}"
+    pv_last_month:
+      friendly_name: Last Month solar
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.pv_monthly','last_period')|float }}"
+    pv_last_year:
+      friendly_name: Last Year solar
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.pv_yearly','last_period')|float }}"
+
+
+# SHORT energy
+    energy_short_daily:
+      value_template: "{{ '%.3f'%(states('sensor.energy_daily') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_yesterday:
+      value_template: "{{ '%.3f'%(states('sensor.energy_yesterday') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_weekly:
+      value_template: "{{ '%.3f'%(states('sensor.energy_weekly') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_last_week:
+      value_template: "{{ '%.3f'%(states('sensor.energy_last_week') | float) | float }}"
+      unit_of_measurement: 'kWh'
+    
+    energy_short_monthly:
+      value_template: "{{ '%.3f'%(states('sensor.energy_monthly') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_last_month:
+      value_template: "{{ '%.3f'%(states('sensor.energy_last_month') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_yearly:
+      value_template: "{{ '%.3f'%(states('sensor.energy_yearly') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+    energy_short_last_year:
+      value_template: "{{ '%.3f'%(states('sensor.last_year_energy') | float) | float }}"
+      unit_of_measurement: 'kWh'
+
+# CACULATIONS
+    energy_kwh_to_watt:
+      friendly_name: 'Actueel Watt'
+      unit_of_measurement: 'Watt'
+      value_template: "{{ (states.sensor.p1_meter_active_power_w.state | float * 1000) | round(0) }}"
+
+#Gemiddeld
+    average_energy_day:
+      unit_of_measurement: 'kWh'
+      value_template: >-
+        {% set a = states('sensor.energy_last_month') | float %}
+        {{ (a / 30.41) | round(3) }}
+
+# Netto electra (kosten - opbrengsten) Bij teruggave zal er '-' zichtbaar zijn
+- platform: template
+  sensors:
+    energy_total_daily_eur:
+      friendly_name: 'Kosten vandaag electra'
+      value_template: "{{ (states('sensor.energy_import_total_daily_eur')|float - states('sensor.energy_export_total_daily_eur')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+- platform: template
+  sensors:
+    energy_total_daily_kwh:
+      friendly_name: 'kWh vandaag electra'
+      value_template: "{{ (states('sensor.energy_import_total_daily_kwh')|float - states('sensor.energy_export_total_daily_kwh')|float)|round(2) }}"
+      unit_of_measurement: "kWh"
+      icon_template: mdi:transmission-tower
+
+# Total costs (Gas + energy)
+- platform: template
+  sensors:
+    energy_gas_en_elektriciteit_eur:
+      friendly_name: 'Totale netto kosten energie'
+      value_template: "{{ (states('sensor.energy_gass_eur')|float + states('sensor.total_daily_eur')|float)|round(2) }}"
+      unit_of_measurement: "€"
+      icon_template: mdi:currency-eur
+
+# Utilities
+
+- platform: template
+  sensors:
+    
+    # Quooker
+    quooker_energy_yesterday:
+      friendly_name: 'Verbruik quooker gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.quooker_energy_daily','last_period')|float }}"
+
+    energy_quooker_daily_eur:
+      friendly_name: 'Dagelijks verbruik Quooker'
+      value_template: "{{ (states('sensor.quooker_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_quooker_yesterday_eur:
+      friendly_name: 'Verbruik Quooker gisteren'
+      value_template: "{{ (state_attr('sensor.quooker_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Vaatwasser
+    vaatwasser_energy_yesterday:
+      friendly_name: 'Verbruik vaatwasser gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.vaatwasser_energy_daily','last_period')|float }}"
+  
+    energy_vaatwasser_daily_eur:
+      friendly_name: 'Dagelijks verbruik vaatwasser'
+      value_template: "{{ (states('sensor.vaatwasser_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_vaatwasser_yesterday_eur:
+      friendly_name: 'Verbruik vaatwasser gisteren'
+      value_template: "{{ (state_attr('sensor.vaatwasser_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Koelkast
+    koelkast_energy_yesterday:
+      friendly_name: 'Verbruik koelkast gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.koelkast_energy_daily','last_period')|float }}"
+  
+    energy_koelkast_daily_eur:
+      friendly_name: 'Dagelijks verbruik koelkast'
+      value_template: "{{ (states('sensor.koelkast_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_koelkast_yesterday_eur:
+      friendly_name: 'Verbruik koelkast gisteren'
+      value_template: "{{ (state_attr('sensor.koelkast_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # TV
+    tv_energy_yesterday:
+      friendly_name: 'Verbruik tv gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.tv_energy_daily','last_period')|float }}"
+  
+    energy_tv_daily_eur:
+      friendly_name: 'Dagelijks verbruik tv'
+      value_template: "{{ (states('sensor.tv_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_tv_yesterday_eur:
+      friendly_name: 'Verbruik tv gisteren'
+      value_template: "{{ (state_attr('sensor.tv_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Wasmachine
+    wasmachine_energy_yesterday:
+      friendly_name: 'Verbruik wasmachine gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.wasmachine_energy_daily','last_period')|float }}"
+  
+    energy_wasmachine_daily_eur:
+      friendly_name: 'Dagelijks verbruik wasmachine'
+      value_template: "{{ (states('sensor.wasmachine_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_wasmachine_yesterday_eur:
+      friendly_name: 'Verbruik wasmachine gisteren'
+      value_template: "{{ (state_attr('sensor.wasmachine_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Wasdroger
+    wasdroger_energy_yesterday:
+      friendly_name: 'Verbruik wasdroger gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.wasdroger_energy_daily','last_period')|float }}"
+  
+    energy_wasdroger_daily_eur:
+      friendly_name: 'Dagelijks verbruik wasdroger'
+      value_template: "{{ (states('sensor.wasdroger_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_wasdroger_yesterday_eur:
+      friendly_name: 'Verbruik wasdroger gisteren'
+      value_template: "{{ (state_attr('sensor.wasdroger_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # CV
+    cv_energy_yesterday:
+      friendly_name: 'Verbruik cv gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.cv_energy_daily','last_period')|float }}"
+  
+    energy_cv_daily_eur:
+      friendly_name: 'Dagelijks verbruik cv'
+      value_template: "{{ (states('sensor.cv_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_cv_yesterday_eur:
+      friendly_name: 'Verbruik cv gisteren'
+      value_template: "{{ (state_attr('sensor.cv_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # WTW
+    wtw_energy_yesterday:
+      friendly_name: 'Verbruik wtw gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.wtw_energy_daily','last_period')|float }}"
+  
+    energy_wtw_daily_eur:
+      friendly_name: 'Dagelijks verbruik wtw'
+      value_template: "{{ (states('sensor.wtw_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_wtw_yesterday_eur:
+      friendly_name: 'Verbruik wtw gisteren'
+      value_template: "{{ (state_attr('sensor.wtw_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Serverkast
+    serverkast_energy_yesterday:
+      friendly_name: 'Verbruik serverkast gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.serverkast_energy_daily','last_period')|float }}"
+  
+    energy_serverkast_daily_eur:
+      friendly_name: 'Dagelijks verbruik serverkast'
+      value_template: "{{ (states('sensor.serverkast_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_serverkast_yesterday_eur:
+      friendly_name: 'Verbruik serverkast gisteren'
+      value_template: "{{ (state_attr('sensor.serverkast_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    # Meterkast
+    meterkast_energy_yesterday:
+      friendly_name: 'Verbruik meterkast gisteren'
+      unit_of_measurement: kWh
+      value_template: "{{ state_attr('sensor.meterkast_energy_daily','last_period')|float }}"
+  
+    energy_meterkast_daily_eur:
+      friendly_name: 'Dagelijks verbruik meterkast'
+      value_template: "{{ (states('sensor.meterkast_energy_daily')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+    energy_meterkast_yesterday_eur:
+      friendly_name: 'Verbruik meterkast gisteren'
+      value_template: "{{ (state_attr('sensor.meterkast_energy_daily', 'last_period')|float * states('input_number.t2_energy_cost')|float)|round(2) }}"
+      unit_of_measurement: "EUR"
+      icon_template: mdi:currency-eur
+
+# Shelly
+    shelly_calculated_consumption:
+      friendly_name: Current Power (Shelly)
+      unit_of_measurement: W
+      value_template: >
+        {% set ns = namespace(states=[]) %}
+        {% for s in states.sensor %}
+          {% if s.object_id.startswith('shelly_sh') and s.object_id.endswith('_current_consumption') %}
+            {% set ns.states = ns.states + [ s.state | float ] %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.states | sum  | round(2) }}
+
+    total_calculated_consumption:
+      friendly_name: Total consumption
+      unit_of_measurement: W
+      icon_template: 'mdi:flash'
+      value_template: >
+        {% set a = states('sensor.shelly_calculated_consumption') | float %}
+        {% set b = states('sensor.overige_current_consumption') | float %}
+        {% set c = states('sensor.light_calculated_consumption') | float %}
+        {{ (a + b + c) }}
+
+    # overige_current_consumption:
+    #   friendly_name: Overig
+    #   unit_of_measurement: W
+    #   icon_template: 'mdi:flash-outline'
+    #   value_template: >
+    #     {% set a = states('sensor.shelly_calculated_consumption') | float %}
+    #     {% set b = states('sensor.pv_outputpower') | float %}
+    #     {% set c = states('sensor.p1_meter_active_power_w') | float %}
+    #     {% set d = states('sensor.light_calculated_consumption') | float %}
+    #     {% if ((c + b) < 0) %}
+    #       0
+    #     {% else %}
+    #       {{ ((c + b) - (a + d)) | round(0) }}
+    #     {% endif %}
+
+# Verlichting
+    light_calculated_consumption:
+      friendly_name: Current Power (Lights)
+      unit_of_measurement: W
+      value_template: >
+        {% set ns = namespace(states=[]) %}
+        {% for s in states.sensor %}
+          {% if s.object_id.startswith('light') and s.object_id.endswith('_current_consumption') %}
+            {% set ns.states = ns.states + [ s.state | float ] %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.states | sum  | round(2) }}
+
+    light_koof_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Koof (Woonkamer)'
+      icon_template: 'mdi:vanity-light'
+      value_template: >-
+        {% if is_state('light.koof_woonkamer', 'on') %}
+          49.5
+        {% else %}
+          1.8
+        {% endif %}
+
+    light_vidja_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Vidja (Hal)'
+      icon_template: 'mdi:floor-lamp'
+
+      value_template: >-
+        {% if is_state('light.vidja', 'on') %}
+          33
+        {% else %}
+          1.2
+        {% endif %}
+
+    light_aanrecht_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Aanrecht (Keuken)'
+      icon_template: 'mdi:track-light'
+      value_template: >-
+        {% if is_state('light.aanrecht_keuken', 'on') %}
+          11
+        {% else %}
+          0.4
+        {% endif %}
+
+    light_tv_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'TV meubel'
+      icon_template: 'mdi:led-strip-variant'
+      value_template: >-
+        {% if is_state('light.tv_meubel_woonkamer', 'on') %}
+          20
+        {% else %}
+          0.5
+        {% endif %}
+
+    light_fado_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Fado (Woonkamer)'
+      icon_template: 'mdi:lightbulb-cfl-spiral'
+      value_template: >-
+        {% if is_state('light.ikea_fado', 'on') %}
+          5.5
+        {% else %}
+          0.2
+        {% endif %}
+
+    light_updown_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Up-down (Hal)'
+      icon_template: 'mdi:track-light'
+      value_template: >-
+        {% if is_state('light.up_down_entree', 'on') %}
+          11
+        {% else %}
+          0.4
+        {% endif %}
+
+    light_toilet_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Plafondlamp (Toilet)'
+      icon_template: 'mdi:ceiling-light'
+      value_template: >-
+        {% if is_state('light.toilet', 'on') %}
+          5.5
+        {% else %}
+          0.2
+        {% endif %}
+
+    light_ledstrip_overloop_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Ledstrip (Overloop)'
+      icon_template: 'mdi:led-strip-variant'
+      value_template: >-
+        {% if is_state('light.overloop_plank_eerste_etage', 'on') %}
+          20
+        {% else %}
+          0.5
+        {% endif %}
+
+    light_bureaulamp_tom_current_consumption:
+      unit_of_measurement: "W"
+      friendly_name: 'Bureaulamp (Tom)'
+      icon_template: 'mdi:track-light'
+      value_template: >-
+        {% if is_state('light.hobby_tom_bureau_lamp', 'on') %}
+          5.5
+        {% else %}
+          0.2
+        {% endif %}
