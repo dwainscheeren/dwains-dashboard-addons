@@ -45,7 +45,7 @@
  - name: House consumption
    icon: fas:chart-line
    main_menu: 'true' #Show this addon in the main navigation bar!
-   path: 'dwains-dashboard/addons/more_page/house_cunsumption/page.yaml'
+   path: 'dwains-dashboard/addons/more_page/house_consumption/page.yaml'
 ```
 - Reload the theme configuration via Theme Settings
 
