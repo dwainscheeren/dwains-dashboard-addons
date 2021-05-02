@@ -11,9 +11,6 @@
   <a href="https://github.com/LRvdLinden/weather_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/weather_dd_addon" />
   </a>
-      <a href="https://github.com/LRvdLinden/weather_dd_addon">
-    <img src="https://img.shields.io/github/downloads/LRvdLinden/weather_dd_addon/latest/total?color=purple&label=%20release%20Downloads" />
-  </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
   </a>
@@ -37,7 +34,7 @@
 
 ## Prerequisite
 ---
-- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Button Card](https://github.com/custom-cards/button-card) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
+- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons), [Button Card](https://github.com/custom-cards/button-card) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/77990847/114733529-b6ca1a00-9d43-11eb-876a-6f4beda466ec.png">
 
@@ -190,7 +187,8 @@ sun:
 
 ## Result
 ---
-![image](https://user-images.githubusercontent.com/77990847/114860224-03693000-9dec-11eb-9878-ece886b44689.png)
+![IMG_0557](https://user-images.githubusercontent.com/77990847/116807242-594f0f00-ab32-11eb-994a-42b7f1970e9c.PNG)
+
 
 
 
