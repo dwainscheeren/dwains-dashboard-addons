@@ -1,6 +1,6 @@
 ## Created by LRvdLinden
 ## More-page add-on: Weather
-## Version: 1.2.0
+## Version: 1.2.2
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-3'
@@ -52,24 +52,73 @@
           - cards:
             type: 'custom:mini-graph-card'
             name: Buiten
-            icon: 'fas:thermometer-half'
+            icon: 'ios:thermometer'
             entities:
               - sensor.netatmo_netatmo_huis_netatmo_woonkamer_netatmo_tuin_temperature
             line_color: '#299ec2'
+            font_size: 80
+            hours_to_show: 12
+            line_width: 2
+            hour24: true
+            points_per_hour: 2
+            decimals: 1
+            show:
+              animate: true
+#                  fill: true
+              icon: true
+              labels: false
+              legend: false
+              name: true
+              graph: line
+              extrema: true
+              average: true  
+              
           - cards:
             type: 'custom:mini-graph-card'
             name: Gevoelstemperatuur
-            icon: 'fas:thermometer-half'
+            icon: 'ios:thermometer'
             entities:
               - sensor.apeldoorn_feel_temperature
             line_color: '#299ec2'
+            font_size: 80
+            hours_to_show: 12
+            line_width: 2
+            hour24: true
+            points_per_hour: 2
+            decimals: 1
+            show:
+              animate: true
+#             fill: true
+              icon: true
+              labels: false
+              legend: false
+              name: true
+              graph: line
+              extrema: true
+              average: true  
           - cards:
             type: 'custom:mini-graph-card'
             name: Grondtemperatuur
-            icon: 'fas:thermometer-half'
+            icon: 'ios:thermometer'
             entities:
               - sensor.apeldoorn_ground_temperature
             line_color: '#299ec2'
+            font_size: 80
+            hours_to_show: 12
+            line_width: 2
+            hour24: true
+            points_per_hour: 2
+            decimals: 1
+            show:
+              animate: true
+#             fill: true
+              icon: true
+              labels: false
+              legend: false
+              name: true
+              graph: line
+              extrema: true
+              average: true  
           - cards:
             Refresh: null
             type: 'custom:auto-reload-card'
@@ -93,16 +142,46 @@
               - sensor.apeldoorn_rain_last_24h
             line_color: '#299ec2'
             name: Afgelopen 24uur
+            icon: 'ios:cloud-rain'
+            font_size: 80
+            hours_to_show: 24
+            line_width: 1
+            hour24: true
+            points_per_hour: 2
+            decimals: 0
             show:
+              animate: true
+#             fill: true
+              icon: true
+              labels: false
+              legend: false
+              name: true
               graph: bar
+              extrema: true
+              average: true     
           - cards:
             type: 'custom:mini-graph-card'
             entities:
               - sensor.apeldoorn_rain_last_hour
             line_color: '#299ec2'
             name: Afgelopen uur
+            icon: 'ios:cloud-rain'
+            font_size: 80
+            hours_to_show: 1
+            line_width: 1
+            hour24: true
+            points_per_hour: 2
+            decimals: 0
             show:
+              animate: true
+#             fill: true
+              icon: true
+              labels: false
+              legend: false
+              name: trur
               graph: bar
+              extrema: true
+              average: true     
           - cards:
             type: 'custom:neerslag-card'
             title: Voorspelling
@@ -168,4 +247,4 @@
             show_icon: false
             show_state: true
         type: vertical-stack
-           
+            
