@@ -35,7 +35,7 @@
 ## Prerequisite ⚙️
 ---
 - Make sure you have installed the lovelace [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome) and [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons). This can be done manually or directly via hacs
-
+- For Apple Devices you can use the integration [iCloud](https://www.home-assistant.io/integrations/icloud/) for Home Assistant to add `device_tracker` to the `page.yaml`
 
 ## Installation Add-on ⚙️
 ---
