@@ -39,7 +39,7 @@ I have created two Find My dashboards. You can chooce a version that you liked.
 ![image](https://user-images.githubusercontent.com/77990847/116847119-2e27f680-abea-11eb-8eaf-02a91e623a1b.png)
 
 ## [Version 2](https://github.com/LRvdLinden/find_my_dd_addon/tree/main/version_2)
-![image](https://user-images.githubusercontent.com/77990847/117045174-8278c680-ad0f-11eb-93d2-7d10c589b42f.png)
+![image](https://user-images.githubusercontent.com/77990847/117176725-7b65bd00-add0-11eb-9a52-48888d29c94a.png)
 
 
 
