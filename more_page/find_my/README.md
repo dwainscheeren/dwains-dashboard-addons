@@ -30,112 +30,16 @@
   <img src="https://www.iclarified.com/images/news/75056/366308/366308-1920.jpg" />
 </p>
 
+I have created two Find My dashboards. You can chooce a version that you liked.
+- chooce a version by clicking on the link below
+- follow the innstruction
 
 
-## Prerequisite ⚙️
----
-- Make sure you have installed the lovelace [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome) and [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons). This can be done manually or directly via hacs
-- For Apple Devices you can use the integration [iCloud](https://www.home-assistant.io/integrations/icloud/) for Home Assistant to add `device_tracker` to the `page.yaml`
-
-## Installation Add-on ⚙️
----
-- Copy the `find_my` folder in to the `dwains-dashboard/addons/more_page` directory.
-- Open your `more_page.yaml` file in `dwains-dashboard/configs` and add the following;
-```yaml
-  - name: Find My
-    main_menu: 'true' #Show this addon in the main navigation bar!
-    icon: mdi:radar
-    path: 'dwains-dashboard/addons/more_page/find_my/page.yaml'
-```
-- Reload the theme configuration via Theme Settings
-
-## Add more cards ⚙️
----
-- If you want to add more cards, copy the code from line `12` till `62` and pase it in on line `63` `dwains-dashboard/addons/more_page/find_my/page.yaml`
-### Example
-```yaml
-        - type: entities
-          title: Devices #PERSON
-          style: |
-            ha-card {
-              border-radius: 10px;
-              padding-bottom: 10px;
-              background-color: var(--dwains-theme-primary)
-            }
-            :host {
-              --paper-item-icon-color: var(--dwains-theme-accent) !important;
-            }
-            .card-header {
-              padding: 5px 16px;
-              font-size: 15px;
-              font-weight: 700 !important;
-            }
-            .card-content div {
-                margin: 0 !important;
-            }
-            #states {
-              padding-top: 0px !important;
-              padding-bottom: 0px !important;
-            }
-            .secondary {
-              color: darkgray !important;
-              margin-left: 2px !important;
-            }
-          entities:
-            - entity: person.1 # <- fill in the right person
-              secondary_info: last-updated
-            - entity: device_tracker.1 # <- fill in the right device_tracker
-              secondary_info: last-updated
-            - type: custom:fold-entity-row
-              head:
-                type: section
-                label: Meer devices
-              entities:
-                - entity: device_tracker.2 # <- fill in the right device_tracker
-                  secondary_info: last-updated
-                - entity: device_tracker.3 # <- fill in the right device_tracker
-                  secondary_info: last-updated
-                - entity: device_tracker.4 # <- fill in the right device_tracker
-                  secondary_info: last-updated
-            - type: 'divider'
-              style:
-                pandding-top: 10px;
-                height: 1px
-                width: 100%
-                margin-left: auto
-                margin-right: auto
-                background: "var(--primary-text-color)"
-```
-
-## Show on map 🗺️
----
-- If you want to add more persons to the map, add more `entities`
-- You can turn `dark_mode` off bij changing `true` into `false`
-- `hours_to_show` you can plus the hours or delete the line, if you don't wwant to see tracking on the map
-### Example
-```yaml
-    - type: map
-      item_classes: 'col-xs-12 col-sm-9'
-      entities:
-        - entity: person.1 # <- fill in the right person
-        - entity: person.2 # <- fill in the right person
-      dark_mode: true
-      hours_to_show: 2
-```
-
-## Custom icons 🎨
----
-- Make sure you have installed the lovelace [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons). This can be done manually or directly via hacs
-```yaml
-ios:apps-iphone
-ios:apps-ipad
-```
-
-## Result
----
+## [Version 1](https://github.com/LRvdLinden/find_my_dd_addon/tree/main/version_1)
 ![image](https://user-images.githubusercontent.com/77990847/116847119-2e27f680-abea-11eb-8eaf-02a91e623a1b.png)
 
-![image](https://user-images.githubusercontent.com/77990847/116847363-ae4e5c00-abea-11eb-86ee-27dd2e964094.png)
+## [Version 2](https://github.com/LRvdLinden/find_my_dd_addon/tree/main/version_2)
+![image](https://user-images.githubusercontent.com/77990847/117045174-8278c680-ad0f-11eb-93d2-7d10c589b42f.png)
 
 
 
