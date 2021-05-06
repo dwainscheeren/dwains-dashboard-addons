@@ -1,7 +1,7 @@
 ## Created by Léon van der Linden
 ## https://github.com/LRvdLinden
 ## More-page add-on: Find My
-## Version-2: 1.0.0
+## Version-2: 2.0.1
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
   cards:
@@ -374,4 +374,129 @@
           dark_mode: true
           hours_to_show: 2
         
+#MAP VIEWS
+        
+    - type: vertical-stack
+      item_classes: 'col-xs-12 col-sm-9'
+      cards:         
+         
+          #Start of rooms and devices
+          - type: custom:dwains-hash-switch-card
+            default: persons
+            states:
+              #PERSONS VIEW MAP
+              persons:
+                type: vertical-stack
+                cards:
+                  - type: custom:dwains-flexbox-card
+                    padding: true
+                    cards:
+                      #heading  
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            #name: Personen # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#persons"
+                            styles:
+                              name:
+                                - color: var(--dwains-theme-accent)
+                          - type: custom:button-card
+                            #name: Apparaten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#devices"
+                          - type: custom:button-card
+                            #name: Objecten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#objects"
+                  - type: map
+                    entities:
+                      - entity: person.1  # <- fill in the right person
+                      - entity: person.2  # <- fill in the right person
+                    dark_mode: true
+                    hours_to_show: 2
+                            
+              #DEVICES VIEW MAP
+              devices:
+                type: vertical-stack
+                cards:
+                  - type: custom:dwains-flexbox-card
+                    padding: true
+                    cards:
+                      #heading  
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            #name: Personen # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#persons"
+                          - type: custom:button-card
+                            #name: Apparaten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#devices"
+                            styles:
+                              name:
+                                - color: var(--dwains-theme-accent)
+                          - type: custom:button-card
+                            #name: Objecten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#objects"
+                    #devices row 1   
+                  - type: map
+                    entities:
+                      - entity: device_tracker.1 # <- fill in the right device_tracker
+                      - entity: device_tracker.2  # <- fill in the right device_tracker
+                    dark_mode: true
+                    hours_to_show: 2
  
+
+              #OBJECTS VIEW MAP
+              objects:
+                type: vertical-stack
+                cards:
+                  - type: custom:dwains-flexbox-card
+                    padding: true
+                    cards:
+                      #heading  
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            #name: #Personen # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#persons"
+                          - type: custom:button-card
+                            #name: #Apparaten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#devices"
+                          - type: custom:button-card
+                            #name: #Objecten # <- DONT CHANGE THIS LINE
+                            template: partials_heading_switch
+                            tap_action: 
+                              action: navigate
+                              navigation_path: "#objects"
+                            styles:
+                              name: 
+                                - color: var(--dwains-theme-accent)
+                    #objects row 1
+                  - type: map
+                    entities:
+                      - entity: device_tracker.1 # <- fill in the right device_tracker
+                      - entity: device_tracker.2 # <- fill in the right device_tracker
+                    dark_mode: true
+                    hours_to_show: 2 
