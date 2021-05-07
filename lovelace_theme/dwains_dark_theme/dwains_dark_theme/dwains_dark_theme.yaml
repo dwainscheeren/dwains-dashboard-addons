@@ -1,9 +1,19 @@
 # Theme based on Dwains Dashboard
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v2.0.1
+# v2.0.2
 #
 Dwains Dark Theme:
+  # Fonts
+  primary-font-family: 'Open Sans'
+  paper-font-common-base_-_font-family: 'var(--primary-font-family)'
+  paper-font-common-code_-_font-family: 'var(--primary-font-family)'
+  paper-font-body1_-_font-family: 'var(--primary-font-family)'
+  paper-font-subhead_-_font-family: 'var(--primary-font-family)'
+  paper-font-headline_-_font-family: 'var(--primary-font-family)'
+  paper-font-caption_-_font-family: 'var(--primary-font-family)'
+  paper-font-title_-_font-family: 'var(--primary-font-family)'
+  ha-card-header-font-family: 'var(--primary-font-family)'
   # Header:
   app-header-background-color: '#262628'
   app-header-text-color: '#ffffff'
@@ -84,7 +94,6 @@ Dwains Dark Theme:
   more-info-header-color: '#f2f2f7'
   
   #DWAINS DASHBOARD
-  primary-font-family: 'Open Sans'
   dwains-theme-accent: 'placeholder_primary_color'
   dwains-theme-background: '#1c1c1e'
   dwains-theme-primary: '#262628'
