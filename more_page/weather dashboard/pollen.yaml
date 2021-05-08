@@ -1,24 +1,27 @@
 #sensor 
 #===============================================================
-sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je configuration.yaml staan.
-# Ambee Pollen vertaald door huizebruin.nl
+# Ambee Pollen vertaald door huizebruin.nl en Roel R
+# versie 06-05-2021-huizebruin en Roel R
+# Bron van deze file https://github.com/huizebruin/Home-Assistant-Config/
 # https://api-dashboard.getambee.com/#/signup account aanmaken voor een 100 api calls per dag..
 # vervang LAT, LONG en API-KEY door uw waarden  XX.XXXXXXXX X.XXXXXX
-# in je Secrits.yaml de volgende regels plaatsen: 
+# in je Secrets.yaml de volgende regels plaatsen: 
 # (zonder hekje ervoor)     ambee-resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=XX.XXXXXX&lng=X.XXXXXX
 # (zonder hekje ervoor)     ambee-api: XXXXXXXXX
 # Bron : https://gist.github.com/michilehr/7ce7431f97e82523336a120b50d0ebe2
   - platform: rest
-    scan_interval: 3600
+    scan_interval: 300
     resource: !secret ambee-resource   # ambee-resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=xx.xxxxxx&lng=x.xxxxxx
     name: "pollen"
+    value_template: >
+      {{ value_json.version}}
     headers:
       content-type: "application/json"
-      x-api-key: !secret ambee-api # zodat je veilig het kunt delen xxxxxx
-    json_attributes_path: "$.data[0]"
+      x-api-key: !secret ambee-api # zodat je veilig het kunt delen     json_attributes_path: "$.data[0]"
     json_attributes:
-      - Risk
       - Count
+      - Risk
+      - Species
       - updatedAt
 
   - platform: template
@@ -33,7 +36,6 @@ sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je co
           {% elif state == "High"%}Hoog
           {% elif state == "Very High"%}zeer hoog
           {% else %}Onbekend{% endif %}
-
       pollen_weed_risk:
         icon_template: "mdi:nature"
         friendly_name: "Onkruid"
@@ -44,7 +46,6 @@ sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je co
           {% elif state == "High"%}Hoog
           {% elif state == "Very High"%}zeer hoog
           {% else %}Onbekend{% endif %}
-
       pollen_grass_risk:
         icon_template: "mdi:grass"
         friendly_name: "Gras"
@@ -55,15 +56,68 @@ sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je co
           {% elif state == "High"%}Hoog
           {% elif state == "Very High"%}zeer hoog
           {% else %}Onbekend{% endif %}
-
       pollen_tree_count:
         icon_template: "mdi:tree-outline"
         friendly_name: "Bomen"
         unit_of_measurement: " /m³"
         value_template: "{{ state_attr('sensor.pollen', 'Count')['tree_pollen'] }}"
-        
-      pollen_weed_count:
+
+      pollen_els_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Els"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Alder }}"
+
+      pollen_berk_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Berk"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Birch }}"
+
+      pollen_coniferen_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Coniferen"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Cypress }}"
+
+      pollen_iep_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Iep"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Elm }}"
+
+      pollen_hazelaar_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Hazelaar"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Hazel }}"
+
+      pollen_eik_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Eik"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Oak }}"
+
+      pollen_den_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Den"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Pine }}"
+
+      pollen_plataan_count:
         icon_template: "mdi:nature"
+        friendly_name: "Plataan"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Tree.Plane }}"
+
+      pollen_populier_count:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "Populier"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species')['Tree']['Poplar / Cottonwood'] }}"
+
+      pollen_weed_count:
+        icon_template: "mdi:grass"
         friendly_name: "Onkruid"
         unit_of_measurement: " /m³"
         value_template: "{{ state_attr('sensor.pollen', 'Count')['weed_pollen'] }}"
@@ -73,7 +127,31 @@ sensor: # deze uitzetten als er al meer sensoren tussen de lijst staan van je co
         friendly_name: "Gras"
         unit_of_measurement: " /m³"
         value_template: "{{ state_attr('sensor.pollen', 'Count')['grass_pollen'] }}"
-        
+
+      pollen_amaranten_count:
+        icon_template: "mdi:grass"
+        friendly_name: "Amaranten/Ganzenvoet"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Weed.Chenopod }}"
+
+      pollen_bijvoet_count:
+        icon_template: "mdi:grass"
+        friendly_name: "Bijvoet"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Weed.Mugwort }}"
+
+      pollen_brandnetel_count:
+        icon_template: "mdi:grass"
+        friendly_name: "Brandnetel"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Weed.Nettle }}"
+
+      pollen_ambrosia_count:
+        icon_template: "mdi:grass"
+        friendly_name: "Ambrosia"
+        unit_of_measurement: " /m³"
+        value_template: "{{ state_attr('sensor.pollen', 'Species').Weed.Ragweed }}"
+
       pollen_last_updated:
         icon_template: "mdi:clock"
         friendly_name: "Laatste update"
