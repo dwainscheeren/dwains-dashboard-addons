@@ -29,13 +29,13 @@
 
 ## Prerequisite ⚙️
 ---
-- Make sure you have installed the lovelace [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome) and [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons). This can be done manually or directly via hacs
+- Make sure you have installed the lovelace [multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome) and [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons). This can be done manually or directly via hacs
 - For Apple Devices you can use the integration [iCloud](https://www.home-assistant.io/integrations/icloud/) for Home Assistant to add `device_tracker` to the `page.yaml`
 
 
 ## Installation Add-on ⚙️
 ---
-- Copy `find_my` folder from directory `version_2/find_my`in to the `dwains-dashboard/addons/more_page/` directory.
+- Copy `find_my` folder and place it in to the `dwains-dashboard/addons/more_page/` directory.
 - Open your `more_page.yaml` file in `dwains-dashboard/configs` and add the following;
 ```yaml
   - name: Find My
@@ -101,7 +101,7 @@
 - If you want to add more persons to the map, add more `entities`
 - You can turn `dark_mode` off bij changing `true` into `false`
 - `hours_to_show` you can plus the hours or delete the line, if you don't wwant to see tracking on the map
-- 
+
 ### Example
 ```yaml
     - type: map

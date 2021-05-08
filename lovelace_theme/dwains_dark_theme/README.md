@@ -24,6 +24,7 @@
   <img src="https://user-images.githubusercontent.com/77990847/114923935-b312c200-9e2d-11eb-81b2-3ae17998b3dd.png" />
 </p>
 
+<p align="center">Also take a look at <a href="https://github.com/LRvdLinden/dwains_light_theme">Dwains Light Theme</a></p> 
 
 ## Prerequisite ⚙️
 ---
