@@ -17,7 +17,8 @@
       {{ value_json.version}}
     headers:
       content-type: "application/json"
-      x-api-key: !secret ambee-api # zodat je veilig het kunt delen     json_attributes_path: "$.data[0]"
+      x-api-key: !secret ambee-api # zodat je veilig het kunt delen     
+    json_attributes_path: "$.data[0]"
     json_attributes:
       - Count
       - Risk
