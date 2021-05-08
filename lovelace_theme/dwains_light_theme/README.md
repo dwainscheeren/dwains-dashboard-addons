@@ -24,6 +24,7 @@
   <img src="https://user-images.githubusercontent.com/77990847/114995388-0e7c9880-9e9e-11eb-813b-ac55fb055534.png" />
 </p>
 
+<p align="center">Also take a look at <a href="https://github.com/LRvdLinden/dwains_dark_theme">Dwains Dark Theme</a></p> 
 
 ## Prerequisite ⚙️
 ---
