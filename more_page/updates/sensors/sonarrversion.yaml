@@ -1,0 +1,4 @@
+platform: command_line
+name: SonarrVersion
+command: "sh /config/scripts/sonarrversion.sh"
+scan_interval: 600

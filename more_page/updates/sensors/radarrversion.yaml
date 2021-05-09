@@ -1,0 +1,4 @@
+platform: command_line
+name: RadarrVersion
+command: "sh /config/scripts/radarrversion.sh"
+scan_interval: 600

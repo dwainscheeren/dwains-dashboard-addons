@@ -1,0 +1,4 @@
+platform: command_line
+name: PlexVersion
+command: "sh /config/scripts/plexversion.sh"
+scan_interval: 600
