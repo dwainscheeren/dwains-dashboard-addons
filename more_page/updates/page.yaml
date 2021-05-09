@@ -1,0 +1,190 @@
+## Created by Eelco Bode
+# More-page add-on: Updates
+## Version: 0.0.1
+
+## Other devices
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-3 col-md-3 col-sm-12 col-xs-12'
+  cards:
+  - type: vertical-stack
+    cards:
+      - name: Devices
+        styles:
+          card:
+            - padding: '2% 0px'
+            - text-transform: uppercase
+            - font-size: 125%
+            - color: 'var(--dwains-theme-accent)'
+            - border-radius: 0%
+            - font-weight: 100
+            - letter-spacing: 10px
+            - --mdc-ripple-press-opacity: 0
+            - cursor: initial
+          name:
+            - font-weight: 900
+        type: 'custom:button-card'
+      - type: entities
+        entities:
+          - entity: sensor.tasmotaversion
+            name: Light Living
+            icon: mdi:lightbulb
+            tap_action: 
+              action: url
+              url_path: !secret light_living
+          - entity: binary_sensor.synology_update_available
+            name: Synology
+            icon: mdi:nas
+            tap_action: 
+              action: url
+              url_path: !secret synology
+
+## Containers
+  - type: vertical-stack
+    cards:
+      - name: Containers
+        styles:
+          card:
+            - padding: '2% 0px'
+            - text-transform: uppercase
+            - font-size: 125%
+            - color: 'var(--dwains-theme-accent)'
+            - border-radius: 0%
+            - font-weight: 100
+            - letter-spacing: 10px
+            - --mdc-ripple-press-opacity: 0
+            - cursor: initial
+          name:
+            - font-weight: 900
+        type: 'custom:button-card'
+      - type: entities
+        entities:
+          - entity: sensor.bitwardendocker
+            name: Bitwarden Docker
+            icon: mdi:docker
+          - entity: sensor.homeassistantdocker
+            name: HomeAssistant Docker
+            icon: mdi:docker
+          - entity: sensor.dsmrdocker
+            name: DSMR Docker
+            icon: mdi:docker
+          - entity: sensor.tautullidocker
+            name: Tautulli Docker
+            icon: mdi:docker
+          - entity: sensor.duplicatidocker
+            name: Duplicati Container
+            icon: mdi:docker
+          - entity: sensor.deconzdocker
+            name: Deconz Container
+            icon: mdi:docker
+
+## Shelly Switches
+  - type: vertical-stack
+    cards:
+      - name: Shellys
+        styles:
+          card:
+            - padding: '2% 0px'
+            - text-transform: uppercase
+            - font-size: 125%
+            - color: 'var(--dwains-theme-accent)'
+            - border-radius: 0%
+            - font-weight: 100
+            - letter-spacing: 10px
+            - --mdc-ripple-press-opacity: 0
+            - cursor: initial
+          name:
+            - font-weight: 900
+        type: 'custom:button-card'
+      - type: entities
+        entities:
+## Shelly Switches
+          - entity: binary_sensor.shelly_gang_boven_firmware_update
+            name: Shelly Hallway Upstairs
+            icon: mdi:light-switch
+            tap_action: 
+              action: url
+              url_path: !secret shelly_landing
+          - entity: binary_sensor.shelly_esmee_firmware_update
+            name: Shelly Esmee
+            icon: mdi:light-switch
+            tap_action: 
+              action: url
+              url_path: !secret shelly_esmee
+## Shelly Dimmers
+          - entity: binary_sensor.shellydimmer2_dining_firmware_update
+            name: Shelly Dining
+            icon: mdi:light-switch
+            tap_action: 
+              action: url
+              url_path: !secret shelly_dining
+          - entity: binary_sensor.shellydimmer_bedroom_firmware_update
+            name: Shelly Bedroom
+            icon: mdi:light-switch
+            tap_action: 
+              action: url
+              url_path: !secret shelly_bedroom
+##Shelly Plugs
+          - entity: binary_sensor.shelly_wasmachine_firmware_update
+            name: Shelly Wasmachine
+            icon: mdi:power-socket-eu
+            tap_action: 
+              action: url
+              url_path: !secret shelly_wasmachine
+          - entity: binary_sensor.shelly_airco_firmware_update
+            name: Shelly Airco
+            icon: mdi:power-socket-eu
+            tap_action: 
+              action: url
+              url_path: !secret shelly_airco
+          - entity: binary_sensor.winecabinet_firmware_update
+            name: Shelly WineCabinet
+            icon: mdi:power-socket-eu
+            tap_action: 
+              action: url
+              url_path: !secret shelly_winecabinet
+          - entity: binary_sensor.televisie_firmware_update
+            name: Shelly TV
+            icon: mdi:power-socket-eu
+            tap_action: 
+              action: url
+              url_path: !secret shelly_televisie
+
+## Software
+  - type: vertical-stack
+    cards:
+      - name: Software
+        styles:
+          card:
+            - padding: '2% 0px'
+            - text-transform: uppercase
+            - font-size: 125%
+            - color: 'var(--dwains-theme-accent)'
+            - border-radius: 0%
+            - font-weight: 100
+            - letter-spacing: 10px
+            - --mdc-ripple-press-opacity: 0
+            - cursor: initial
+          name:
+            - font-weight: 900
+        type: 'custom:button-card'
+      - type: entities
+        entities:
+          - entity: sensor.plexversion
+            name: Plex
+            icon: mdi:plex
+            tap_action:
+              action: url
+              url_path: !secret plex_server
+          - entity: sensor.sonarrversion
+            name: Sonarr
+            icon: mdi:video
+            tap_action:
+              action: url
+              url_path: !secret sonarr_server
+          - entity: sensor.radarrversion
+            name: Radarr
+            icon: mdi:movie
+            tap_action:
+              action: url
+              url_path: !secret radarr_server
