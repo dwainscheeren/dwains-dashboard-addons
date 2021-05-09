@@ -1,0 +1,4 @@
+platform: file
+name: BitwardenDocker
+file_path: /config/scripts/updates/bitwardenupdate.txt
+#scan_interval: 600

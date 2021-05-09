@@ -1,0 +1,4 @@
+platform: command_line
+name: TasmotaVersion
+command: "sh /config/scripts/version.sh"
+scan_interval: 600

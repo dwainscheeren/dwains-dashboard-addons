@@ -1,0 +1,3 @@
+## Add something like this to cron to start monitoring your docker container versions
+
+54 * * * * /homeassistant/scripts/dockerbitwarden.sh
