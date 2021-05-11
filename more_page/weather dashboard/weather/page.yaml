@@ -467,52 +467,7 @@
                           extrema: true
                           average: true       
                           
-                      - type: 'custom:mini-graph-card'
-                        title: Grondtemperatuur # <- translate this line
-                        icon: 'ios:thermometer'
-                        style: |
-                          ha-card {
-                            border-radius: 10px;
-                            padding-bottom: 10px;
-                            background-color: var(--dwains-theme-primary)
-                          }
-                          :host {
-                            --paper-item-icon-color: var(--dwains-theme-accent) !important;
-                          }
-                          .card-header {
-                            padding: 5px 16px;
-                            font-size: 15px;
-                            font-weight: 700 !important;
-                          }
-                          #states {
-                            padding-top: 0px !important;
-                            padding-bottom: 0px !important;
-                          }
-                          .secondary {
-                            color: darkgray !important;
-                            margin-left: 2px !important;
-                          }
-                        entities:
-                          - sensor.apeldoorn_ground_temperature # <- fill in the right sensor
-                        line_color: '#299ec2'
-                        font_size: 80
-                        hours_to_show: 12
-                        line_width: 2
-                        hour24: true
-                        points_per_hour: 2
-                        decimals: 1
-                        show:
-                          animate: true
-                          fill: true
-                          icon: true
-                          labels: true
-                          legend: true
-                          name: true
-                          graph: line
-                          extrema: true
-                          average: true       
-                          
-                          
+                             
 
 
               #STATS VIEW
