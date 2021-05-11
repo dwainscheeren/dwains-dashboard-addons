@@ -24,14 +24,16 @@
 
 
 <p align="center">
-  <img src="https://image.freepik.com/free-vector/weather-vector-banner_36298-522.jpg" />
+  <img src="https://user-images.githubusercontent.com/77990847/117791717-e426bc80-b24a-11eb-8bab-d0a70fbab8f3.png" />
 </p>
+
+
 
 
 
 ## Prerequisite
 ---
-- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [auto-reload-card[(https://github.com/ben8p/lovelace-auto-reload-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons), [Button Card](https://github.com/custom-cards/button-card) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
+- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [auto-reload-card](https://github.com/ben8p/lovelace-auto-reload-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons), [Button Card](https://github.com/custom-cards/button-card), [HA card Weather Conditions](https://github.com/r-renato/ha-card-weather-conditions), [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/77990847/114733529-b6ca1a00-9d43-11eb-876a-6f4beda466ec.png">
 
@@ -42,7 +44,7 @@
 :warning: Please reboot Home Assistant after config the sensors! :warning:
 
 ### Buienradar sensor + Radar map
-- Make the integration with [Buienradar](https://www.home-assistant.io/integrations/sensor.buienradar/)
+- Make the Home Assistant integration with [Buienradar](https://www.home-assistant.io/integrations/sensor.buienradar/) and [OpenUV](https://github.com/LRvdLinden/weather_dd_addon/blob/main/README.md#openuv)
 - Choose `latitude` and `longtiude` from the correct [weather station](https://www.google.com/maps/d/embed?mid=1NivHkTGQUOs0dwQTnTMZi8Uatj0&ll=52.92957401169076%2C5.184999999999995&z=7) 
 ```yaml
      # Example configuration.yaml entry
@@ -118,37 +120,16 @@ camera:
 - Make the integration with [Ambee Pollen](https://api-dashboard.getambee.com/#/signup)
 - Download the file `pollen.yaml` and place it in youre `sensor` directory or copy it in to `configuration.yaml`
 
-<img width="314" alt="image" src="https://user-images.githubusercontent.com/77990847/115065163-16642900-9eee-11eb-9074-1fb4d462b7ea.png">
+<img width="351" alt="image" src="https://user-images.githubusercontent.com/77990847/117780609-14b52900-b240-11eb-95ab-a330967493c1.png">
 
-### Custom Pollen card
-<img width="351" alt="image" src="https://user-images.githubusercontent.com/77990847/117540800-282e7d00-b011-11eb-8612-36bf7131b627.png">
+### OpenUV
+- To get the UV index card into the weather dashboard, make sure you have created a [API](https://www.openuv.io/) at [OpenUV](https://www.openuv.io/)
+- After creating the API, install the [OpenUV](https://www.openuv.io/) integartion bij clikking on the button below.
 
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=http%3A%2F%2Fhomeassistant.local%3A8123%2Fconfig_flow_start%3Fdomain%3Dopenuv)
 
-- If you want to change the Pollen card, in the card above? Copy the following code instead of line `232` till `248`
-- Make sure you have installed the lovelace [multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row). This can be done manually or directly via hacs
+![image](https://user-images.githubusercontent.com/77990847/117784741-28fb2500-b244-11eb-945a-19dc8f3c3ab0.png)
 
-```yaml
-            type: entities
-            entities:
-              - entity: sensor.pollen_grass_count
-                type: 'custom:multiple-entity-row'
-                entities:
-                  - entity: sensor.pollen_grass_risk
-                    name: false
-              - entity: sensor.pollen_tree_count
-                type: 'custom:multiple-entity-row'
-                entities:
-                  - entity: sensor.pollen_tree_risk
-                    name: false
-              - entity: sensor.pollen_weed_count
-                type: 'custom:multiple-entity-row'
-                entities:
-                  - entity: sensor.pollen_weed_risk
-                    name: false
-              - entity: sensor.pollen_last_updated
-            state_color: true
-            title: Pollen
-```
 
 ### KMNI sensor
 - Make the integration with [KNMI](https://www.home-assistant.io/integrations/scrape/)
@@ -213,7 +194,13 @@ sun:
 
 ## Result
 ---
-![IMG_0557](https://user-images.githubusercontent.com/77990847/116807242-594f0f00-ab32-11eb-994a-42b7f1970e9c.PNG)
+![image](https://user-images.githubusercontent.com/77990847/117791717-e426bc80-b24a-11eb-8bab-d0a70fbab8f3.png)
+
+![image](https://user-images.githubusercontent.com/77990847/117780215-b720dc80-b23f-11eb-9158-36574841576c.png)
+
+![image](https://user-images.githubusercontent.com/77990847/117789187-5ba71c80-b248-11eb-8ddc-45f8029a4936.png)
+
+![image](https://user-images.githubusercontent.com/77990847/117780368-d91a5f00-b23f-11eb-88b8-741e067910aa.png)
 
 
 
