@@ -4,9 +4,6 @@
   <a href="https://dwainscheeren.github.io/dwains-lovelace-dashboard/">
     <img src="https://img.shields.io/badge/Dwains%20Dashboard-Default-299ec2.svg" />
   </a>
-  <a href="https://github.com/custom-components/hacs">
-    <img src="https://img.shields.io/badge/HACS-Default-orange.svg" />
-  </a>
   <a href="https://github.com/LRvdLinden/automations_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/automations_dd_addon" />
   </a>
@@ -25,7 +22,7 @@
 </p> 
 
 <p align="center">
-  <img src="https://www.iotworldtoday.com/files/2019/11/GettyImages-1097894826-724x432.jpg" />
+  <img src="hhttps://user-images.githubusercontent.com/77990847/118323287-a9e64500-b500-11eb-930b-153c87e148cb.png" />
 </p>
 
 
@@ -109,7 +106,11 @@
 
 ## Result
 ---
-![IMG_0545](https://user-images.githubusercontent.com/77990847/114765528-8c895400-9d65-11eb-89cb-2a6d75711dba.PNG)
+
+![simple-ipad-pro-mockup-23619](https://user-images.githubusercontent.com/77990847/118323287-a9e64500-b500-11eb-930b-153c87e148cb.png)
+
+![simple-ipad-pro-mockup-23619-2](https://user-images.githubusercontent.com/77990847/118323271-a5ba2780-b500-11eb-88e6-41785ae6c51d.png)
+
 
 
 
