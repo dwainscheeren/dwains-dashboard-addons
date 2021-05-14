@@ -10,7 +10,7 @@
 # (zonder hekje ervoor)     ambee-api: XXXXXXXXX
 # Bron : https://gist.github.com/michilehr/7ce7431f97e82523336a120b50d0ebe2
   - platform: rest
-    scan_interval: 300
+    scan_interval: 3600
     resource: !secret ambee-resource   # ambee-resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=xx.xxxxxx&lng=x.xxxxxx
     name: "pollen"
     value_template: >
