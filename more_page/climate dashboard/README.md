@@ -5,9 +5,6 @@
   <a href="https://dwainscheeren.github.io/dwains-lovelace-dashboard/">
     <img src="https://img.shields.io/badge/Dwains%20Dashboard-Default-299ec2.svg" />
   </a>
-  <a href="https://github.com/custom-components/hacs">
-    <img src="https://img.shields.io/badge/HACS-Default-orange.svg" />
-  </a>
   <a href="https://github.com/LRvdLinden/climate_dashboard_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/climate_dashboard_dd_addon" />
   </a>
