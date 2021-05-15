@@ -1,7 +1,7 @@
 ## Created by Léon van der Linden
 ## https://github.com/LRvdLinden
 ## More-page add-on: Weather Dashboard
-## Version: 3.0.0
+## Version: 3.0.1
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
   cards:
@@ -52,7 +52,7 @@
                               navigation_path: "#stats"
                   - type: vertical-stack
                     cards:
-                      - type: weather-forecast
+                      - type: 'custom:weather-card'
                         style: |
                           ha-card {
                             border-radius: 10px;
@@ -75,11 +75,12 @@
                             color: darkgray !important;
                             margin-left: 2px !important;
                           }
-                        entity: weather.thuis # <- fill in the right entity
-                        show_forecast: true
-                      - type: 'custom:auto-reload-card'
-                        Refresh: null
-                        delay_in_minute: 10
+                        entity: weather.thuis_openweathermap_daily # <- fill in the right sensor
+                        current: true
+                        details: false
+                        forecast: true
+                        hourly_forecast: false
+                        number_of_forecasts: '5'
                       - type: 'custom:neerslag-card'
                         title: Voorspelling # <- translate the card name
                         icon: 'ios:cloud-rain'
@@ -466,8 +467,8 @@
                           graph: line
                           extrema: true
                           average: true       
+
                           
-                             
 
 
               #STATS VIEW
@@ -583,40 +584,23 @@
                             margin-left: 2px !important;
                           }
                         entities:
-                          - entity: sensor.pollen_grass_risk
+                          - entity: sensor.pollen_tree_count
                             type: 'custom:multiple-entity-row'
                             entities:
-                              - entity: sensor.pollen_grass_count
+                              - entity: sensor.pollen_bomen
                                 name: false
-                          - entity: sensor.pollen_tree_risk
+                          - entity: sensor.pollen_grass_count
                             type: 'custom:multiple-entity-row'
                             entities:
-                              - entity: sensor.pollen_tree_count
+                              - entity: sensor.pollen_grassen
                                 name: false
-                          - entity: sensor.pollen_weed_risk
+                          - entity: sensor.pollen_weed_count
+                            icon: mdi:nature
                             type: 'custom:multiple-entity-row'
                             entities:
-                              - entity: sensor.pollen_weed_count
-                                name: false   
+                              - entity: sensor.pollen_onkruiden
+                                name: false
                           - entity: sensor.pollen_last_updated
-                          - type: 'custom:fold-entity-row'
-                            head:
-                              type: section
-                              label: Meer informatie
-                            entities:
-                              - entity: sensor.pollen_berk_count
-                              - entity: sensor.pollen_coniferen_count       
-                              - entity: sensor.pollen_den_count
-                              - entity: sensor.pollen_eik_count
-                              - entity: sensor.pollen_els_count
-                              - entity: sensor.pollen_hazelaar_count
-                              - entity: sensor.pollen_iep_count
-                              - entity: sensor.pollen_plataan_count
-                              - entity: sensor.pollen_populier_count
-                              - entity: sensor.pollen_amaranten_count
-                              - entity: sensor.pollen_ambrosia_count       
-                              - entity: sensor.pollen_bijvoet_count
-                              - entity: sensor.pollen_brandnetel_count
 
 
  

@@ -1,6 +1,6 @@
 ## Created by LRvdLinden
 ## More-page add-on: Automation
-## Version: 1.0.2
+## Version: 1.0.3
 ## https://github.com/LRvdLinden
 
 - type: custom:dwains-flexbox-card
@@ -19,16 +19,41 @@
           items_classes: 'col-xs-12 col-md-12'
           cards:
             - type: 'custom:fold-entity-row'
-              head: group.1 #delete number 1 and fill in the correct group name
+              background: (--var paper-card-background-color)
+              head: group.automation_light_groep
               entities:
-                - automation.1 #delete number 1 and fill in the correct automation name
-                - automation.2 #delete number 2 and fill in the correct automation name
+                - automation.opstaan
+                - automation.opstaan_uit
+                - automation.goedemorgen
+                - automation.nachtlampen_aan
+                - automation.scene_avond1_2
+                - automation.veranda_aan
+                - automation.kantoor_aan
             - type: 'custom:fold-entity-row'
-              head: group.2 #delete number 2 and fill in the correct group name
+              head: group.deur_notify_groep
               entities:
-                - automation.2 #delete number 3 and fill in the correct automation name
-                - automation.3 #delete number 4 and fill in the correct automation name
-                
+                - automation.achterdeur_open_2
+                - automation.voordeur_open
+            - type: 'custom:fold-entity-row'
+              head: group.beweging_notify_groep
+              entities:
+                - automation.beweging_slaapkamer_kai
+                - automation.beweging_slaapkamer_fay
+                - automation.beweging_slaapkamer_nyk
+                - automation.beweging_zolder
+            - type: 'custom:fold-entity-row'
+              head: group.automation_ha_groep
+              entities:
+                - automation.set_ha_theme_for_day_and_night
+                - automation.set_theme_at_startup
+            - type: 'custom:fold-entity-row'
+              head: group.automation_climate_groep
+              entities:
+                - automation.climate_control_aan
+                - automation.climate_control_uit
+                - automation.climate_control_aan_ochtend        
+   
+
             - type: 'custom:scheduler-card'
               include:
                 - alarm_control_panel
@@ -39,7 +64,7 @@
                 - person
                 - scene
                 - switch
-              title: Schedular
+              title: Scheduler
             - type: 'custom:search-card'
               entity_id:
                 '1': null
@@ -48,3 +73,4 @@
               service: homeassistant.toggle
               service_data: null
               icon: 'mdi:database-search'
+

@@ -8,6 +8,9 @@
   <a href="https://github.com/LRvdLinden/weather_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/weather_dd_addon" />
   </a>
+      <a href="https://github.com/LRvdLinden/weather_dd_addon/commits">
+    <img src="https://img.shields.io/github/last-commit/LRvdLinden/weather_dd_addon.svg?style=plasticr" />
+  </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
   </a>
@@ -24,8 +27,9 @@
 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77990847/117791717-e426bc80-b24a-11eb-8bab-d0a70fbab8f3.png" />
+  <img src="https://user-images.githubusercontent.com/77990847/118019312-21797000-b359-11eb-8723-c4c2e49f4e7b.png" />
 </p>
+
 
 
 
@@ -33,7 +37,7 @@
 
 ## Prerequisite
 ---
-- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [auto-reload-card](https://github.com/ben8p/lovelace-auto-reload-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons), [Button Card](https://github.com/custom-cards/button-card), [HA card Weather Conditions](https://github.com/r-renato/ha-card-weather-conditions), [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
+- Make sure you have installed the lovelace [mini-graph-card](https://github.com/kalkih/mini-graph-card), [auto-reload-card](https://github.com/ben8p/lovelace-auto-reload-card), [Weather Card](https://github.com/bramkragten/weather-card), [fontawesome icons](https://github.com/thomasloven/hass-fontawesome), [Cupertino Icons](https://github.com/menahishayan/HomeAssistant-Cupertino-Icons), [Button Card](https://github.com/custom-cards/button-card), [HA card Weather Conditions](https://github.com/r-renato/ha-card-weather-conditions), [fold-entity-row](https://github.com/thomasloven/lovelace-fold-entity-row), [multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row) and the integration [Neerslag app](https://github.com/aex351/home-assistant-neerslag-app). This can be done manually or directly via hacs
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/77990847/114733529-b6ca1a00-9d43-11eb-876a-6f4beda466ec.png">
 
@@ -116,11 +120,49 @@ camera:
   - platform: buienradar
 ```
 
+### Weather Card based on Dark Sky or OpenWeather Map
+![weather](https://user-images.githubusercontent.com/77990847/118349028-687c8680-b54e-11eb-991d-38cdfe02ae69.gif)
+
+```yaml
+                  - type: vertical-stack
+                    cards:
+                      - type: 'custom:weather-card'
+                        style: |
+                          ha-card {
+                            border-radius: 10px;
+                            padding-bottom: 10px;
+                            background-color: var(--dwains-theme-primary)
+                          }
+                          :host {
+                            --paper-item-icon-color: var(--dwains-theme-accent) !important;
+                          }
+                          .card-header {
+                            padding: 5px 16px;
+                            font-size: 15px;
+                            font-weight: 700 !important;
+                          }
+                          #states {
+                            padding-top: 0px !important;
+                            padding-bottom: 0px !important;
+                          }
+                          .secondary {
+                            color: darkgray !important;
+                            margin-left: 2px !important;
+                          }
+                        entity: weather.thuis_openweathermap_daily
+                        current: true
+                        details: true
+                        forecast: true
+                        hourly_forecast: false
+                        number_of_forecasts: '5'
+```
+
 ### Ambee Pollen sensoren
 - Make the integration with [Ambee Pollen](https://api-dashboard.getambee.com/#/signup)
 - Download the file `pollen.yaml` and place it in youre `sensor` directory or copy it in to `configuration.yaml`
 
-<img width="351" alt="image" src="https://user-images.githubusercontent.com/77990847/117780609-14b52900-b240-11eb-95ab-a330967493c1.png">
+<img width="351" alt="image" src="https://user-images.githubusercontent.com/77990847/118349327-64e9ff00-b550-11eb-9387-db6284ceba9a.gif">
+
 
 ### OpenUV
 - To get the UV index card into the weather dashboard, make sure you have created a [API](https://www.openuv.io/) at [OpenUV](https://www.openuv.io/)
