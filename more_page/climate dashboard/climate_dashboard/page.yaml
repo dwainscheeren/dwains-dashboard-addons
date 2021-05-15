@@ -1,6 +1,6 @@
 ## Created by LRvdLinden
 ## More-page add-on: Climate Control
-## Version: 1.0.2
+## Version: 1.0.3
 ## https://github.com/LRvdLinden
 
 - type: custom:dwains-flexbox-card
@@ -53,10 +53,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -135,10 +137,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -216,10 +220,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -297,10 +303,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -378,10 +386,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -457,10 +467,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -539,10 +551,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
@@ -621,10 +635,12 @@
                 show_state: true
                 size: 30%
                 state:
-                  - color: 'var(--disabled-text-color)'
+                  - color: 'var(-- state-icon-active-color)'
                     value: 'off'
-                  - color: 'rgb(41, 158, 194)'
+                  - color: 'var(--state-icon-color)'
                     value: 'on'
+                  - color: 'var(--state-icon-unavailable-color)'
+                    value: 'unavailable'
                 styles:
                   name:
                     - text-transform: uppercase
