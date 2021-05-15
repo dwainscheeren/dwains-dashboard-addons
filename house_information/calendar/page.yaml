@@ -3,9 +3,8 @@
 ## House-information add-on: Calendar
 ## Version: 1.0.1
 
-- !include
-  - ../../../views/partials/heading.yaml
-  - title: {{ name }}
+- type: custom:dwains-heading-card
+  title: {{ name }}
 - type: custom:atomic-calendar-revive
   style: |
     ha-card {
