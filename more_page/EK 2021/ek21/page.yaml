@@ -1,7 +1,7 @@
 # EK 2021 Dwains Dashboard Add-on (more_page)
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v.1.0.1
+# v1.0.2
 #
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
@@ -64,11 +64,17 @@
                       }
                     showProgressBar: true
                     maxDaysToShow: 30
+                    maxEventCount: 5
+                    europeanDate: true
+                    showNoEventsForToday: true
                     showMonth: true
-                    showWeekDay: false
+                    showWeekDay: true
+                    calActiveEventBackgroundColor: 'rgba(86, 128, 86, .35)'
+                    progressBarColor: 'var(-- state-icon-active-color)'
                     eventBarColor: 'var(--dwains-theme-grey)'
                     dayWrapperLineColor: 'var(--dwains-theme-grey)'
                     timeColor: 'var(--dwains-theme-grey)'
+                    hideFinishedEvents: true
                     entities:
                       - calendar.ek_2020
 
