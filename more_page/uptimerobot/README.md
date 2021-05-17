@@ -4,15 +4,12 @@
   <a href="https://dwainscheeren.github.io/dwains-lovelace-dashboard/">
     <img src="https://img.shields.io/badge/Dwains%20Dashboard-Default-299ec2.svg" />
   </a>
-  <a href="https://github.com/custom-components/hacs">
-    <img src="https://img.shields.io/badge/HACS-Default-orange.svg" />
-  </a>
   <a href="https://github.com/LRvdLinden/uptimerobot_dd_addon">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/uptimerobot_dd_addon" />
   </a>
-    <a href="https://github.com/LRvdLinden/uptimerobot_dd_addon">
-    <img src="https://img.shields.io/github/downloads/LRvdLinden/uptimerobot_dd_addon/latest/total?color=purple&label=%20release%20Downloads" />
-    </a>
+      <a href="https://github.com/LRvdLinden/uptimerobot_dd_addon/commits">
+    <img src="https://img.shields.io/github/last-commit/LRvdLinden/uptimerobot_dd_addon.svg?style=plasticr" />
+  </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
     </a>
@@ -24,7 +21,7 @@
 <p align="center">Created by <a href="https://github.com/LRvdLinden">Léon van der Linden</a> based on <a href="https://github.com/dylandoamaral/uptime-card">uptime-card</a> created by <a href="https://github.com/dylandoamaral/uptime-card">Dylandoamaral</a>
 </p> 
 
-![uptimerobot](https://scontent-ams4-1.xx.fbcdn.net/v/t1.6435-9/106796232_3593546114008659_9051489899601087280_n.png?_nc_cat=100&ccb=1-3&_nc_sid=e3f864&_nc_ohc=sN22nqAP2UIAX9HMuUx&_nc_ht=scontent-ams4-1.xx&oh=940a10cdf67cb438814c35f67c82dd23&oe=6096E7BB)
+![uptimerobot](https://uptimerobot.com/assets/images/ogimage.png)
 
 ## Prerequisite
 ---
