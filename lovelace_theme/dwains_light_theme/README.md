@@ -5,8 +5,8 @@
   <a href="https://github.com/LRvdLinden/dwains_light_theme">
     <img src="https://img.shields.io/github/v/release/LRvdLinden/dwains_light_theme" />
   </a>
-      <a href="https://github.com/LRvdLinden/dwains_light_theme">
-    <img src="https://img.shields.io/github/downloads/LRvdLinden/dwains_light_theme/latest/total?color=purple&label=%20release%20Downloads" />
+      <a href="https://github.com/LRvdLinden/dwains_light_theme/commits">
+    <img src="https://img.shields.io/github/last-commit/LRvdLinden/dwains_light_theme.svg?style=plasticr" />
   </a>
     <a href="https://github.com/LRvdLinden/">
     <img src="https://img.shields.io/github/followers/LRvdLinden?style=social" />
@@ -94,17 +94,17 @@ frontend:
 
 ## State icons 🎨
 ---
-| Name | Type | Default | Since | 
-|------|:--------------:|:-------:|:-----:|
-| state icon | color | ![ ](https://dummyimage.com/20x10/299ec2&amp;text=+) `#299ec2` |  v2.0.1
-| active icon  | color | ![ ](https://dummyimage.com/20x10/ffd60a&amp;text=+) `#ffd60a` |  v2.0.1
-| unavailable icon | color | ![ ](https://dummyimage.com/20x10/a9b1bc&amp;text=+) `#a9b1bc` |  v2.0.1
+| Name | Type | Default | Since | Code |
+|------|:--------------:|:-------:|:-----:|:--------------:|
+| state icon | color | ![ ](https://dummyimage.com/20x10/299ec2&amp;text=+) `#299ec2` | v2.0.1 | color: var(-- state-icon-active-color) |
+| active icon  | color | ![ ](https://dummyimage.com/20x10/ffd60a&amp;text=+) `#ffd60a` | v2.0.1 | color: var(--state-icon-color) |
+| unavailable icon | color | ![ ](https://dummyimage.com/20x10/a9b1bc&amp;text=+) `#a9b1bc` | v2.0.1 | color: var(--state-icon-unavailable-color) |
 
 
 ## Fonts 🎨
 ---
 ### Theme font (HA)
-- If you whant to change the font of HA, you can change the Google font in theme theme file on line `8`
+- If you whant to change the font of HA, you can change the [Google font](https://fonts.google.com/) in theme theme file on line `8`
 ```yaml
 primary-font-family: 'Open Sans' # <- if you whant to change the font, fill in de richt google font name between ''
 ```
@@ -113,7 +113,7 @@ primary-font-family: 'Open Sans' # <- if you whant to change the font, fill in d
 - If you want to change the fonnt from Dwains Dashboard, to get it the same as your HA theme, go to the dashboard theme files in directory `/config/custom_components/dwains_dashboard/lovelace/themefiles/`
 - Open the dashboard theme `.yaml` file
 - Search for `primary-font-family: 'Open Sans'`
-- Fill in the right Google font name between `''`
+- Fill in the right [Google font](https://fonts.google.com/) name between `''`
 - Reboot Home Assistant
 
 

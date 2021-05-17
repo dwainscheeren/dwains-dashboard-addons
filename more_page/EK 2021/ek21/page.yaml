@@ -1,0 +1,106 @@
+# EK 2021 Dwains Dashboard Add-on (more_page)
+# Creator: LRvdLinden
+# Website: https://github.com/LRvdLinden
+# v.1.0.0
+#
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12'
+  cards: 
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+      cards:
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: markdown
+              content: >
+                ![Image](https://images0.persgroep.net/rcs/gDnYYGmqHEQ7xWBg1sGBGT4UeX0/diocontent/168483979/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8&desiredformat=webp)
+
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: 'custom:button-card'
+              name: Matches
+              styles:
+                card:
+                  - --mdc-ripple-press-opacity: 0
+                  - cursor: initial
+                  - padding: 15px
+                  - font-size: 12pt
+                name: 
+                  - text-transform: uppercase
+                  - font-size: 125%
+                  - letter-spacing: 10px
+                  - padding: 5px
+                  - border-bottom: 2px solid rgba(225, 225, 225, 0.60)
+                  - width: 100vw
+                grid:
+                  - grid-template-areas: '"n n" "ek2020_message ek2020_content"'
+                  - grid-template-columns: min-content 1fr 
+                custom_fields:
+                  soccer_label:
+                    - text-align: left
+                    - padding-top: 10px
+                    - min-height: 45px
+                  soccer_content:
+                    - text-align: right
+                    - padding-top: 10px
+                    - min-height: 45px
+                    - text-transform: capitalize
+
+            - type: custom:atomic-calendar-revive
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
+                .cal-titleContainer {
+                  display: none;
+                }
+              showProgressBar: true
+              maxDaysToShow: 30
+              showMonth: true
+              showWeekDay: false
+              eventBarColor: 'var(--dwains-theme-grey)'
+              dayWrapperLineColor: 'var(--dwains-theme-grey)'
+              timeColor: 'var(--dwains-theme-grey)'
+              entities:
+                - calendar.ek_2020
+
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-md-12'
+          cards:
+            - type: 'custom:button-card'
+              name: Pools
+              styles:
+                card:
+                  - --mdc-ripple-press-opacity: 0
+                  - cursor: initial
+                  - padding: 15px
+                  - font-size: 12pt
+                name: 
+                  - text-transform: uppercase
+                  - font-size: 125%
+                  - letter-spacing: 10px
+                  - padding: 5px
+                  - border-bottom: 2px solid rgba(225, 225, 225, 0.60)
+                  - width: 100vw
+                grid:
+                  - grid-template-areas: '"n n" "ek2020_message ek2020_content"'
+                  - grid-template-columns: min-content 1fr 
+                custom_fields:
+                  soccer_label:
+                    - text-align: left
+                    - padding-top: 10px
+                    - min-height: 45px
+                  soccer_content:
+                    - text-align: right
+                    - padding-top: 10px
+                    - min-height: 45px
+                    - text-transform: capitalize
+            - type: markdown
+              content: >
+                  ![Image](https://cms.kaagent.be/uploads/ck/images/UEFA%20EURO%202020%20kwalificaties.jpg)
+      
+
