@@ -1,7 +1,7 @@
 # EK 2021 Dwains Dashboard Add-on (more_page)
 # Creator: LRvdLinden
 # Website: https://github.com/LRvdLinden
-# v1.0.2
+# v.1.0.3
 #
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12'
@@ -34,22 +34,74 @@
                         cards:
                           - type: custom:button-card
                             name: Matches # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:soccer'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 125px
+                              name:
+                                - color: var(--dwains-theme-accent)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-accent)
                             tap_action: 
                               action: navigate
                               navigation_path: "#matches"
-                            styles:
-                              name:
-                                - color: var(--dwains-theme-accent)
+                                  
                           - type: custom:button-card
                             name: Schedule # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:calendar-month'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 135px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#schedule"
                           - type: custom:button-card
                             name: Pools # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:clipboard-list-outline'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 120px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#pools"
@@ -69,7 +121,7 @@
                     showNoEventsForToday: true
                     showMonth: true
                     showWeekDay: true
-                    calActiveEventBackgroundColor: 'rgba(86, 128, 86, .35)'
+                    calActiveEventBackgroundColor: rgba(86, 128, 86, .35)
                     progressBarColor: 'var(-- state-icon-active-color)'
                     eventBarColor: 'var(--dwains-theme-grey)'
                     dayWrapperLineColor: 'var(--dwains-theme-grey)'
@@ -90,22 +142,76 @@
                         cards:
                           - type: custom:button-card
                             name: Matches # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:soccer'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 125px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#matches"
                           - type: custom:button-card
                             name: Schedule # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:calendar-month'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 135px
+                              name:
+                                - color: var(--dwains-theme-accent)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-accent)
                             tap_action: 
                               action: navigate
                               navigation_path: "#schedule"
-                            styles:
-                              name:
-                                - color: var(--dwains-theme-accent)
+                              styles:
+                                name:
+                                  - color: var(--dwains-theme-accent)
                           - type: custom:button-card
                             name: Pools # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:clipboard-list-outline'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 125px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#pools"
@@ -126,25 +232,77 @@
                         cards:
                           - type: custom:button-card
                             name: Matches # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:soccer'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 125px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#matches"
                           - type: custom:button-card
                             name: Schedule # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:calendar-month'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 135px
+                              name:
+                                - color: var(--dwains-theme-grey)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-grey)
                             tap_action: 
                               action: navigate
                               navigation_path: "#schedule"
                           - type: custom:button-card
                             name: Pools # <- translate the button name
-                            template: partials_heading_switch
+                            #template: partials_heading_switch
+                            icon: 'mdi:clipboard-list-outline'
+                            layout: icon_name
+                            styles:
+                              card:
+                                - box-shadow: none
+                                - padding: 6px 0 0 0
+                                - background: transparent
+                                - height: 30px
+                                - width: 125px
+                              name:
+                                - color: var(--dwains-theme-accent)
+                                - font-weight: bold
+                                - justify-self: start
+                                - font-size: 16px
+                                - padding-left: 1px
+                              icon:
+                                - opacity: 0.5
+                                - color: var(--dwains-theme-accent)
                             tap_action: 
                               action: navigate
                               navigation_path: "#pools"
-                            styles:
-                              name:
-                                - color: var(--dwains-theme-accent)
+
 
                   - type: markdown
                     content: >
