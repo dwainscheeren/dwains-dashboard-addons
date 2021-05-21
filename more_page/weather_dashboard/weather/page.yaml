@@ -554,7 +554,7 @@
                                 name: Wind snelheid
                               - entity: sensor.apeldoorn_wind_direction # <- fill in the right sensor
                                 name: Wind richting
-                                icon: 'fas:compass'
+                                icon: 'mdi:compass'
                               - entity: sensor.apeldoorn_ground_temperature # <- fill in the right sensor
                                 name: Grond temperatuur
                         
