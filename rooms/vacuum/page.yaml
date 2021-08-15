@@ -48,12 +48,12 @@
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: zoned_cleanup
               params:
-                'zone_ids': ['{{ rooms.zone }}']
+                'zone_ids': ['{{ rooms.room }}']
             {% else %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: app_zoned_clean
-              params: ['{{ rooms.zone }}']
+              params: ['{{ rooms.room }}']
             {% endif %}
           styles:
             grid:
