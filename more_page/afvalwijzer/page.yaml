@@ -61,6 +61,6 @@
           - entity_id: sensor.{{ (data | fromjson)['wastecollector'] }}*
       show_header_toggle: false
       sort:
-        attribute: {{ (data | fromjson)['sort_attribute']|default('Sort-date') }}
+        attribute: {{ (data | fromjson)['sort_attribute']|default('Sort_date') }}
         method: attribute
         numeric: true
