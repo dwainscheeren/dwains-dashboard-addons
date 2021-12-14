@@ -25,7 +25,7 @@ more_page:
         path: 'dwains-dashboard/addons/more_page/afvalwijzer/page.yaml'
         data:
           wastecollector: blink
-          sort_attribute: Sort-date
+          sort_attribute: Sort_date
 ```
 
 ### Screenshots
