@@ -1,0 +1,60 @@
+# dwains_dashboard
+## More-page add-on: Radio Stations
+## Created by FehTeh
+## Version: 0.0.1
+
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+  cards:
+    - type: media-control
+      item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+      entity: {{ (data | fromjson)['entity'] }}
+
+    {% if (data | fromjson)['radios'] %}
+    - type: custom:dwains-flexbox-card
+      padding: true
+      cards:
+        - type: custom:dwains-heading-card
+          item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          title: Radios
+
+      {% for radios in (data | fromjson)['radios'] %}
+        - type: custom:button-card
+          item_classes: 'col-lg-3 col-md-3 col-sm-12 col-xs-12'
+          entity: {{ (data | fromjson)['entity'] }}
+          template: rooms_child
+          name: {{ radios.radio }}
+          icon: mdi:radio
+          show_state: false
+          show_last_changed: false
+          {% if radios.logo %}
+          show_entity_picture: true
+          entity_picture: {{ radios.logo }}
+          styles:
+            icon:
+              - height: 45px
+              - width: 45px
+          {% endif %}
+          tap_action:
+            action: call-service
+            service: media_player.play_media
+            service_data:
+              entity_id: {{ (data | fromjson)['entity'] }}
+              media_content_id: {{ radios.url }}
+              media_content_type: channel
+              extra:
+                metadata:
+                  metadataType: 3
+                  {% if radios.description %}
+                  title: {{ radios.description }}
+                  artist: {{ radios.radio }}
+                  {% else %}
+                  title: {{ radios.radio }}
+                  {% endif %}
+                  {% if radios.logo %}
+                  images:
+                    - url: {{ radios.logo }}
+                  {% endif %}
+        {% endfor %}
+    {% endif %}
