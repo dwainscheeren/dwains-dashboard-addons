@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## More-page add-on: Radio Stations
 ## Created by FehTeh
-## Version: 0.0.1
+## Version: 1.0.0
 
 - type: custom:dwains-flexbox-card
   padding: true

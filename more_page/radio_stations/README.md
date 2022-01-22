@@ -46,8 +46,6 @@ more_page:
             url: "http://23603.live.streamtheworld.com/RADIO_RENASCENCA.mp3"
 ```
 
-### How to get 
-
 ### Screenshots
 **Light theme:**<br>
 ![light](https://github.com/fehteh/dwains-dashboard-addons/blob/master/more_page/radio_stations/.github/screenshots/light.png "Light")
