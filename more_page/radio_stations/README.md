@@ -52,12 +52,8 @@ more_page:
 **Light theme:**<br>
 ![light](https://github.com/fehteh/dwains-dashboard-addons/blob/master/more_page/radio_stations/.github/screenshots/light.png "Light")
 
-![light_mobile](https://github.com/fehteh/dwains-dashboard-addons/blob/master/more_page/radio_stations/.github/screenshots/light_mobile.png "Light Mobile")
-
 **Dark theme:**<br>
 ![dark](https://github.com/fehteh/dwains-dashboard-addons/blob/master/more_page/radio_stations/.github/screenshots/dark.png "Dark")
-
-![dark_mobile](https://github.com/fehteh/dwains-dashboard-addons/blob/master/more_page/radio_stations/.github/screenshots/dark_mobile.png "Dark Mobile")
 
 ### Changelog
 #### 1.0.0
