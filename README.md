@@ -1,6 +1,6 @@
 # Dwains Lovelace Dashboard Community Addons
 
-Welcome to the community addons repository. In this repository you'll find many addons to use inside Dwains Dashboard v2.0 and newer.
+Welcome to the community addons repository. In this repository you'll find many addons to use inside Dwains Dashboard v2.0 (Note the addons do not work in v3.0!)
 
 With Dwains Dashboard Addons you can extend the theme functionality with addons without changing any of the themes cores code. This way you can always update to the latest version without problems but still add your own views/cards.
 
