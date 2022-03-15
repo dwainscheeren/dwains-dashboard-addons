@@ -21,4 +21,4 @@ With **House information addon** you can add own cards to the global house infor
 ### Popup addons
 With popup addons you can add own card(s) to a popup of an entity. So for example if you click on switch.diswasher you also see the power usage of the diswasher.
 
-[For more info please take a look here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/addons/)
+[For more info please take a look here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v2/addons/)
