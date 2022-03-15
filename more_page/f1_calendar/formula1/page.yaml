@@ -2,7 +2,7 @@
   items_classes: 'col-xs-12'
   cards: 
     - type: custom:dwains-flexbox-card
-      items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+      items_classes: 'col-xs-12 col-sm-12'
       cards:
         - type: custom:dwains-flexbox-card
           items_classes: 'col-xs-12 col-md-12'
@@ -28,7 +28,7 @@
                   - letter-spacing: 10px
                   - padding: 5px
                   - border-bottom: 2px solid rgba(225, 225, 225, 0.60)
-                  - width: 100vw
+                  - width: 90vw
                 grid:
                   - grid-template-areas: '"n n" "race_label race_content" "circuit_label circuit_content"'
                   - grid-template-columns: min-content 1fr 
@@ -67,7 +67,7 @@
                   - letter-spacing: 10px
                   - padding: 5px
                   - border-bottom: 2px solid rgba(225, 225, 225, 0.60)
-                  - width: 100vw
+                  - width: 90vw
                 grid:
                   - grid-template-areas: '"n n" "fp1_label fp1_content" "fp2_label fp2_content" "fp3_label fp3_content" "qualify_label qualify_content" "race_label race_content"'
                   - grid-template-columns: min-content 1fr 
